@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { HeadquartersMap } from "@/components/maps/headquarters-map";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { company } from "@/content/company";
@@ -95,26 +96,7 @@ export default function ContactPage() {
                 </div>
               </section>
 
-              <section className="contact-card">
-                <span className="badge badge--steel" style={{ marginBottom: "0.5rem" }}>
-                  Registered Office
-                </span>
-                <h2>Muscat Headquarters</h2>
-                <address style={{ color: "var(--muted)", fontStyle: "normal", lineHeight: 1.6, fontSize: "0.95rem" }}>
-                  <strong style={{ color: "var(--navy-deep)", display: "block", marginBottom: "0.25rem" }}>
-                    {company.name}
-                  </strong>
-                  {company.address.line1}<br />
-                  {company.address.line2}<br />
-                  {company.address.postal}<br />
-                  {company.address.city}, {company.address.country}
-                </address>
-
-                <div style={{ marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid var(--border-subtle)", fontSize: "0.85rem", color: "var(--muted)", fontFamily: "var(--font-mono)" }}>
-                  <div><strong>CR Number:</strong> {company.crNumber}</div>
-                  <div><strong>Location:</strong> {company.coordinates}</div>
-                </div>
-              </section>
+              <HeadquartersMap />
             </div>
 
             {/* Right Column: Tender & Technical Consultation Guide */}
