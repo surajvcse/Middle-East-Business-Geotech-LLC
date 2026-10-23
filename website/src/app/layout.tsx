@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { company } from "@/content/company";
+import { withBasePath } from "@/lib/site-path";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
 
 import "./globals.css";
@@ -42,10 +43,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: withBasePath("/favicon.ico"), sizes: "any" },
+      { url: withBasePath("/icon.png"), type: "image/png", sizes: "32x32" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: withBasePath("/apple-icon.png"), sizes: "180x180", type: "image/png" }],
   },
 };
 

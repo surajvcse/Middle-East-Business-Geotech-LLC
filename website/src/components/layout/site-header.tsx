@@ -5,6 +5,7 @@ import { DesktopNav } from "@/components/navigation/desktop-nav";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
 import { Container } from "@/components/ui/container";
 import { company } from "@/content/company";
+import { withBasePath } from "@/lib/site-path";
 
 export function SiteHeader() {
   return (
@@ -87,7 +88,7 @@ export function SiteHeader() {
           <div className="brand-group">
             <Link className="brand" href="/" aria-label={`${company.name} home`}>
               <Image
-                src="/images/brand/meb-geotech-logo.jpeg"
+                src={withBasePath("/images/brand/meb-geotech-logo.jpeg")}
                 alt={company.name}
                 width={220}
                 height={56}
