@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/site-path";
 import type { Project } from "@/types/content";
 
 export const projects: readonly Project[] = [
@@ -18,7 +19,7 @@ export const projects: readonly Project[] = [
     ],
     images: [
       {
-        src: "/images/projects/al-ubaidah-fayyad-road-01.jpeg",
+        src: withBasePath("/images/projects/al-ubaidah-fayyad-road-01.jpeg"),
         alt: "Completed multi-tier shotcrete slope benches beside Al Ubaidah to Fayyad Road",
         caption: "Multi-tier shotcrete benches and integrated rock reinforcement along the road cutting",
         aspectRatio: "landscape",
@@ -26,7 +27,7 @@ export const projects: readonly Project[] = [
         height: 805,
       },
       {
-        src: "/images/projects/al-ubaidah-fayyad-road-02.jpeg",
+        src: withBasePath("/images/projects/al-ubaidah-fayyad-road-02.jpeg"),
         alt: "Aerial perspective of protected mountain road cutting on Al Ubaidah to Fayyad Road",
         caption: "Continuous slope protection along the primary highway alignment",
         aspectRatio: "landscape",
@@ -34,7 +35,7 @@ export const projects: readonly Project[] = [
         height: 805,
       },
       {
-        src: "/images/projects/al-ubaidah-fayyad-road-03.jpeg",
+        src: withBasePath("/images/projects/al-ubaidah-fayyad-road-03.jpeg"),
         alt: "Detailed engineering view of shotcrete slope-protection benches and drainage berms",
         caption: "Berm drainage channels and slope face protection details",
         aspectRatio: "landscape",
@@ -60,7 +61,7 @@ export const projects: readonly Project[] = [
     ],
     images: [
       {
-        src: "/images/projects/khasab-lima-road-01.jpeg",
+        src: withBasePath("/images/projects/khasab-lima-road-01.jpeg"),
         alt: "Crane-supported slope protection installation on steep coastal rock face in Musandam",
         caption: "Heavy mobile crane facilitating specialised rope-access drilling on steep sea-cliff faces",
         aspectRatio: "portrait",
@@ -68,7 +69,7 @@ export const projects: readonly Project[] = [
         height: 1600,
       },
       {
-        src: "/images/projects/khasab-lima-road-02.jpeg",
+        src: withBasePath("/images/projects/khasab-lima-road-02.jpeg"),
         alt: "Suspended access platform drilling pattern anchors into near-vertical rock face",
         caption: "Suspended work platform executing rock bolting on vertical limestone formations",
         aspectRatio: "portrait",
@@ -94,7 +95,7 @@ export const projects: readonly Project[] = [
     ],
     images: [
       {
-        src: "/images/projects/wilayat-manah-01.jpeg",
+        src: withBasePath("/images/projects/wilayat-manah-01.jpeg"),
         alt: "Stabilised cut slope and wire netting protecting regional water infrastructure in Wilayat Manah",
         caption: "Engineered slope stabilisation protecting strategic regional water distribution infrastructure",
         aspectRatio: "panoramic",
@@ -102,7 +103,7 @@ export const projects: readonly Project[] = [
         height: 724,
       },
       {
-        src: "/images/projects/wilayat-manah-02.jpeg",
+        src: withBasePath("/images/projects/wilayat-manah-02.jpeg"),
         alt: "Wide panoramic view of slope stabilisation works at Wilayat Manah",
         caption: "Continuous slope reinforcement combining wire netting, rock bolts and concrete lining",
         aspectRatio: "panoramic",
@@ -128,7 +129,7 @@ export const projects: readonly Project[] = [
     ],
     images: [
       {
-        src: "/images/projects/al-kamil-sur-road-01.png",
+        src: withBasePath("/images/projects/al-kamil-sur-road-01.png"),
         alt: "Stabilised expressway cutting and ditch lining beside Al Kamil to Sur Road",
         caption: "Completed shotcrete slope protection and concrete drainage system on Al Sharqiyah Expressway",
         aspectRatio: "panoramic",
@@ -155,7 +156,7 @@ export const projects: readonly Project[] = [
     ],
     images: [
       {
-        src: "/images/projects/al-sharqiyah-region-01.png",
+        src: withBasePath("/images/projects/al-sharqiyah-region-01.png"),
         alt: "High-tensile wire netting installed across steep rock slope in Al Sharqiyah",
         caption: "Steel wire mesh installation conforming to irregular fractured rock face geometry",
         aspectRatio: "portrait",
@@ -163,7 +164,7 @@ export const projects: readonly Project[] = [
         height: 695,
       },
       {
-        src: "/images/projects/al-sharqiyah-region-02.png",
+        src: withBasePath("/images/projects/al-sharqiyah-region-02.png"),
         alt: "Rock bolt reinforcement and bench concrete works along pipeline excavation trench",
         caption: "Rock bolting and bench foundation concrete securing pipeline excavation corridor",
         aspectRatio: "landscape",

@@ -3,6 +3,8 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/content/projects";
 import { services } from "@/content/services";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
 
