@@ -2674,3 +2674,1011 @@ nextjs-portal,
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+/* ==========================================================================
+   Interactive Maps: Headquarters Map & Oman Operations Map
+   ========================================================================== */
+
+/* Headquarters Map Card */
+.headquarters-map-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.headquarters-map-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--canvas-subtle);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.headquarters-map-card__title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.headquarters-map-card__pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(217, 107, 43, 0.25);
+  animation: mapPulse 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes mapPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px rgba(217, 107, 43, 0.25);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(217, 107, 43, 0.1);
+  }
+}
+
+.headquarters-map-card__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.headquarters-map-card__subtitle {
+  font-size: 0.775rem;
+  color: var(--muted);
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono);
+}
+
+.headquarters-map-card__frame {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #e5e3df;
+  overflow: hidden;
+}
+
+.headquarters-map-card__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: contrast(102%) brightness(98%);
+}
+
+.headquarters-map-card__overlay-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.headquarters-map-card__pin-body {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--navy-deep);
+  color: #ffffff;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 14px rgba(10, 34, 57, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.headquarters-map-card__pin-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.headquarters-map-card__pin-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.headquarters-map-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.headquarters-map-card__address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.headquarters-map-card__address strong {
+  color: var(--navy-deep);
+  font-size: 0.875rem;
+}
+
+.headquarters-map-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Oman Operations Map Section */
+.oman-map-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-card);
+}
+
+.oman-map-section__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.oman-map-section__title {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 750;
+  color: var(--navy-deep);
+  margin: 0.25rem 0 0.45rem;
+  letter-spacing: -0.01em;
+}
+
+.oman-map-section__desc {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  max-width: 48ch;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.oman-map-toggle {
+  display: inline-flex;
+  background: var(--canvas-subtle);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  gap: 0.25rem;
+}
+
+.oman-map-toggle__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--steel);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.oman-map-toggle__btn.is-active {
+  background: var(--surface);
+  color: var(--navy-deep);
+  box-shadow: 0 1px 3px rgba(10, 34, 57, 0.08);
+}
+
+.oman-map-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  align-items: start;
+}
+
+.oman-map-canvas {
+  background: #fcfbf9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.oman-map-canvas__inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 440px;
+  margin: 0 auto;
+}
+
+.oman-map-topo {
+  width: 100%;
+  height: 100%;
+}
+
+.oman-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 5;
+  outline: none;
+  transition: transform 160ms ease;
+}
+
+.oman-pin:hover,
+.oman-pin.is-active {
+  transform: translate(-50%, -50%) scale(1.12);
+  z-index: 10;
+}
+
+.oman-pin__radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(71, 118, 148, 0.2);
+  transition: all 200ms ease;
+}
+
+.oman-pin--hq .oman-pin__radar {
+  background: rgba(217, 107, 43, 0.25);
+}
+
+.oman-pin.is-active .oman-pin__radar {
+  animation: pinPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pinPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0.2;
+  }
+}
+
+.oman-pin__marker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--steel);
+  color: var(--navy-deep);
+  box-shadow: 0 2px 6px rgba(10, 34, 57, 0.18);
+  transition: all 150ms ease;
+}
+
+.oman-pin--hq .oman-pin__marker {
+  background: var(--navy-deep);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.oman-pin.is-active .oman-pin__marker {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.oman-pin__core {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--steel);
+}
+
+.oman-pin.is-active .oman-pin__core {
+  background: #ffffff;
+}
+
+.oman-pin__tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 750;
+  color: var(--navy-deep);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(10, 34, 57, 0.08);
+  white-space: nowrap;
+}
+
+.oman-pin.is-active .oman-pin__tag {
+  background: var(--navy-deep);
+  color: #ffffff;
+  border-color: var(--navy-deep);
+}
+
+.oman-map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.oman-map-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.oman-map-legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.oman-map-legend__dot--hq {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(217, 107, 43, 0.3);
+}
+
+.oman-map-legend__dot--active {
+  background: var(--steel);
+}
+
+.oman-map-legend__dot--completed {
+  background: var(--border-strong);
+}
+
+/* Map Details Right Column */
+.oman-map-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.oman-site-spotlight {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy-deep);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.oman-site-spotlight__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.oman-site-spotlight__coords {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--steel);
+  font-weight: 650;
+}
+
+.oman-site-spotlight__title {
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--navy-deep);
+  margin: 0 0 0.35rem;
+}
+
+.oman-site-spotlight__region {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.825rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.oman-site-spotlight__region svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.oman-site-spotlight__section {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.oman-site-spotlight__label {
+  display: block;
+  font-size: 0.725rem;
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.oman-site-spotlight__text {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.oman-sites-nav {
+  background: var(--canvas-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.oman-sites-nav__label {
+  display: block;
+  font-size: 0.725rem;
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.65rem;
+}
+
+.oman-sites-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.oman-sites-nav__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  text-align: left;
+  transition: all 140ms ease;
+}
+
+.oman-sites-nav__item:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.oman-sites-nav__item.is-selected {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 1px 3px rgba(10, 34, 57, 0.06);
+}
+
+.oman-sites-nav__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--steel);
+  flex-shrink: 0;
+}
+
+.oman-sites-nav__item.is-selected .oman-sites-nav__dot {
+  background: var(--accent);
+}
+
+.oman-sites-nav__name {
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--navy-deep);
+  flex: 1;
+}
+
+.oman-sites-nav__status {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+@media (max-width: 58rem) {
+  .oman-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Real Interactive Leaflet Map (Streets & Satellite)
+   ========================================================================== */
+
+.real-map-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.real-map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--canvas-subtle);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+.real-map-toolbar__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+.real-map-toolbar__live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  flex-shrink: 0;
+}
+
+.real-map-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.real-map-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--steel);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 140ms ease;
+}
+
+.real-map-toolbar__btn:hover {
+  color: var(--navy-deep);
+  border-color: var(--navy);
+}
+
+.real-map-toolbar__btn--accent {
+  color: var(--accent);
+}
+
+.real-map-toolbar__btn--accent:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent);
+}
+
+.real-map-layer-switch {
+  display: inline-flex;
+  background: rgba(18, 52, 85, 0.08);
+  padding: 2px;
+  border-radius: var(--radius-xs);
+  gap: 2px;
+}
+
+.real-map-layer-btn {
+  border: none;
+  background: transparent;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--steel);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.real-map-layer-btn.is-active {
+  background: var(--surface);
+  color: var(--navy-deep);
+  box-shadow: 0 1px 3px rgba(10, 34, 57, 0.1);
+}
+
+.real-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(22rem, 0.95fr);
+  background: #f8f7f4;
+}
+
+.real-map-layout--no-sidebar {
+  grid-template-columns: 1fr;
+}
+
+.real-map-frame {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.real-map-element {
+  width: 100%;
+  height: 100%;
+}
+
+.real-map-sidebar {
+  padding: 1.25rem;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+  max-height: 520px;
+}
+
+.real-map-spotlight {
+  background: var(--canvas-subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.real-map-spotlight__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.real-map-spotlight__coords {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  color: var(--steel);
+  font-weight: 700;
+}
+
+.real-map-spotlight__title {
+  font-size: 1.1rem;
+  font-weight: 750;
+  color: var(--navy-deep);
+  margin: 0 0 0.25rem;
+  line-height: 1.3;
+}
+
+.real-map-spotlight__region {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+}
+
+.real-map-spotlight__region svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.real-map-spotlight__row {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(10, 34, 57, 0.08);
+}
+
+.real-map-spotlight__label {
+  display: block;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.real-map-spotlight__text {
+  font-size: 0.825rem;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.real-map-loc-list__label {
+  display: block;
+  font-size: 0.725rem;
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.real-map-loc-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.real-map-loc-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  text-align: left;
+  transition: all 140ms ease;
+}
+
+.real-map-loc-btn:hover {
+  background: var(--canvas-subtle);
+  border-color: var(--navy);
+}
+
+.real-map-loc-btn.is-selected {
+  background: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: #ffffff;
+}
+
+.real-map-loc-btn__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--steel);
+  flex-shrink: 0;
+}
+
+.real-map-loc-btn.is-selected .real-map-loc-btn__dot {
+  background: var(--accent);
+}
+
+.real-map-loc-btn__name {
+  font-size: 0.8rem;
+  font-weight: 650;
+  flex: 1;
+  color: inherit;
+}
+
+.real-map-loc-btn__region {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.real-map-loc-btn.is-selected .real-map-loc-btn__region {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Custom Leaflet Pin Styling */
+.real-map-pin-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.real-map-pin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.real-map-pin__pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(217, 107, 43, 0.3);
+  animation: pinPulse 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.real-map-pin--site .real-map-pin__pulse {
+  background: rgba(71, 118, 148, 0.3);
+}
+
+.real-map-pin__icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(10, 34, 57, 0.3);
+  z-index: 2;
+  transition: transform 150ms ease;
+}
+
+.real-map-pin--hq .real-map-pin__icon {
+  background: var(--navy-deep);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.real-map-pin--site .real-map-pin__icon {
+  border-color: var(--steel);
+  color: var(--navy);
+}
+
+.real-map-pin:hover .real-map-pin__icon,
+.real-map-pin.is-active .real-map-pin__icon {
+  transform: scale(1.18);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.real-map-pin__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.real-map-pin__label {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 750;
+  color: var(--navy-deep);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 5px rgba(10, 34, 57, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Leaflet Popup Customization */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 8px 24px rgba(10, 34, 57, 0.2) !important;
+  border: 1px solid var(--border) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.real-map-popup {
+  padding: 0.95rem 1.15rem;
+  max-width: 260px;
+}
+
+.real-map-popup__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: var(--steel);
+  background: var(--canvas-subtle);
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  margin-bottom: 0.35rem;
+}
+
+.real-map-popup__tag.is-hq {
+  color: #ffffff;
+  background: var(--navy-deep);
+}
+
+.real-map-popup__title {
+  font-size: 0.925rem;
+  font-weight: 750;
+  color: var(--navy-deep);
+  margin: 0 0 0.2rem;
+}
+
+.real-map-popup__region {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
+
+.real-map-popup__coords {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--steel);
+  margin: 0 0 0.5rem;
+}
+
+.real-map-popup__desc {
+  font-size: 0.775rem;
+  color: var(--text);
+  margin: 0 0 0.65rem;
+  line-height: 1.35;
+}
+
+.real-map-popup__link {
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.real-map-popup__link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 60rem) {
+  .real-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .real-map-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    max-height: none;
+  }
+}

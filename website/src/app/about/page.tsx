@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { RealLeafletMap } from "@/components/maps/real-leaflet-map";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { company } from "@/content/company";
@@ -132,7 +133,26 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 2. CORE CAPABILITY DOMAINS */}
+      {/* 2. SULTANATE OPERATIONS & REAL CARTOGRAPHIC MAP */}
+      <section className="content-section content-section--soft" style={{ borderTop: "1px solid var(--border)" }}>
+        <Container>
+          <div style={{ marginBottom: "2rem" }}>
+            <span className="badge badge--steel" style={{ marginBottom: "0.5rem" }}>
+              Geographic Coverage · Sultanate of Oman
+            </span>
+            <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.1rem)", color: "var(--navy-deep)", margin: "0.35rem 0 0.5rem", letterSpacing: "-0.01em" }}>
+              Strategic Geotechnical Operations Across Oman
+            </h2>
+            <p style={{ color: "var(--muted)", maxWidth: "62ch", margin: 0, fontSize: "0.975rem", lineHeight: 1.6 }}>
+              Interactive real map network of our deployed infrastructure packages and central Muscat headquarters. Toggle between cartographic road map and satellite geological views to inspect project terrains.
+            </p>
+          </div>
+
+          <RealLeafletMap mode="network" height="520px" showSidebar={true} />
+        </Container>
+      </section>
+
+      {/* 3. CORE CAPABILITY DOMAINS */}
       <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)" }}>
         <Container>
           <SectionHeading
