@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/projects/project-card";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServiceCard } from "@/components/services/service-card";
+import { DynamicHeadline } from "@/components/ui/dynamic-headline";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { company } from "@/content/company";
@@ -110,23 +111,23 @@ const capabilityStripItems = [
 const engineeringApproachSteps = [
   {
     num: "01",
-    title: "Assessment & Coordination",
-    desc: "Review of site geological data, rock mass characteristics, borehole logs, water ingress and structural constraints in collaboration with project consultants.",
+    title: "Geological Assessment",
+    desc: "Borehole log review, rock mass analysis and constructability checks with project consultants.",
   },
   {
     num: "02",
-    title: "Method Selection & Planning",
-    desc: "Engineering method selection—from prestressed anchors and rock bolting to jet grouting and piling—matched to ground conditions, access constraints and programme demands.",
+    title: "Method Engineering",
+    desc: "Rig selection, anchor load design and execution methodology tailored to site ground risks.",
   },
   {
     num: "03",
-    title: "Controlled Site Execution",
-    desc: "Deployment of specialized drilling rigs, rope-access slope crews and calibrated grouting plants under disciplined supervision and strict safety protocols.",
+    title: "Controlled Execution",
+    desc: "Specialist drilling rigs, rope-access slope crews and calibrated grouting plants under strict QA/QC.",
   },
   {
     num: "04",
-    title: "Testing & Quality Handover",
-    desc: "Systematic quality verification through pull-out testing, anchor load monitoring, shotcrete core tests and complete handover documentation for project sign-off.",
+    title: "Testing & Sign-Off",
+    desc: "Proof pull-out tests, shotcrete coring, anchor load logs and certified handover dossiers.",
   },
 ];
 
@@ -134,27 +135,27 @@ const valuesList = [
   {
     num: "01",
     title: "Engineering Integrity",
-    desc: "Technical decisions grounded in sound geotechnical judgement and transparent evaluation of ground risks.",
+    desc: "Decisions grounded in geological evidence and transparent ground risk evaluation.",
   },
   {
     num: "02",
     title: "Technical Precision",
-    desc: "Disciplined execution, calibrated drilling and grouting equipment, and accurate alignment on complex geological faces.",
+    desc: "Calibrated drilling and grouting equipment aligned to exact design specifications.",
   },
   {
     num: "03",
     title: "Safety & Well-Being",
-    desc: "Uncompromising protocols for personnel operating on vertical slopes, confined excavations and underground structures.",
+    desc: "Certified rope-access gear and zero-compromise protocols on steep rock slopes.",
   },
   {
     num: "04",
-    title: "Environmental Responsibility",
-    desc: "Controlled spoil handling, grout containment, runoff management and minimal disturbance to adjacent natural terrains.",
+    title: "Environmental Care",
+    desc: "Grout containment, runoff control and minimal footprint on Oman’s natural terrain.",
   },
   {
     num: "05",
-    title: "Long-Term Partnership",
-    desc: "Accountable delivery and collaborative problem-solving that establish durable relationships with contractors and authorities.",
+    title: "Accountable Delivery",
+    desc: "Transparent reporting and reliable execution for consultants and EPC contractors.",
   },
 ];
 
@@ -168,35 +169,87 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <Container className="hero__grid">
           <div className="hero__content">
-            <p className="eyebrow">SPECIALIST GEOTECHNICAL ENGINEERING · MUSCAT, OMAN</p>
-            <h1 id="hero-title">
-              Geotechnical solutions designed for difficult ground and demanding infrastructure.
-            </h1>
+            <div className="hero__eyebrow-badge">
+              <span className="hero__eyebrow-dot" aria-hidden="true" />
+              <span className="hero__eyebrow-text">
+                SPECIALIST GEOTECHNICAL CONTRACTOR · MUSCAT, OMAN
+              </span>
+            </div>
+
+            <DynamicHeadline />
+
             <p className="hero__summary">
-              Middle East Business Geotech LLC delivers specialist design and execution
-              capability across slope protection, ground improvement, foundation engineering
-              and underground works in the Sultanate of Oman.
+              Specialist geotechnical contractor delivering slope protection, ground engineering and deep foundations across the Sultanate of Oman.
             </p>
+
             <div className="hero__actions" aria-label="Primary actions">
               <ButtonLink href="/contact" variant="primary">
-                Request a consultation
+                <span>Request a consultation</span>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3.333 8h9.334M8.667 4l4 4-4 4" />
+                </svg>
               </ButtonLink>
               <ButtonLink href="/projects" variant="secondary">
                 Explore project records
               </ButtonLink>
             </div>
-            <div className="hero__meta" aria-label="Key company parameters">
-              <span className="hero__meta-item">
-                <span style={{ color: "var(--navy)", fontWeight: 700 }}>CR:</span> {company.crNumber}
-              </span>
-              <span aria-hidden="true" style={{ color: "var(--border-strong)" }}>|</span>
-              <span className="hero__meta-item">
-                <span style={{ color: "var(--navy)", fontWeight: 700 }}>HQ:</span> {company.location}
-              </span>
-              <span aria-hidden="true" style={{ color: "var(--border-strong)" }}>|</span>
-              <span className="hero__meta-item">
-                <span style={{ color: "var(--navy)", fontWeight: 700 }}>Scope:</span> Design & Execution
-              </span>
+
+            <div className="hero__trust-cue">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                style={{ color: "var(--accent)" }}
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span>Direct tender desk response within 24h</span>
+            </div>
+
+            {/* Authority Qualification Pillars */}
+            <div className="hero__pillars" aria-label="Key corporate qualifications">
+              <div className="hero__pillar">
+                <span className="hero__pillar-label">COMMERCIAL REG.</span>
+                <div className="hero__pillar-main">
+                  <span className="hero__pillar-val">CR {company.crNumber}</span>
+                  <span className="hero__pillar-badge">MoCI</span>
+                </div>
+                <span className="hero__pillar-desc">Oman Civil Works Licensed</span>
+              </div>
+
+              <div className="hero__pillar">
+                <span className="hero__pillar-label">HEADQUARTERS</span>
+                <div className="hero__pillar-main">
+                  <span className="hero__pillar-val">Muscat, Oman</span>
+                </div>
+                <span className="hero__pillar-desc">Central Fleet Depot</span>
+              </div>
+
+              <div className="hero__pillar">
+                <span className="hero__pillar-label">CONTRACTING</span>
+                <div className="hero__pillar-main">
+                  <span className="hero__pillar-val">Design & Build</span>
+                  <span className="hero__pillar-badge hero__pillar-badge--accent">Turnkey</span>
+                </div>
+                <span className="hero__pillar-desc">Specialist Plant & Fleet</span>
+              </div>
             </div>
           </div>
 
@@ -260,7 +313,7 @@ export default function HomePage() {
                   <div className="editorial-capability-item__body">
                     <h4>Design & Build Integration</h4>
                     <p>
-                      Direct translation of borehole logs, joint discontinuity surveys and rock mechanics into constructible site packages.
+                      Translating geological data and borehole logs into constructible site packages.
                     </p>
                   </div>
                 </li>
@@ -269,9 +322,9 @@ export default function HomePage() {
                     02
                   </div>
                   <div className="editorial-capability-item__body">
-                    <h4>High-Angle Rigging & Specialist Plant</h4>
+                    <h4>Specialist Plant & Rigging</h4>
                     <p>
-                      Crane-suspended work platforms, tracked drilling rigs and certified rope-access crews on steep mountain cuttings.
+                      Tracked drilling rigs, crane-suspended platforms and certified rope-access crews.
                     </p>
                   </div>
                 </li>
@@ -280,37 +333,32 @@ export default function HomePage() {
                     03
                   </div>
                   <div className="editorial-capability-item__body">
-                    <h4>Systematic Quality Verification</h4>
+                    <h4>QA/QC Verification</h4>
                     <p>
-                      Proof pull-out testing on anchors, compressive strength coring on shotcrete, and continuous pressure grouting logs.
+                      Anchor pull-out testing, shotcrete core analysis and pressure grouting logs.
                     </p>
                   </div>
                 </li>
               </ul>
               <div className="editorial-capability-card__footer">
-                <span>Verified Regional Deployments in Oman:</span>
+                <span>Deployments Across Oman:</span>
                 <div className="governorate-pills">
                   <span className="badge">Musandam</span>
                   <span className="badge">Buraimi</span>
                   <span className="badge">Nizwa</span>
                   <span className="badge">Al Sharqiyah</span>
-                  <span className="badge">Muscat (HQ)</span>
+                  <span className="badge">Muscat</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <p style={{ fontSize: "1.08rem", color: "var(--muted)", lineHeight: 1.65 }}>
-              Middle East Business Geotech LLC supports infrastructure owners, consulting engineers
-              and main EPC contractors with practical geotechnical solutions tailored to the
-              ground conditions, site access constraints, and programme demands of each site.
+            <p style={{ fontSize: "1.0625rem", color: "var(--text)", lineHeight: 1.6, marginBottom: "1rem" }}>
+              Headquartered in Muscat, Middle East Business Geotech LLC bridges the critical gap between geotechnical design and safe site execution across Oman’s rugged geological conditions.
             </p>
-            <p style={{ color: "var(--muted)", lineHeight: 1.65 }}>
-              From mountain corridors in Musandam and Buraimi to regional water pipeline trenches
-              and expressway rock cuts in Al Sharqiyah, our specialist teams bring together pattern
-              anchoring, high-pressure grouting, shotcreting, deep piling and underground excavation
-              methods to safely manage ground risks.
+            <p style={{ color: "var(--muted)", lineHeight: 1.6 }}>
+              We partner with civil authorities, engineering consultants, and leading EPC main contractors to safely execute slope stabilisation, deep foundation, and underground packages on schedule.
             </p>
 
             <div className="editorial-stats">
@@ -324,7 +372,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div style={{ marginTop: "2rem" }}>
+            <div style={{ marginTop: "1.75rem" }}>
               <ButtonLink href="/about" variant="steel">
                 About our engineering background
               </ButtonLink>
@@ -339,7 +387,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="CORE GEOTECHNICAL DISCIPLINES"
             title="Specialist methods selected around site ground conditions."
-            summary="Explore priority capabilities across slope protection, ground modification, foundation engineering and underground civil works."
+            summary="Core engineering disciplines for road, water, and civil infrastructure across Oman."
           />
 
           <div className="service-grid service-grid--featured">
@@ -365,7 +413,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="EXECUTION METHODOLOGY"
             title="A disciplined, step-by-step engineering delivery process."
-            summary="Every geotechnical package follows systematic stages from initial geological assessment through controlled site execution and rigorous quality sign-off."
+            summary="Systematic 4-stage delivery from initial ground risk analysis to certified QA/QC sign-off."
           />
 
           <div className="approach-grid">
@@ -387,7 +435,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="PROJECT EVIDENCE"
               title="Verified infrastructure experience across the Sultanate."
-              summary="Authentic photographic records from transport corridors and water utility networks in Oman."
+              summary="Photographic evidence from active and completed geotechnical packages in Oman."
             />
             <ButtonLink href="/projects" variant="steel">
               View all project records
@@ -408,7 +456,7 @@ export default function HomePage() {
                 <line x1="12" y1="8" x2="12.01" y2="8"/>
               </svg>
               <span>
-                Project records and ongoing/completed classifications are documented from company source files and subject to operational re-confirmation before public launch.
+                Documented from company engineering records, site logs and contract submittals.
               </span>
             </p>
           </div>
@@ -421,8 +469,7 @@ export default function HomePage() {
           <p className="eyebrow" style={{ color: "var(--steel-light)" }}>OPERATIONAL STANDARDS</p>
           <h2>Engineering integrity, technical precision and safe site execution.</h2>
           <p className="values-band__lead">
-            Geotechnical works on vertical rock slopes, deep excavations and underground
-            structures require rigorous technical discipline and accountability at every stage.
+            Disciplined execution and uncompromising safety on steep rock faces and deep excavations.
           </p>
 
           <ul className="values-band__grid">

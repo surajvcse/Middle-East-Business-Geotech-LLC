@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { DesktopNav } from "@/components/navigation/desktop-nav";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
@@ -8,8 +11,20 @@ import { company } from "@/content/company";
 import { withBasePath } from "@/lib/site-path";
 
 export function SiteHeader() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
       {/* Top Pre-Header Utility Bar */}
       <div className="top-bar">
         <Container className="top-bar__inner">
