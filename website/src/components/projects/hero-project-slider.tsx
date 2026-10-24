@@ -31,6 +31,8 @@ function getProjectSectorBadge(project: Project): string {
 export function HeroProjectSlider({ projects }: HeroProjectSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const total = projects.length;
@@ -63,6 +65,35 @@ export function HeroProjectSlider({ projects }: HeroProjectSliderProps) {
     return () => clearInterval(timer);
   }, [isPaused, nextSlide, total, currentIndex]);
 
+  // Smart Touch Gesture (Swipe left = Next, Swipe right = Prev)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setIsPaused(false);
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartXRef.current;
+    const deltaY = touchEndY - touchStartYRef.current;
+
+    // Detect horizontal swipe with 35px threshold & prevent conflict with vertical scroll
+    if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY) * 1.1) {
+      if (deltaX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+  };
+
   // Keyboard navigation when slider is focused
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "ArrowLeft") {
@@ -90,8 +121,48 @@ export function HeroProjectSlider({ projects }: HeroProjectSliderProps) {
         onMouseLeave={() => setIsPaused(false)}
         onFocus={() => setIsPaused(true)}
         onBlur={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
-        {/* All Slides with Cross-Fade & Gentle Ken-Burns Settle */}
+        {/* Top Story/Reel Segment Progress Bars */}
+        <div
+          className="hero-slider__stories-bar"
+          role="tablist"
+          aria-label="Project slide selection"
+        >
+          {projects.map((project, index) => {
+            const isSelected = index === currentIndex;
+            const isPast = index < currentIndex;
+
+            return (
+              <button
+                key={project.slug}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                aria-label={`Jump to slide ${index + 1}: ${project.shortTitle}`}
+                className={`hero-slider__story-segment ${
+                  isSelected ? "hero-slider__story-segment--active" : ""
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToSlide(index);
+                }}
+              >
+                <span className="hero-slider__story-track">
+                  <span
+                    key={isSelected ? `active-${currentIndex}` : `idle-${index}`}
+                    className={`hero-slider__story-fill ${
+                      isPast ? "hero-slider__story-fill--completed" : ""
+                    }`}
+                  />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Slides Canvas with Cinematic Ken-Burns Video Effect */}
         <div className="hero-slider__slides">
           {projects.map((project, index) => {
             const isActive = index === currentIndex;
@@ -123,58 +194,33 @@ export function HeroProjectSlider({ projects }: HeroProjectSliderProps) {
           })}
         </div>
 
-        {/* Top Header Overlay Bar with Controls */}
-        <div className="hero-slider__top-bar">
-          <div />
+        {/* Smart Tap Zones (Tap Left for Prev, Tap Right for Next) */}
+        <button
+          type="button"
+          className="hero-slider__tap-zone hero-slider__tap-zone--left"
+          onClick={prevSlide}
+          aria-label="Previous project slide"
+          tabIndex={-1}
+        />
+        <button
+          type="button"
+          className="hero-slider__tap-zone hero-slider__tap-zone--right"
+          onClick={nextSlide}
+          aria-label="Next project slide"
+          tabIndex={-1}
+        />
 
-          {/* Slider Prev / Next Controls */}
-          <div className="hero-slider__controls" aria-label="Slide controls">
-            <button
-              type="button"
-              className="hero-slider__nav-btn"
-              onClick={prevSlide}
-              aria-label="Previous project slide"
-              title="Previous project"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="hero-slider__nav-btn"
-              onClick={nextSlide}
-              aria-label="Next project slide"
-              title="Next project"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
+        {/* Top Header Overlay Bar with Clean Slide Counter */}
+        <div className="hero-slider__top-bar">
+          <div className="hero-slider__telemetry">
+            <span className="hero-slider__telemetry-dot" aria-hidden="true" />
+            <span className="hero-slider__telemetry-counter">
+              0{currentIndex + 1} / 0{total}
+            </span>
           </div>
         </div>
 
-        {/* Bottom Caption Overlay */}
+        {/* Bottom Glassmorphic Caption Overlay */}
         <div className="hero-slider__caption">
           <div className="hero-slider__caption-main">
             <div>
@@ -217,41 +263,6 @@ export function HeroProjectSlider({ projects }: HeroProjectSliderProps) {
             >
               {getProjectSectorBadge(currentProject)}
             </span>
-          </div>
-
-          {/* Animated Progress Indicators */}
-          <div
-            className="hero-slider__progress"
-            role="tablist"
-            aria-label="Project slide selection"
-          >
-            {projects.map((project, index) => {
-              const isSelected = index === currentIndex;
-              const isPast = index < currentIndex;
-
-              return (
-                <button
-                  key={project.slug}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  aria-label={`Jump to slide ${index + 1}: ${project.shortTitle}`}
-                  className={`hero-slider__progress-segment ${
-                    isSelected ? "hero-slider__progress-segment--active" : ""
-                  }`}
-                  onClick={() => goToSlide(index)}
-                >
-                  <span className="hero-slider__progress-track">
-                    <span
-                      key={isSelected ? `active-${currentIndex}` : `idle-${index}`}
-                      className={`hero-slider__progress-fill ${
-                        isPast ? "hero-slider__progress-fill--completed" : ""
-                      }`}
-                    />
-                  </span>
-                </button>
-              );
-            })}
           </div>
         </div>
       </div>
