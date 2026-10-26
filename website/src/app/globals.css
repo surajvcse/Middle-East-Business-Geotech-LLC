@@ -4544,7 +4544,7 @@ nextjs-portal,
 /* 1. Full-Bleed Background Slides Stack */
 .hero-cinematic__bg-stack {
   position: absolute;
-  inset: -50px -30px;
+  inset: -60px -40px;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -4560,7 +4560,7 @@ nextjs-portal,
 }
 
 .hero-cinematic__bg-slide--active {
-  opacity: 1;
+  opacity: 0.82;
   visibility: visible;
   z-index: 2;
 }
@@ -4569,7 +4569,7 @@ nextjs-portal,
   object-fit: cover;
   transform: scale(1.02);
   transition: transform 7.5s cubic-bezier(0.25, 1, 0.5, 1);
-  filter: brightness(0.96) contrast(1.08) saturate(1.08);
+  filter: blur(0.5px) brightness(0.94) contrast(1.06) saturate(1.06);
 }
 
 .hero-cinematic__bg-slide--active .hero-cinematic__bg-image {
@@ -4581,7 +4581,7 @@ nextjs-portal,
   position: absolute;
   inset: 0;
   z-index: 3;
-  background: radial-gradient(circle at 62% 40%, transparent 40%, rgba(4, 12, 22, 0.40) 100%);
+  background: radial-gradient(circle at 62% 40%, transparent 35%, rgba(4, 12, 22, 0.55) 100%);
 }
 
 .hero-cinematic__light-leak {
@@ -4610,10 +4610,10 @@ nextjs-portal,
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    rgba(6, 18, 32, 0.78) 0%,
-    rgba(6, 18, 32, 0.58) 32%,
-    rgba(8, 24, 42, 0.10) 60%,
-    rgba(6, 18, 32, 0.32) 100%
+    rgba(6, 18, 32, 0.88) 0%,
+    rgba(6, 18, 32, 0.68) 35%,
+    rgba(8, 24, 42, 0.35) 65%,
+    rgba(6, 18, 32, 0.60) 100%
   );
 }
 
@@ -4621,10 +4621,10 @@ nextjs-portal,
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  height: 20%;
+  height: 25%;
   z-index: 5;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(6, 18, 32, 0.35) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(6, 18, 32, 0.60) 0%, transparent 100%);
 }
 
 /* 2. Top Stage Content */
@@ -4634,7 +4634,7 @@ nextjs-portal,
   width: min(100% - 2.5rem, var(--container));
   max-width: var(--container);
   margin-inline: auto;
-  padding-top: clamp(5rem, 16.5vh, 11rem);
+  padding-top: clamp(5.25rem, 19vh, 12.5rem);
   padding-inline: 0;
   padding-bottom: 0;
   transform-style: preserve-3d;
