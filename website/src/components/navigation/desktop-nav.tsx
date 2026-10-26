@@ -250,8 +250,8 @@ export function DesktopNav() {
                   </li>
                   <li>
                     <Link
-                      href="/services/microtunneling-underground-works"
-                      className={pathname === "/services/microtunneling-underground-works" ? "active" : ""}
+                      href="/services/tunnelling-and-underground-works"
+                      className={pathname === "/services/tunnelling-and-underground-works" ? "active" : ""}
                       onClick={() => setIsServicesOpen(false)}
                     >
                       Microtunneling & Shafts
