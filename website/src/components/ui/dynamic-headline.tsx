@@ -54,7 +54,7 @@ export function DynamicHeadline() {
 
   return (
     <h1 id="hero-title" className="hero__headline">
-      <span className="hero__headline-static">Geotechnical solutions for</span>
+      <span className="hero__headline-static">Geotechnical solutions for </span>
       <span className="hero__dynamic-slot">
         <span className="hero__dynamic-text">{displayText}</span>
         <span className="hero__cursor" aria-hidden="true" />

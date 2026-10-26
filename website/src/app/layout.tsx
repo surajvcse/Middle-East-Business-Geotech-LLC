@@ -7,7 +7,7 @@ import { company } from "@/content/company";
 import { withBasePath } from "@/lib/site-path";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
 
-import "./globals.css";
+import "./globals.css"; // v2.1
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
 
