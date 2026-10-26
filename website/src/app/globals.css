@@ -1106,6 +1106,26 @@ p {
   color: #ffffff;
 }
 
+/* 3D Elevated Deck Transition for Editorial Section */
+.content-section--elevated-deck {
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+@media (max-width: 48rem) {
+  .content-section--elevated-deck {
+    margin-top: 0;
+  }
+}
+
+.elevated-deck__glow-rim {
+  display: none;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -4517,12 +4537,14 @@ nextjs-portal,
   background-color: #061220;
   overflow: hidden;
   padding-top: 0;
+  perspective: 1400px;
+  transform-style: preserve-3d;
 }
 
 /* 1. Full-Bleed Background Slides Stack */
 .hero-cinematic__bg-stack {
   position: absolute;
-  inset: 0;
+  inset: -50px -30px;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -4612,9 +4634,10 @@ nextjs-portal,
   width: min(100% - 2.5rem, var(--container));
   max-width: var(--container);
   margin-inline: auto;
-  padding-top: clamp(5.25rem, 19vh, 13.5rem);
+  padding-top: clamp(5rem, 16.5vh, 11rem);
   padding-inline: 0;
   padding-bottom: 0;
+  transform-style: preserve-3d;
 }
 
 .hero-cinematic__grid {
@@ -4940,6 +4963,7 @@ nextjs-portal,
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-top: none;
+  transform-style: preserve-3d;
 }
 
 .hero-dock__container {
@@ -4954,12 +4978,14 @@ nextjs-portal,
   grid-template-columns: minmax(0, 1.8fr) minmax(18rem, 1.5fr) minmax(0, 1.8fr);
   align-items: end;
   gap: 0.75rem;
+  transform-style: preserve-3d;
 }
 
 .hero-dock__flank-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.65rem;
+  transform-style: preserve-3d;
 }
 
 /* Center Dome Arch Feature (The AgriNova Signature Dome) */
@@ -5284,36 +5310,246 @@ nextjs-portal,
 
 @media (max-width: 48rem) {
   .hero-cinematic {
+    min-height: auto;
     padding-top: 0;
   }
 
   .hero-cinematic__stage {
-    padding-top: 2rem;
+    padding-top: 1.75rem !important;
     width: min(100% - 1.5rem, var(--container));
   }
 
-  .hero-dock__flank-cards {
-    grid-template-columns: 1fr;
+  .hero-cinematic__grid {
+    gap: 1.25rem;
+  }
+
+  .hero-cinematic__eyebrow {
+    padding: 0.25rem 0.65rem;
+    max-width: 100%;
+  }
+
+  .hero-cinematic__eyebrow-text {
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-cinematic .hero__headline {
+    font-size: clamp(1.45rem, 6.2vw, 2rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .hero-cinematic .hero__headline-static {
+    white-space: normal !important;
+    display: inline !important;
+  }
+
+  .hero-cinematic .hero__dynamic-text {
+    display: inline !important;
+    font-size: inherit !important;
+  }
+
+  .hero-cinematic__summary {
+    font-size: 0.875rem !important;
+    line-height: 1.48 !important;
+    margin-top: 0.65rem !important;
+  }
+
+  .hero-cinematic__trust-cue {
+    margin-top: 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .hero-cinematic__actions {
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.65rem;
+    margin-top: 1.1rem;
+  }
+
+  .hero-cinematic__actions .button-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 9999px !important;
+  }
+
+  .hero-cinematic__telemetry-col {
+    margin-top: 0.25rem;
+    gap: 0.5rem;
+  }
+
+  .hero-cinematic__spotlight-card {
+    padding: 0.75rem 0.85rem;
+    border-radius: 0.75rem;
+  }
+
+  .hero-cinematic__spotlight-title {
+    font-size: 0.9375rem !important;
+  }
+
+  .hero-cinematic__floating-pills {
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .hero-cinematic__floating-pill {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .hero-dock {
+    margin-top: 1.25rem;
+  }
+
+  .hero-dock__container {
+    padding-inline: 0.65rem;
+    padding-top: 0;
+  }
+
+  .hero-dock__symmetrical-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-dock__center-dome {
+    order: -1;
+    border-radius: 0.875rem;
+    border: 1px solid rgba(217, 107, 43, 0.45);
+    background: rgba(6, 20, 36, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .hero-dock__center-dome::before {
+    display: none !important;
+  }
+
+  /* Hide confusing down-scroll button on mobile since it sits directly above cards */
+  .hero-dock__center-dome .hero-dock__scroll-btn {
+    display: none !important;
+  }
+
+  .hero-dock__arch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    background: rgba(217, 107, 43, 0.12);
+    border: 1px solid rgba(217, 107, 43, 0.3);
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+  }
+
+  .hero-dock__arch-title {
+    font-size: 0.9375rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 0.25rem 0 !important;
+    color: #FFFFFF !important;
+  }
+
+  .hero-dock__arch-lead {
+    font-size: 0.71875rem !important;
+    line-height: 1.35 !important;
+    color: #94A3B8 !important;
+    margin: 0 !important;
+  }
+
+  /* Maintain true 2x2 grid on all phones without 1-column blowout */
+  .hero-dock__flank-cards {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+    width: 100% !important;
+  }
+
+  .hero-dock__card {
+    border-radius: 0.65rem;
+    padding: 0.3rem;
+    background: rgba(8, 26, 44, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    text-decoration: none;
+  }
+
+  .hero-dock__card-thumb {
+    height: 72px !important;
+    border-radius: 0.45rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-dock__card-tag {
+    font-size: 0.5rem !important;
+    padding: 0.12rem 0.35rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .hero-dock__card-body {
+    padding: 0.35rem 0.25rem 0.15rem;
+  }
+
+  .hero-dock__card-title {
+    font-size: 0.71875rem !important;
+    font-weight: 750 !important;
+    line-height: 1.25 !important;
+    color: #FFFFFF !important;
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    min-height: 1.8rem;
+  }
+
+  .hero-dock__card-arrow svg {
+    width: 9px;
+    height: 9px;
+  }
+
+  .hero-dock__card-desc {
+    display: none !important;
+  }
+
+  .hero-dock__footer-bar {
+    margin-top: 0.65rem;
+    padding: 0.55rem 0;
+    background: rgba(4, 14, 26, 0.92);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .hero-dock__footer-inner {
+    padding-inline: 0.75rem;
   }
 
   .hero-dock__meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.35rem;
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+  }
+
+  .hero-dock__meta-item {
+    gap: 0.35rem;
   }
 
   .hero-dock__meta-sep {
     display: none;
   }
-
-  .hero-cinematic__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-cinematic__actions .button-link {
-    width: 100%;
-    justify-content: center;
-  }
 }
+/* mobile-optimization-touch */

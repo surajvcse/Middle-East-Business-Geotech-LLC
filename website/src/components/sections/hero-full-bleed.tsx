@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -71,9 +71,50 @@ type HeroFullBleedProps = {
   company: typeof company;
 };
 
+const emptySubscribe = () => () => {};
+
+const subscribeReducedMotion = (callback: () => void) => {
+  if (typeof window === "undefined") return () => {};
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+};
+
+const getReducedMotionSnapshot = () => {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+};
+
+const subscribeIsMobile = (callback: () => void) => {
+  if (typeof window === "undefined") return () => {};
+  const mq = window.matchMedia("(max-width: 48rem)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+};
+
+const getIsMobileSnapshot = () => {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(max-width: 48rem)").matches;
+};
+
 export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    () => false
+  );
+  const isMobile = useSyncExternalStore(
+    subscribeIsMobile,
+    getIsMobileSnapshot,
+    () => false
+  );
+
+  const heroRef = useRef<HTMLElement>(null);
+  const tickingRef = useRef(false);
   const touchStartXRef = useRef<number | null>(null);
   const touchStartYRef = useRef<number | null>(null);
 
@@ -97,16 +138,29 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     } else {
-      window.scrollBy({ top: 600, behavior: "smooth" });
+      window.scrollBy({ top: 650, behavior: "smooth" });
     }
   };
 
   useEffect(() => {
-    if (typeof window === "undefined" || total <= 1) return;
+    if (typeof window === "undefined") return;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const handleScroll = () => {
+      if (!tickingRef.current) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          tickingRef.current = false;
+        });
+        tickingRef.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || total <= 1) return;
     if (prefersReducedMotion || isPaused) return;
 
     const timer = setInterval(() => {
@@ -114,7 +168,15 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
     }, SLIDE_DURATION_MS);
 
     return () => clearInterval(timer);
-  }, [isPaused, nextSlide, total, currentIndex]);
+  }, [isPaused, nextSlide, total, currentIndex, prefersReducedMotion]);
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
@@ -141,17 +203,133 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
   const currentCoords =
     PROJECT_COORDS[currentProject.slug] ?? "23.5880° N, 58.3829° E";
 
+  // 3D Scroll Depth Progress (0 to 1 over first 520px of scroll)
+  const scrollProgress = Math.min(Math.max(scrollY / 520, 0), 1);
+  const enable3D = isClient && !prefersReducedMotion;
+
+  // 3D Unified Zoom-Out System for All Hero Components
+  // 1. Background Dolly Zoom: fixed on mouse move, gently zooms and pans with scroll float
+  const bgStackStyle = enable3D
+    ? isMobile
+      ? {
+          transform: `translate3d(0, ${-scrollY * 0.12}px, 0) scale(${1.02 + scrollProgress * 0.05})`,
+          transformOrigin: "center 40%",
+          willChange: "transform",
+        }
+      : {
+          transform: `translate3d(0, ${-scrollProgress * 20}px, 0) scale(${
+            1.03 + scrollProgress * 0.08
+          })`,
+          transformOrigin: "center 45%",
+          willChange: "transform",
+        }
+    : undefined;
+
+  // 2. Headline & CTAs 3D Zoom Out: fixed on mouse, recedes with scroll float
+  const content3DStyle = enable3D
+    ? isMobile
+      ? {
+          transform: `perspective(800px) translate3d(0, ${-scrollY * 0.08}px, 0) scale(${
+            1 - scrollProgress * 0.04
+          })`,
+          transformOrigin: "center top",
+          willChange: "transform",
+        }
+      : {
+          transform: `perspective(1200px) translate3d(0, ${
+            -scrollY * 0.26
+          }px, ${-scrollProgress * 140}px) scale(${
+            1 - scrollProgress * 0.16
+          }) rotateX(${scrollProgress * 4.5}deg)`,
+          opacity: Math.max(1 - Math.pow(scrollProgress, 2.2), 0),
+          transformOrigin: "center top",
+          willChange: "transform, opacity",
+        }
+    : undefined;
+
+  // 3. Telemetry HUD 3D Zoom Out: fixed on mouse, recedes with scroll float
+  const telemetry3DStyle = enable3D
+    ? isMobile
+      ? {
+          transform: `perspective(800px) translate3d(0, ${-scrollY * 0.06}px, 0)`,
+          transformOrigin: "center center",
+          willChange: "transform",
+        }
+      : {
+          transform: `perspective(1200px) translate3d(0, ${
+            -scrollY * 0.22
+          }px, ${-scrollProgress * 120}px) scale(${
+            1 - scrollProgress * 0.14
+          }) rotateX(${scrollProgress * 3.5}deg) rotateY(${
+            -scrollProgress * 4
+          }deg)`,
+          opacity: Math.max(1 - Math.pow(scrollProgress, 2.2), 0),
+          transformOrigin: "center center",
+          willChange: "transform, opacity",
+        }
+    : undefined;
+
+  // 4. Entire Dock Deck 3D Zoom Out (Desktop only to prevent premature mobile fading)
+  const dock3DStyle = enable3D && !isMobile
+    ? {
+        transform: `perspective(1200px) translate3d(0, ${-scrollY * 0.12}px, ${
+          -scrollProgress * 80
+        }px) scale(${1 - scrollProgress * 0.08})`,
+        opacity: Math.max(1 - Math.pow(scrollProgress, 2.4), 0),
+        transformOrigin: "center bottom",
+        willChange: "transform, opacity",
+      }
+    : undefined;
+
+  // 5. Left Capability Cards 3D Peel & Zoom Out (Desktop only)
+  const leftCards3DStyle = enable3D && !isMobile
+    ? {
+        transform: `perspective(1000px) translate3d(${
+          -scrollProgress * 14
+        }px, 0, ${-scrollProgress * 40}px) rotateY(${scrollProgress * 3.5}deg)`,
+        transformOrigin: "right center",
+        willChange: "transform",
+      }
+    : undefined;
+
+  // 6. Right Capability Cards 3D Peel & Zoom Out (Desktop only)
+  const rightCards3DStyle = enable3D && !isMobile
+    ? {
+        transform: `perspective(1000px) translate3d(${
+          scrollProgress * 14
+        }px, 0, ${-scrollProgress * 40}px) rotateY(${-scrollProgress * 3.5}deg)`,
+        transformOrigin: "left center",
+        willChange: "transform",
+      }
+    : undefined;
+
+  // 7. Center Arch Dome 3D Zoom Out (Desktop only)
+  const centerArch3DStyle = enable3D && !isMobile
+    ? {
+        transform: `perspective(1000px) translate3d(0, ${
+          -scrollProgress * 8
+        }px, ${-scrollProgress * 30}px) scale(${1 - scrollProgress * 0.05})`,
+        transformOrigin: "center bottom",
+        willChange: "transform",
+      }
+    : undefined;
+
   return (
     <section
+      ref={heroRef}
       className="hero-cinematic"
       aria-labelledby="hero-title"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* 1. Full-Bleed Background Imagery */}
-      <div className="hero-cinematic__bg-stack" aria-hidden="true">
+      {/* 1. Full-Bleed Background Imagery with 3D Depth Parallax */}
+      <div
+        className="hero-cinematic__bg-stack"
+        aria-hidden="true"
+        style={bgStackStyle}
+      >
         {projects.map((project, index) => {
           const isActive = index === currentIndex;
           const primaryImage =
@@ -191,7 +369,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
       <Container className="hero-cinematic__stage">
         <div className="hero-cinematic__grid">
           {/* Left Column: Eyebrow, Headline, Lead, Action Buttons, Trust Line */}
-          <div className="hero-cinematic__content">
+          <div className="hero-cinematic__content" style={content3DStyle}>
             <div className="hero-cinematic__eyebrow">
               <span className="hero-cinematic__eyebrow-beacon" aria-hidden="true" />
               <span className="hero-cinematic__eyebrow-text">
@@ -249,7 +427,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
           </div>
 
           {/* Right Column: Sleek Floating HUD (Compact & Minimal like AgriNova) */}
-          <div className="hero-cinematic__telemetry-col">
+          <div className="hero-cinematic__telemetry-col" style={telemetry3DStyle}>
             {/* Live Field Project Spotlight Card */}
             <div className="hero-cinematic__spotlight-card">
               <div className="hero-cinematic__spotlight-header">
@@ -341,11 +519,11 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
       </Container>
 
       {/* 3. Docked Symmetrical Capability Deck (AgriNova Arch Layout) */}
-      <div className="hero-dock">
+      <div className="hero-dock" style={dock3DStyle}>
         <Container className="hero-dock__container">
           <div className="hero-dock__symmetrical-deck">
             {/* Left 2 Cards */}
-            <div className="hero-dock__flank-cards">
+            <div className="hero-dock__flank-cards" style={leftCards3DStyle}>
               {leftCards.map((card) => (
                 <Link
                   key={card.title}
@@ -382,14 +560,14 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
                         </svg>
                       </span>
                     </div>
-                    <p className="hero-dock__card-desc">{card.desc}</p>
+                    <p className="hero-dock__card-desc hidden md:block">{card.desc}</p>
                   </div>
                 </Link>
               ))}
             </div>
 
             {/* Center Dome Arch (The AgriNova Signature Centerpiece) */}
-            <div className="hero-dock__center-dome">
+            <div className="hero-dock__center-dome" style={centerArch3DStyle}>
               <div className="hero-dock__arch-badge">
                 <svg
                   width="11"
@@ -416,11 +594,11 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
                 Specialist ground works across rugged wadis, coastal expressways & mountain passes.
               </p>
 
-              {/* Central Downside Scroll Indicator (Replaced Danger Sign) */}
+              {/* Central Downside Scroll Indicator (Desktop Only) */}
               <button
                 type="button"
                 onClick={handleScrollDown}
-                className="hero-dock__scroll-btn group"
+                className="hero-dock__scroll-btn group hidden md:inline-flex"
                 aria-label="Scroll to company overview"
                 title="Scroll down to company overview"
               >
@@ -445,7 +623,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
             </div>
 
             {/* Right 2 Cards */}
-            <div className="hero-dock__flank-cards">
+            <div className="hero-dock__flank-cards" style={rightCards3DStyle}>
               {rightCards.map((card) => (
                 <Link
                   key={card.title}
@@ -482,7 +660,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
                         </svg>
                       </span>
                     </div>
-                    <p className="hero-dock__card-desc">{card.desc}</p>
+                    <p className="hero-dock__card-desc hidden md:block">{card.desc}</p>
                   </div>
                 </Link>
               ))}
