@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { DynamicHeadline } from "@/components/ui/dynamic-headline";
 import type { company } from "@/content/company";
+import { withBasePath } from "@/lib/site-path";
 import type { Project } from "@/types/content";
 
 const SLIDE_DURATION_MS = 4800;
@@ -35,7 +36,7 @@ const leftCards = [
     tag: "SLOPE PROTECTION",
     desc: "Cable anchors & rock bolting.",
     href: "/services/slope-stabilisation",
-    image: "/images/projects/al-ubaidah-fayyad-road-01.jpeg",
+    image: withBasePath("/images/projects/al-ubaidah-fayyad-road-01.jpeg"),
   },
   {
     num: "02",
@@ -43,7 +44,7 @@ const leftCards = [
     tag: "GROUTING & TAM",
     desc: "Jet, TAM & fissure grouting.",
     href: "/services/ground-improvement-and-grouting",
-    image: "/images/projects/wilayat-manah-01.jpeg",
+    image: withBasePath("/images/projects/wilayat-manah-01.jpeg"),
   },
 ];
 
@@ -54,7 +55,7 @@ const rightCards = [
     tag: "PILING & SHORING",
     desc: "Secant & contiguous piling.",
     href: "/services/piling-and-foundation-engineering",
-    image: "/images/projects/al-kamil-sur-road-01.png",
+    image: withBasePath("/images/projects/al-kamil-sur-road-01.png"),
   },
   {
     num: "04",
@@ -62,7 +63,7 @@ const rightCards = [
     tag: "TUNNELLING & SHAFTS",
     desc: "NATM tunnelling & deep shafts.",
     href: "/services/tunnelling-and-underground-works",
-    image: "/images/projects/khasab-lima-road-01.jpeg",
+    image: withBasePath("/images/projects/khasab-lima-road-01.jpeg"),
   },
 ];
 
@@ -532,7 +533,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
                 >
                   <div className="hero-dock__card-thumb">
                     <Image
-                      src={card.image}
+                      src={withBasePath(card.image)}
                       alt={card.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -632,7 +633,7 @@ export function HeroFullBleed({ projects, company }: HeroFullBleedProps) {
                 >
                   <div className="hero-dock__card-thumb">
                     <Image
-                      src={card.image}
+                      src={withBasePath(card.image)}
                       alt={card.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
