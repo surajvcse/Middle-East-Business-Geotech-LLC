@@ -3,15 +3,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/site-path";
 import type { Service } from "@/types/content";
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "slope-stabilisation": "/images/projects/al-ubaidah-fayyad-road-01.jpeg",
-  "ground-anchors-and-rock-bolting": "/images/projects/khasab-lima-road-01.jpeg",
-  "shotcrete-and-wire-netting": "/images/projects/al-kamil-sur-road-01.png",
-  "rockfall-protection": "/images/projects/khasab-lima-road-02.jpeg",
-  "ground-improvement-and-grouting": "/images/projects/wilayat-manah-01.jpeg",
-  "piling-and-foundation-engineering": "/images/projects/al-sharqiyah-region-01.png",
+  "slope-stabilisation": withBasePath("/images/projects/al-ubaidah-fayyad-road-01.jpeg"),
+  "ground-anchors-and-rock-bolting": withBasePath("/images/projects/khasab-lima-road-01.jpeg"),
+  "shotcrete-and-wire-netting": withBasePath("/images/projects/al-kamil-sur-road-01.png"),
+  "rockfall-protection": withBasePath("/images/projects/khasab-lima-road-02.jpeg"),
+  "ground-improvement-and-grouting": withBasePath("/images/projects/wilayat-manah-01.jpeg"),
+  "piling-and-foundation-engineering": withBasePath("/images/projects/al-sharqiyah-region-01.png"),
 };
 
 const SERVICE_SHORT_TITLES: Record<string, string> = {

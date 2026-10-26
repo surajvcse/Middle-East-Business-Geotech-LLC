@@ -5,6 +5,7 @@ export const siteBasePath = configuredBasePath
   : "";
 
 export function withBasePath(pathname: string) {
-  if (!pathname.startsWith("/") || !siteBasePath) return pathname;
+  if (!pathname || !pathname.startsWith("/") || !siteBasePath) return pathname;
+  if (pathname.startsWith(siteBasePath)) return pathname;
   return `${siteBasePath}${pathname}`;
 }
