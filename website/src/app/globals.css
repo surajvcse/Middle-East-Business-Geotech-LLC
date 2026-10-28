@@ -1816,15 +1816,24 @@ p {
 
 .two-column-editorial {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(20rem, 0.88fr);
-  gap: clamp(2.25rem, 4.5vw, 4rem);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  align-items: stretch;
 }
 
 .editorial-col-left,
 .editorial-col-right {
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.editorial-col-left {
+  justify-content: flex-start;
+}
+
+.editorial-col-right {
+  justify-content: space-between;
 }
 
 /* Capability Card (Left Technical Dossier) */
@@ -1837,6 +1846,9 @@ p {
   overflow: hidden;
   position: relative;
   transition: box-shadow 200ms ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .editorial-capability-card:hover {
@@ -1910,6 +1922,8 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .editorial-capability-item {
@@ -2106,7 +2120,7 @@ p {
   position: relative;
   padding-left: 1.25rem;
   border-left: 3px solid var(--accent);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .editorial-lead-text {
@@ -2126,7 +2140,7 @@ p {
 
 /* Photo Showcase Visual Card */
 .editorial-visual-card {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -2209,7 +2223,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .stat-card {
@@ -2277,6 +2291,7 @@ p {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.85rem;
+  margin-top: auto;
 }
 
 /* Service Grid & Cards */
