@@ -71,89 +71,154 @@ export default function HomePage() {
       <HeroFullBleed projects={projects} company={company} />
 
       {/* 3. COMPANY INTRODUCTION */}
-      <section className="content-section">
-        <Container className="two-column-editorial">
-          <div>
-            <SectionHeading
-              eyebrow="SPECIALIST CONTRACTOR ROLE"
-              title="Design and execution capability built around Oman’s demanding geology."
-            />
-            <div className="editorial-capability-card">
-              <div className="editorial-capability-card__header">
-                <span className="badge badge--steel">Specialist Discipline Scope</span>
-                <span>CR 1583382 · MUSCAT</span>
-              </div>
-              <ul className="editorial-capability-items">
-                <li className="editorial-capability-item">
-                  <div className="editorial-capability-item__num" aria-hidden="true">
-                    01
-                  </div>
-                  <div className="editorial-capability-item__body">
-                    <h4>Design & Build Integration</h4>
-                    <p>
-                      Translating geological data and borehole logs into constructible site packages.
-                    </p>
-                  </div>
-                </li>
-                <li className="editorial-capability-item">
-                  <div className="editorial-capability-item__num" aria-hidden="true">
-                    02
-                  </div>
-                  <div className="editorial-capability-item__body">
-                    <h4>Specialist Plant & Rigging</h4>
-                    <p>
-                      Tracked drilling rigs, crane-suspended platforms and certified rope-access crews.
-                    </p>
-                  </div>
-                </li>
-                <li className="editorial-capability-item">
-                  <div className="editorial-capability-item__num" aria-hidden="true">
-                    03
-                  </div>
-                  <div className="editorial-capability-item__body">
-                    <h4>QA/QC Verification</h4>
-                    <p>
-                      Anchor pull-out testing, shotcrete core analysis and pressure grouting logs.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <div className="editorial-capability-card__footer">
-                <span>Deployments Across Oman:</span>
-                <div className="governorate-pills">
-                  <span className="badge">Musandam</span>
-                  <span className="badge">Buraimi</span>
-                  <span className="badge">Nizwa</span>
-                  <span className="badge">Al Sharqiyah</span>
-                  <span className="badge">Muscat</span>
-                </div>
-              </div>
+      <section className="content-section editorial-section">
+        <Container>
+          <div className="editorial-header">
+            <p className="eyebrow">SPECIALIST CONTRACTOR ROLE · SULTANATE OF OMAN</p>
+            <div className="editorial-header__grid">
+              <h2 className="editorial-header__title">
+                Design and execution capability built around Oman’s demanding geology.
+              </h2>
+              <p className="editorial-header__lead">
+                Headquartered in Muscat, Middle East Business Geotech LLC bridges the critical gap between geotechnical design and safe site execution—partnering with civil authorities, engineering consultants, and leading EPC main contractors across the Sultanate.
+              </p>
             </div>
           </div>
 
-          <div>
-            <p style={{ fontSize: "1.0625rem", color: "var(--text)", lineHeight: 1.6, marginBottom: "1rem" }}>
-              Headquartered in Muscat, Middle East Business Geotech LLC bridges the critical gap between geotechnical design and safe site execution across Oman’s rugged geological conditions.
-            </p>
-            <p style={{ color: "var(--muted)", lineHeight: 1.6 }}>
-              We partner with civil authorities, engineering consultants, and leading EPC main contractors to safely execute slope stabilisation, deep foundation, and underground packages on schedule.
-            </p>
-
-            <div className="editorial-stats">
-              <div className="stat-item">
-                <span className="stat-item__label">Headquarters</span>
-                <span className="stat-item__value">Muscat, Sultanate of Oman</span>
+          <div className="editorial-cards-grid">
+            {/* Card 1: Technical Methodology Scope */}
+            <div className="editorial-card">
+              <div className="editorial-card__header">
+                <span className="badge badge--navy">Specialist Discipline Scope</span>
+                <span className="editorial-card__meta">CR {company.crNumber} · Muscat</span>
               </div>
-              <div className="stat-item">
-                <span className="stat-item__label">Operational Focus</span>
-                <span className="stat-item__value">Road, Water & Civil Infrastructure</span>
+
+              <div className="editorial-card__body">
+                <div className="editorial-card__item">
+                  <div className="editorial-card__num" aria-hidden="true">01</div>
+                  <div className="editorial-card__text">
+                    <h3>Design & Build Integration</h3>
+                    <p>
+                      Direct translation of borehole logs, geological discontinuity surveys, and rock mechanics into constructible site packages.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="editorial-card__item">
+                  <div className="editorial-card__num" aria-hidden="true">02</div>
+                  <div className="editorial-card__text">
+                    <h3>Specialist Plant & High-Angle Rigging</h3>
+                    <p>
+                      Tracked hydraulic drilling rigs, crane-suspended work platforms, and certified rope-access crews on steep mountain cuttings.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="editorial-card__item">
+                  <div className="editorial-card__num" aria-hidden="true">03</div>
+                  <div className="editorial-card__text">
+                    <h3>Rigorous QA/QC Verification</h3>
+                    <p>
+                      Anchor pull-out proof testing, high-pressure grout pressure logging, and shotcrete core compressive strength analysis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="editorial-card__footer">
+                <div className="editorial-deployments">
+                  <span className="editorial-deployments__label">Active Regional Deployments:</span>
+                  <div className="editorial-deployments__pills">
+                    <span className="editorial-deployments__pill editorial-deployments__pill--hq">
+                      <span className="editorial-deployments__dot" />
+                      <strong>Muscat</strong> (HQ & Central Yard)
+                    </span>
+                    <span className="editorial-deployments__pill">
+                      <span className="editorial-deployments__dot" />
+                      <strong>Musandam</strong> (Sea-Cliffs)
+                    </span>
+                    <span className="editorial-deployments__pill">
+                      <span className="editorial-deployments__dot" />
+                      <strong>Al Sharqiyah</strong> (Expressways)
+                    </span>
+                    <span className="editorial-deployments__pill">
+                      <span className="editorial-deployments__dot" />
+                      <strong>Nizwa</strong> (Water Network)
+                    </span>
+                    <span className="editorial-deployments__pill">
+                      <span className="editorial-deployments__dot" />
+                      <strong>Buraimi</strong> (Rock Cuts)
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div style={{ marginTop: "1.75rem" }}>
-              <ButtonLink href="/about" variant="steel">
-                About our engineering background
-              </ButtonLink>
+            {/* Card 2: Operating Framework & Contractor Capacity */}
+            <div className="editorial-card editorial-card--accent">
+              <div className="editorial-card__header">
+                <span className="badge badge--steel">Operating Framework</span>
+                <span className="editorial-card__meta">Sultanate of Oman</span>
+              </div>
+
+              <div className="editorial-card__body">
+                <div className="editorial-card__item">
+                  <div className="editorial-card__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                  </div>
+                  <div className="editorial-card__text">
+                    <h3>Muscat Headquarters & Central Fleet Base</h3>
+                    <p>
+                      Central management and specialized plant staging located in South Al Khuwair, facilitating rapid nationwide mobilization across all Governorates.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="editorial-card__item">
+                  <div className="editorial-card__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </div>
+                  <div className="editorial-card__text">
+                    <h3>Road, Water & Civil Infrastructure Focus</h3>
+                    <p>
+                      Specialized geotechnical packages supporting highway slope stabilization, regional water transmission protection, deep foundation piling, and underground excavation.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="editorial-card__item">
+                  <div className="editorial-card__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg>
+                  </div>
+                  <div className="editorial-card__text">
+                    <h3>Ministry & International Specifications</h3>
+                    <p>
+                      Packages planned and executed to relevant Oman ministry specifications (MTCIT / Nama Water) and international BS 8081, ASTM, and Eurocode 7 standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="editorial-card__footer">
+                <div className="editorial-actions-footer">
+                  <ButtonLink href="/about" variant="primary">
+                    About our engineering background
+                  </ButtonLink>
+                  <ButtonLink href="/projects" variant="steel">
+                    Inspect project records
+                  </ButtonLink>
+                </div>
+              </div>
             </div>
           </div>
         </Container>

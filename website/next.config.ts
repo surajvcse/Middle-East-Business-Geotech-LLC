@@ -18,14 +18,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   devIndicators: false,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
 };
 
 export default nextConfig;
