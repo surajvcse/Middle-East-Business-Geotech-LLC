@@ -1816,7 +1816,7 @@ p {
 
 .two-column-editorial {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   gap: clamp(2rem, 3.5vw, 3.5rem);
   align-items: stretch;
 }
@@ -1833,12 +1833,13 @@ p {
 }
 
 .editorial-col-right {
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Capability Card (Left Technical Dossier) */
 .editorial-capability-card {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
@@ -1869,7 +1870,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.15rem 1.5rem;
+  padding: 0.95rem 1.35rem;
   background: linear-gradient(180deg, var(--canvas-subtle) 0%, rgba(240, 239, 234, 0.4) 100%);
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
@@ -1922,15 +1923,13 @@ p {
   margin: 0;
   padding: 0;
   list-style: none;
-  flex: 1;
-  justify-content: space-between;
 }
 
 .editorial-capability-item {
   display: flex;
   align-items: flex-start;
   gap: 1.1rem;
-  padding: 1.35rem 1.5rem;
+  padding: 1.05rem 1.35rem;
   border-bottom: 1px solid var(--border-subtle);
   transition: background-color 150ms ease;
 }
@@ -2023,7 +2022,7 @@ p {
 }
 
 .editorial-capability-item__body p {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.45rem;
   font-size: 0.8875rem;
   line-height: 1.55;
   color: var(--muted);
@@ -2048,12 +2047,13 @@ p {
 
 /* Footer: Regional Deployments */
 .editorial-capability-card__footer {
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.35rem;
   background: linear-gradient(180deg, var(--canvas-subtle) 0%, rgba(240, 239, 234, 0.7) 100%);
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  margin-top: auto;
 }
 
 .editorial-footer-heading {
@@ -2151,7 +2151,7 @@ p {
 .editorial-visual-card__media {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 270px;
   overflow: hidden;
   background: var(--navy-deep);
 }
@@ -2230,7 +2230,7 @@ p {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem 1.15rem;
+  padding: 1.1rem 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -2292,6 +2292,7 @@ p {
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: auto;
+  padding-top: 0.5rem;
 }
 
 /* Service Grid & Cards */
