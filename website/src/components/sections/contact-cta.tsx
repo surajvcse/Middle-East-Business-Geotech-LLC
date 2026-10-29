@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
+import { MaskedTextReveal } from "@/components/ui/masked-text-reveal";
 import { company } from "@/content/company";
 
 type ContactCtaProps = {
@@ -18,7 +19,16 @@ export function ContactCta({
       <Container className="contact-cta__inner">
         <div className="contact-cta__content">
           <p className="eyebrow">{eyebrow}</p>
-          <h2 id="contact-cta-title">{title}</h2>
+          <MaskedTextReveal
+            as="h2"
+            id="contact-cta-title"
+            type="lines"
+            stagger={0.09}
+            trigger="scroll"
+            scrollStart="top 85%"
+          >
+            {title}
+          </MaskedTextReveal>
           <p>{summary}</p>
           <div className="contact-cta__channels">
             <a className="contact-cta__channel" href={`tel:${company.phoneHref}`}>

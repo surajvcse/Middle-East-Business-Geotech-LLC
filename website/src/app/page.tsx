@@ -1,12 +1,14 @@
 import { ContractorRoleAnimated } from "@/components/sections/contractor-role-animated";
+import { ExecutionMethodologyAnimated } from "@/components/sections/execution-methodology-animated";
+import { FeaturedProjectsAnimated } from "@/components/sections/featured-projects-animated";
 
 import { HeroFullBleed } from "@/components/sections/hero-full-bleed";
-import { ProjectCard } from "@/components/projects/project-card";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesInteractiveAccordion } from "@/components/services/services-interactive-accordion";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
+import { MaskedTextReveal } from "@/components/ui/masked-text-reveal";
 import { company } from "@/content/company";
 import { projects } from "@/content/projects";
 import { services } from "@/content/services";
@@ -96,67 +98,19 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 5. ENGINEERING APPROACH */}
-      <section className="content-section">
-        <Container>
-          <SectionHeading
-            eyebrow="EXECUTION METHODOLOGY"
-            title="A disciplined, step-by-step engineering delivery process."
-            summary="Systematic 4-stage delivery from initial ground risk analysis to certified QA/QC sign-off."
-          />
-
-          <div className="approach-grid">
-            {engineeringApproachSteps.map((step) => (
-              <div key={step.num} className="approach-step">
-                <span className="approach-step__num">{step.num}</span>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* 5. ENGINEERING APPROACH / EXECUTION METHODOLOGY */}
+      <ExecutionMethodologyAnimated steps={engineeringApproachSteps} />
 
       {/* 6. FEATURED PROJECTS */}
-      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)" }}>
-        <Container>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem", marginBottom: "2.5rem" }}>
-            <SectionHeading
-              eyebrow="PROJECT EVIDENCE"
-              title="Verified infrastructure experience across the Sultanate."
-              summary="Photographic evidence from active and completed geotechnical packages in Oman."
-            />
-            <ButtonLink href="/projects" variant="steel">
-              View all project records
-            </ButtonLink>
-          </div>
-
-          <div className="project-grid">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} priority={index === 0} />
-            ))}
-          </div>
-
-          <div style={{ marginTop: "2rem" }}>
-            <p className="source-note">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="12" y1="16" x2="12" y2="12"/>
-                <line x1="12" y1="8" x2="12.01" y2="8"/>
-              </svg>
-              <span>
-                Documented from company engineering records, site logs and contract submittals.
-              </span>
-            </p>
-          </div>
-        </Container>
-      </section>
+      <FeaturedProjectsAnimated projects={featuredProjects} />
 
       {/* 7. VALUES AND STANDARDS */}
       <section className="values-band">
         <Container>
           <p className="eyebrow" style={{ color: "var(--steel-light)" }}>OPERATIONAL STANDARDS</p>
-          <h2>Engineering integrity, technical precision and safe site execution.</h2>
+          <MaskedTextReveal as="h2" type="lines" stagger={0.09} trigger="scroll" scrollStart="top 85%">
+            Engineering integrity, technical precision and safe site execution.
+          </MaskedTextReveal>
           <p className="values-band__lead">
             Disciplined execution and uncompromising safety on steep rock faces and deep excavations.
           </p>
