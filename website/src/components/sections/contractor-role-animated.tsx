@@ -117,15 +117,15 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
     let isTicking = false;
     let animFrameId: number;
 
-    const maxRotY = 5.8; // Prominent, architectural 3D Y-axis rotation (degrees)
-    const maxTransZ = 12; // Subtle 3D elevation towards viewer (pixels)
+    const maxRotY = 12.0; // Prominent, architectural 3D Y-axis rotation in place (degrees)
+    const maxTransZ = 16; // 3D elevation towards viewer (pixels)
 
     const render3D = () => {
-      // Lerp interpolation (0.10) for silky physical weight and smooth damping
-      currentFactor += (targetFactor - currentFactor) * 0.10;
+      // Lerp interpolation (0.12) for silky physical weight and smooth damping
+      currentFactor += (targetFactor - currentFactor) * 0.12;
 
       if (leftBlockRef.current && rightBlockRef.current) {
-        // Pure Y-axis 3D rotation:
+        // Pure Y-axis 3D rotation in place:
         // Block 1 (Left Dossier Card): Clockwise around Y-axis (+rotY) on scroll down
         const y1 = currentFactor * maxRotY;
         const tz1 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
@@ -134,8 +134,8 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
         const y2 = -currentFactor * maxRotY;
         const tz2 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
 
-        leftBlockRef.current.style.transform = `perspective(1200px) rotateY(${y1.toFixed(3)}deg) translateZ(${tz1.toFixed(1)}px)`;
-        rightBlockRef.current.style.transform = `perspective(1200px) rotateY(${y2.toFixed(3)}deg) translateZ(${tz2.toFixed(1)}px)`;
+        leftBlockRef.current.style.transform = `perspective(1200px) rotateY(${y1.toFixed(2)}deg) translateZ(${tz1.toFixed(1)}px)`;
+        rightBlockRef.current.style.transform = `perspective(1200px) rotateY(${y2.toFixed(2)}deg) translateZ(${tz2.toFixed(1)}px)`;
       }
 
       if (Math.abs(targetFactor - currentFactor) > 0.001) {
