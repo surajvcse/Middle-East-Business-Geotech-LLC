@@ -2355,49 +2355,86 @@ p {
   will-change: transform;
 }
 
-/* Dual-Block 3D Spatial Motion Architecture */
-.editorial-card-motion-wrap,
-.editorial-deck-motion-wrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  perspective: 1200px;
+/* Monolithic 3D Spatial Motion Stage (Locomotive-inspired Section Roll) */
+.editorial-3d-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
   transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
 }
 
-.editorial-block-3d-left,
-.editorial-block-3d-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.editorial-3d-canvas {
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   will-change: transform;
   transform-origin: center center;
+  transition: box-shadow 300ms ease;
+}
+
+.editorial-card-motion-wrap,
+.editorial-deck-motion-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+}
+
+.editorial-capability-card {
+  transform: translateZ(8px);
+  transform-style: preserve-3d;
+  transition: box-shadow 240ms ease;
+}
+
+.editorial-capability-card:hover {
+  box-shadow: 0 24px 50px -12px rgba(10, 34, 57, 0.16), 0 6px 16px rgba(10, 34, 57, 0.08);
 }
 
 .editorial-right-deck {
   display: flex;
   flex-direction: column;
   flex: 1;
+  transform: translateZ(16px);
+  transform-style: preserve-3d;
+}
+
+.editorial-visual-card {
+  transform: translateZ(12px);
+  transform-style: preserve-3d;
+}
+
+.editorial-visual-card__badge {
+  transform: translateZ(24px);
+}
+
+.editorial-stats-grid .stat-card {
+  transform: translateZ(14px);
 }
 
 .editorial-right-deck .editorial-actions {
   margin-top: auto;
   padding-top: 0.5rem;
+  transform: translateZ(10px);
 }
 
-.editorial-capability-card.editorial-block-3d-left {
-  transition: box-shadow 240ms ease;
-}
-
-.editorial-capability-card.editorial-block-3d-left:hover {
-  box-shadow: 0 24px 50px -12px rgba(10, 34, 57, 0.16), 0 6px 16px rgba(10, 34, 57, 0.08);
-}
-
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce) {
+/* Reduced motion & mobile accessibility */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .editorial-3d-stage {
+    perspective: none !important;
+  }
+  .editorial-3d-canvas {
+    transform: none !important;
+    transform-style: flat !important;
+  }
+  .editorial-capability-card,
+  .editorial-right-deck,
+  .editorial-visual-card,
+  .editorial-visual-card__badge,
+  .editorial-stats-grid .stat-card,
+  .editorial-right-deck .editorial-actions {
+    transform: none !important;
+  }
   .editorial-section.is-animated [data-loco],
   .editorial-section.is-animated [data-loco-child] {
     opacity: 1 !important;

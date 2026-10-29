@@ -40,8 +40,7 @@ const getIsMobileSnapshot = () => {
 
 export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const leftBlockRef = useRef<HTMLDivElement>(null);
-  const rightBlockRef = useRef<HTMLDivElement>(null);
+  const stageCanvasRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
 
   const isMounted = useSyncExternalStore(
@@ -108,7 +107,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
     };
   }, [prefersReducedMotion]);
 
-  // 2. Dual-Block 3D Y-Axis Scroll Rotation (Block 1: Clockwise Y, Block 2: Counter-Clockwise Y) + Photo Parallax
+  // 2. Monolithic 3D Architectural Roll Rotation (Whole Section 3D Perspective Canvas) + Parallax
   useEffect(() => {
     if (typeof window === "undefined" || prefersReducedMotion || isMobile) return;
 
@@ -117,28 +116,27 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
     let isTicking = false;
     let animFrameId: number;
 
-    const maxRotY = 12.0; // Prominent, architectural 3D Y-axis rotation in place (degrees)
-    const maxTransZ = 16; // 3D elevation towards viewer (pixels)
+    const maxRotX = 8.5; // Clearly visible top-to-bottom 3D vertical roll (degrees)
+    const maxScale = 0.035; // Gentle architectural scale depth (0.965 to 1.000)
+    const maxTransZ = 24; // Subtle spatial elevation (pixels)
 
     const render3D = () => {
-      // Lerp interpolation (0.12) for silky physical weight and smooth damping
-      currentFactor += (targetFactor - currentFactor) * 0.12;
+      // Lerp interpolation (0.09) for silky physical weight and smooth damping
+      currentFactor += (targetFactor - currentFactor) * 0.09;
 
-      if (leftBlockRef.current && rightBlockRef.current) {
-        // Pure Y-axis 3D rotation in place:
-        // Block 1 (Left Dossier Card): Clockwise around Y-axis (+rotY) on scroll down
-        const y1 = currentFactor * maxRotY;
-        const tz1 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
+      if (stageCanvasRef.current) {
+        // Monolithic 3D Scroll Roll across the entire block:
+        // As you scroll down into section, currentFactor is positive -> rotates top-to-bottom (+rotX)
+        // At center of viewport, currentFactor = 0 -> exactly 0.00deg, scale 1.000, 100% flat and crystal-clear
+        // As you scroll past section, currentFactor is negative -> rotates forward (-rotX)
+        const rotX = currentFactor * maxRotX;
+        const scale = 1 - Math.abs(currentFactor) * maxScale;
+        const tz = -Math.abs(currentFactor) * maxTransZ;
 
-        // Block 2 (Right Visual Deck): Counter-clockwise around Y-axis (-rotY) on scroll down
-        const y2 = -currentFactor * maxRotY;
-        const tz2 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
-
-        leftBlockRef.current.style.transform = `perspective(1200px) rotateY(${y1.toFixed(2)}deg) translateZ(${tz1.toFixed(1)}px)`;
-        rightBlockRef.current.style.transform = `perspective(1200px) rotateY(${y2.toFixed(2)}deg) translateZ(${tz2.toFixed(1)}px)`;
+        stageCanvasRef.current.style.transform = `perspective(1400px) rotateX(${rotX.toFixed(2)}deg) translateZ(${tz.toFixed(1)}px) scale(${scale.toFixed(3)})`;
       }
 
-      if (Math.abs(targetFactor - currentFactor) > 0.001) {
+      if (Math.abs(targetFactor - currentFactor) > 0.0008) {
         animFrameId = window.requestAnimationFrame(render3D);
       } else {
         isTicking = false;
@@ -152,7 +150,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
       const rect = section.getBoundingClientRect();
       const winHeight = window.innerHeight;
 
-      if (rect.bottom > -120 && rect.top < winHeight + 120) {
+      if (rect.bottom > -150 && rect.top < winHeight + 150) {
         // Section center relative to viewport center
         const sectionCenter = rect.top + rect.height / 2;
         const viewportCenter = winHeight / 2;
@@ -172,7 +170,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
         const mRect = mediaRef.current.getBoundingClientRect();
         if (mRect.bottom > -80 && mRect.top < winHeight + 80) {
           const centerDelta = (mRect.top + mRect.height / 2 - winHeight / 2) / winHeight;
-          setParallaxY(Math.round(centerDelta * 28 * 10) / 10);
+          setParallaxY(Math.round(centerDelta * 24 * 10) / 10);
         }
       }
     };
@@ -192,8 +190,10 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
       ref={sectionRef}
       className={`content-section editorial-section ${isMounted ? "is-animated" : ""} ${isInView ? "is-inview" : ""}`}
     >
-      <Container className="two-column-editorial">
-        {/* Left Column: Heading (anchored) + Block 1 (Rotates Clockwise on Scroll) */}
+      <Container>
+        <div className="editorial-3d-stage">
+          <div ref={stageCanvasRef} className="two-column-editorial editorial-3d-canvas">
+            {/* Left Column: Heading + Technical Capability Card */}
         <div className="editorial-col-left">
           <div data-loco data-loco-delay="1">
             <SectionHeading
@@ -204,8 +204,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
 
           <div data-loco data-loco-delay="2" className="editorial-card-motion-wrap">
             <div
-              ref={leftBlockRef}
-              className="editorial-capability-card editorial-block-3d-left"
+              className="editorial-capability-card"
             >
               <div className="editorial-capability-card__header">
                 <div className="editorial-capability-card__tag">
@@ -332,7 +331,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
           </div>
         </div>
 
-        {/* Right Column: Lead Quote (anchored) + Block 2 (Rotates Counter-Clockwise on Scroll) */}
+        {/* Right Column: Lead Quote + Authority Visual Deck */}
         <div className="editorial-col-right">
           <div className="editorial-lead-quote" data-loco data-loco-delay="1">
             <p className="editorial-lead-text">
@@ -345,8 +344,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
 
           <div data-loco data-loco-delay="2" className="editorial-deck-motion-wrap">
             <div
-              ref={rightBlockRef}
-              className="editorial-right-deck editorial-block-3d-right"
+              className="editorial-right-deck"
             >
               {/* Authentic Engineering Visual Card */}
               <div className="editorial-visual-card">
@@ -418,6 +416,8 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                 </ButtonLink>
               </div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </Container>
