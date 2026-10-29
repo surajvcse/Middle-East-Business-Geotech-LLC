@@ -40,7 +40,8 @@ const getIsMobileSnapshot = () => {
 
 export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const stageCanvasRef = useRef<HTMLDivElement>(null);
+  const leftBlockRef = useRef<HTMLDivElement>(null);
+  const rightBlockRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
 
   const isMounted = useSyncExternalStore(
@@ -107,7 +108,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
     };
   }, [prefersReducedMotion]);
 
-  // 2. Monolithic 3D Architectural Roll Rotation (Whole Section 3D Perspective Canvas) + Parallax
+  // 2. Dual-Block Opposing 3D Kinetic Roll & Counter-Parallax Motion + Photo Depth
   useEffect(() => {
     if (typeof window === "undefined" || prefersReducedMotion || isMobile) return;
 
@@ -116,24 +117,30 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
     let isTicking = false;
     let animFrameId: number;
 
-    const maxRotX = 8.5; // Clearly visible top-to-bottom 3D vertical roll (degrees)
-    const maxScale = 0.035; // Gentle architectural scale depth (0.965 to 1.000)
-    const maxTransZ = 24; // Subtle spatial elevation (pixels)
+    const maxRotX = 10.5; // Noticeable, prominent 3D vertical roll (degrees)
+    const maxParallaxY = 36; // Dynamic opposing vertical travel (pixels)
+    const maxTransZ = 20; // 3D elevation towards viewer (pixels)
 
     const render3D = () => {
-      // Lerp interpolation (0.09) for silky physical weight and smooth damping
-      currentFactor += (targetFactor - currentFactor) * 0.09;
+      // Lerp interpolation (0.10) for responsive physical weight and momentum
+      currentFactor += (targetFactor - currentFactor) * 0.10;
 
-      if (stageCanvasRef.current) {
-        // Monolithic 3D Scroll Roll across the entire block:
-        // As you scroll down into section, currentFactor is positive -> rotates top-to-bottom (+rotX)
-        // At center of viewport, currentFactor = 0 -> exactly 0.00deg, scale 1.000, 100% flat and crystal-clear
-        // As you scroll past section, currentFactor is negative -> rotates forward (-rotX)
-        const rotX = currentFactor * maxRotX;
-        const scale = 1 - Math.abs(currentFactor) * maxScale;
-        const tz = -Math.abs(currentFactor) * maxTransZ;
+      if (leftBlockRef.current && rightBlockRef.current) {
+        // Dual-Block Opposing 3D Vertical Roll & Kinetic Counter-Parallax:
+        // Block 1 (Left Capability Card): Rolls top-to-bottom (+rotX) & glides upward (-transY)
+        const rot1 = currentFactor * maxRotX;
+        const transY1 = currentFactor * -maxParallaxY;
+        const tz1 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
 
-        stageCanvasRef.current.style.transform = `perspective(1400px) rotateX(${rotX.toFixed(2)}deg) translateZ(${tz.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        // Block 2 (Right Visual Deck): Rolls in OPPOSITE direction (-rotX) & glides downward (+transY)
+        const rot2 = -currentFactor * maxRotX;
+        const transY2 = currentFactor * maxParallaxY;
+        const tz2 = Math.max(0, (1 - Math.abs(currentFactor)) * maxTransZ);
+
+        leftBlockRef.current.style.transform =
+          `perspective(1400px) rotateX(${rot1.toFixed(2)}deg) translateY(${transY1.toFixed(1)}px) translateZ(${tz1.toFixed(1)}px)`;
+        rightBlockRef.current.style.transform =
+          `perspective(1400px) rotateX(${rot2.toFixed(2)}deg) translateY(${transY2.toFixed(1)}px) translateZ(${tz2.toFixed(1)}px)`;
       }
 
       if (Math.abs(targetFactor - currentFactor) > 0.0008) {
@@ -190,11 +197,12 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
       ref={sectionRef}
       className={`content-section editorial-section ${isMounted ? "is-animated" : ""} ${isInView ? "is-inview" : ""}`}
     >
-      <Container>
-        <div className="editorial-3d-stage">
-          <div ref={stageCanvasRef} className="two-column-editorial editorial-3d-canvas">
-            {/* Left Column: Heading + Technical Capability Card */}
-        <div className="editorial-col-left">
+      <Container className="two-column-editorial editorial-kinetic-stage">
+        {/* Whole Block 1 (Left Column including Heading + Technical Card) */}
+        <div
+          ref={leftBlockRef}
+          className="editorial-col-left editorial-column-3d-left"
+        >
           <div data-loco data-loco-delay="1">
             <SectionHeading
               eyebrow="SPECIALIST CONTRACTOR ROLE · SULTANATE OF OMAN"
@@ -331,8 +339,11 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
           </div>
         </div>
 
-        {/* Right Column: Lead Quote + Authority Visual Deck */}
-        <div className="editorial-col-right">
+        {/* Whole Block 2 (Right Column including Lead Quote + Authority Visual Deck) */}
+        <div
+          ref={rightBlockRef}
+          className="editorial-col-right editorial-column-3d-right"
+        >
           <div className="editorial-lead-quote" data-loco data-loco-delay="1">
             <p className="editorial-lead-text">
               Headquartered in Muscat, Middle East Business Geotech LLC bridges the critical gap between geotechnical design and safe site execution across Oman’s rugged geological conditions.
@@ -416,8 +427,6 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                 </ButtonLink>
               </div>
             </div>
-          </div>
-        </div>
           </div>
         </div>
       </Container>

@@ -2355,22 +2355,21 @@ p {
   will-change: transform;
 }
 
-/* Monolithic 3D Spatial Motion Stage (Locomotive-inspired Section Roll) */
-.editorial-3d-stage {
+/* Whole-Column Dual-Block Opposing 3D Kinetic Motion Stage */
+.two-column-editorial.editorial-kinetic-stage {
   perspective: 1400px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
-  position: relative;
-  width: 100%;
 }
 
-.editorial-3d-canvas {
+.editorial-column-3d-left,
+.editorial-column-3d-right {
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   will-change: transform;
   transform-origin: center center;
-  transition: box-shadow 300ms ease;
+  position: relative;
 }
 
 .editorial-card-motion-wrap,
@@ -2382,34 +2381,73 @@ p {
 }
 
 .editorial-capability-card {
-  transform: translateZ(8px);
+  transform: translateZ(12px);
   transform-style: preserve-3d;
-  transition: box-shadow 240ms ease;
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 52, 85, 0.14);
+  transition: box-shadow 280ms ease, border-color 280ms ease;
+  box-shadow: 
+    0 22px 50px -12px rgba(10, 34, 57, 0.18),
+    0 8px 22px -4px rgba(10, 34, 57, 0.08),
+    0 1px 3px rgba(10, 34, 57, 0.04);
 }
 
 .editorial-capability-card:hover {
-  box-shadow: 0 24px 50px -12px rgba(10, 34, 57, 0.16), 0 6px 16px rgba(10, 34, 57, 0.08);
+  border-color: rgba(18, 52, 85, 0.24);
+  box-shadow: 
+    0 32px 64px -14px rgba(10, 34, 57, 0.22),
+    0 12px 28px -4px rgba(10, 34, 57, 0.10),
+    0 1px 4px rgba(10, 34, 57, 0.05);
 }
 
 .editorial-right-deck {
   display: flex;
   flex-direction: column;
   flex: 1;
-  transform: translateZ(16px);
-  transform-style: preserve-3d;
-}
-
-.editorial-visual-card {
   transform: translateZ(12px);
   transform-style: preserve-3d;
 }
 
+.editorial-visual-card {
+  transform: translateZ(14px);
+  transform-style: preserve-3d;
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 52, 85, 0.14);
+  transition: box-shadow 280ms ease, border-color 280ms ease;
+  box-shadow: 
+    0 20px 46px -10px rgba(10, 34, 57, 0.16),
+    0 8px 20px -3px rgba(10, 34, 57, 0.08),
+    0 1px 3px rgba(10, 34, 57, 0.04);
+}
+
+.editorial-visual-card:hover {
+  border-color: rgba(18, 52, 85, 0.24);
+  box-shadow: 
+    0 28px 58px -12px rgba(10, 34, 57, 0.20),
+    0 10px 24px -3px rgba(10, 34, 57, 0.09);
+}
+
 .editorial-visual-card__badge {
-  transform: translateZ(24px);
+  transform: translateZ(28px);
 }
 
 .editorial-stats-grid .stat-card {
   transform: translateZ(14px);
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 52, 85, 0.12);
+  transition: box-shadow 240ms ease, border-color 240ms ease, transform 240ms ease;
+  box-shadow: 
+    0 12px 28px -8px rgba(10, 34, 57, 0.10),
+    0 4px 12px -2px rgba(10, 34, 57, 0.05),
+    0 1px 2px rgba(10, 34, 57, 0.03);
+}
+
+.editorial-stats-grid .stat-card:hover {
+  border-color: rgba(18, 52, 85, 0.22);
+  box-shadow: 
+    0 18px 38px -8px rgba(10, 34, 57, 0.16),
+    0 6px 16px -2px rgba(10, 34, 57, 0.08);
+  transform: translateZ(20px) translateY(-2px);
 }
 
 .editorial-right-deck .editorial-actions {
@@ -2420,10 +2458,11 @@ p {
 
 /* Reduced motion & mobile accessibility */
 @media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  .editorial-3d-stage {
+  .two-column-editorial.editorial-kinetic-stage {
     perspective: none !important;
   }
-  .editorial-3d-canvas {
+  .editorial-column-3d-left,
+  .editorial-column-3d-right {
     transform: none !important;
     transform-style: flat !important;
   }
