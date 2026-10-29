@@ -2355,6 +2355,47 @@ p {
   will-change: transform;
 }
 
+/* Dual-Block 3D Spatial Motion Architecture */
+.editorial-card-motion-wrap,
+.editorial-deck-motion-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.editorial-block-3d-left,
+.editorial-block-3d-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.editorial-right-deck {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.editorial-right-deck .editorial-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.editorial-capability-card.editorial-block-3d-left {
+  transition: box-shadow 240ms ease;
+}
+
+.editorial-capability-card.editorial-block-3d-left:hover {
+  box-shadow: 0 24px 50px -12px rgba(10, 34, 57, 0.16), 0 6px 16px rgba(10, 34, 57, 0.08);
+}
+
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   .editorial-section.is-animated [data-loco],
