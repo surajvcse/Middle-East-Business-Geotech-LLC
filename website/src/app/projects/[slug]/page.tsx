@@ -65,8 +65,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         summary={`Specialist geotechnical slope protection scope delivered for ${project.client}.`}
       />
 
-      {/* 1. PROJECT SPECIFICATIONS */}
-      <section className="content-section" style={{ paddingBottom: "2rem" }}>
+      {/* 1. PROJECT SPECIFICATIONS & BRIEF */}
+      <section className="content-section" style={{ paddingBottom: "2.5rem" }}>
         <Container>
           <dl className="project-facts">
             <div>
@@ -78,20 +78,66 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd>{project.client}</dd>
             </div>
             <div>
-              <dt>Documented Scope</dt>
-              <dd>{project.scope}</dd>
+              <dt>Infrastructure Sector</dt>
+              <dd>{project.sector || "Geotechnical Infrastructure"}</dd>
             </div>
             <div>
               <dt>Source Record Status</dt>
               <dd>
                 <span className={`badge ${project.documentStatus.includes("Ongoing") ? "badge--accent" : "badge--verified"}`}>
-                  {project.documentStatus}
+                  {project.documentStatus.includes("Ongoing") ? "Active Package" : "Completed & Verified"}
                 </span>
               </dd>
             </div>
           </dl>
 
-          <div style={{ marginTop: "1.25rem" }}>
+          {/* Plain Language Explanations */}
+          {(project.challenge || project.solution) && (
+            <div style={{ marginTop: "2rem" }}>
+              <div className="project-detail-card__explanation-grid">
+                {project.challenge && (
+                  <div className="project-explanation-block project-explanation-block--challenge">
+                    <div className="project-explanation-block__label">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="8"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                      </svg>
+                      The Terrain Challenge
+                    </div>
+                    <p>{project.challenge}</p>
+                  </div>
+                )}
+                {project.solution && (
+                  <div className="project-explanation-block project-explanation-block--solution">
+                    <div className="project-explanation-block__label">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                      Delivered Geotechnical Scope & Solution
+                    </div>
+                    <p>{project.solution}</p>
+                  </div>
+                )}
+              </div>
+
+              {project.keyTechniques && project.keyTechniques.length > 0 && (
+                <div style={{ marginTop: "1.25rem", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--navy-deep)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+                    Methods Deployed:
+                  </span>
+                  {project.keyTechniques.map((tech) => (
+                    <span key={tech} className="technique-pill">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          <div style={{ marginTop: "1.5rem" }}>
             <p className="source-note">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/>

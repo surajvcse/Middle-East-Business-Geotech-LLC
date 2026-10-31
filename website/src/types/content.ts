@@ -16,6 +16,9 @@ export type Service = {
   methods?: readonly string[];
   relatedProjectSlugs: readonly string[];
   relatedServiceSlugs?: readonly string[];
+  targetGeology?: string;
+  typicalEquipment?: readonly string[];
+  fieldTesting?: string;
 };
 
 export type ProjectImage = {
@@ -37,6 +40,10 @@ export type Project = {
   client: string;
   scope: string;
   sector?: string;
+  challenge?: string;
+  solution?: string;
+  keyTechniques?: readonly string[];
+  quickStat?: string;
   serviceSlugs: readonly string[];
   images: readonly ProjectImage[];
 };

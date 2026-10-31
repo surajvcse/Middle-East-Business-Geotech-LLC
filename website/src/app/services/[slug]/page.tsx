@@ -96,6 +96,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                 </div>
               ) : null}
+
+              {service.targetGeology ? (
+                <div style={{ marginTop: "1.75rem", background: "rgba(217, 107, 43, 0.06)", borderLeft: "3px solid var(--accent)", padding: "1rem 1.25rem", borderRadius: "var(--radius-sm)" }}>
+                  <span style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--accent)", fontFamily: "var(--font-mono)", marginBottom: "0.25rem" }}>
+                    Target Geology in Oman
+                  </span>
+                  <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--navy-deep)", lineHeight: 1.5 }}>
+                    {service.targetGeology}
+                  </p>
+                </div>
+              ) : null}
+
+              {service.fieldTesting ? (
+                <div style={{ marginTop: "1rem", background: "rgba(30, 94, 76, 0.06)", borderLeft: "3px solid #1E5E4C", padding: "1rem 1.25rem", borderRadius: "var(--radius-sm)" }}>
+                  <span style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", color: "#1E5E4C", fontFamily: "var(--font-mono)", marginBottom: "0.25rem" }}>
+                    QA/QC & Field Verification Protocol
+                  </span>
+                  <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--navy-deep)", lineHeight: 1.5 }}>
+                    {service.fieldTesting}
+                  </p>
+                </div>
+              ) : null}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
@@ -161,7 +183,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   <h3>{relService.title}</h3>
                   <p>{relService.summary}</p>
                   <span className="text-link" style={{ marginTop: "auto" }}>
-                    View capability specification <span aria-hidden="true">→</span>
+                    View Details <span aria-hidden="true">→</span>
                   </span>
                 </Link>
               ))}
