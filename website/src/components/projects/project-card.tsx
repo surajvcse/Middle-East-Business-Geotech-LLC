@@ -57,7 +57,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
         <p className="project-card__scope">{project.scope}</p>
 
         <Link className="text-link" href={`/projects/${project.slug}`}>
-          Inspect project record <span aria-hidden="true">→</span>
+          View Details <span aria-hidden="true">→</span>
         </Link>
       </div>
     </article>

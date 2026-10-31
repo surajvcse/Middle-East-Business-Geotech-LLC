@@ -10,6 +10,15 @@ export const services: readonly Service[] = [
       "Integrated slope protection measures for road corridors, infrastructure platforms and exposed rock faces.",
     introduction:
       "Slope stabilisation combines thorough geological assessment, engineered restraint systems, surface protection and controlled execution to eliminate rockfall hazards and mitigate catastrophic slope failures along critical infrastructure corridors in Oman.",
+    targetGeology:
+      "Fractured limestone, steep mountain highway cuttings, weathered slopes and wadi embankments.",
+    typicalEquipment: [
+      "Tracked Hydraulic Drilling Rigs",
+      "High-Pressure Shotcrete Units",
+      "Rope-Access Rigging Gear",
+    ],
+    fieldTesting:
+      "Hydraulic pull-out testing, drainage flow verification, and continuous bench stability checks.",
     methods: [
       "Deep cable anchoring",
       "Self-drilling rock bolting",
@@ -50,6 +59,15 @@ export const services: readonly Service[] = [
       "Targeted rock reinforcement and anchoring systems engineered to restrain unstable rock masses and support retention structures.",
     introduction:
       "Ground anchors, cable anchors and self-drilling rock bolts provide concentrated reinforcement where fractured rock masses or excavated faces require mechanical restraint to maintain equilibrium under static and seismic conditions.",
+    targetGeology:
+      "Stratified and jointed rock masses, unstable slope wedges, and deep retention cuts.",
+    typicalEquipment: [
+      "Rotary Percussive Drilling Rigs",
+      "Automated Colloidal Grout Mixers",
+      "Calibrated Hollow-Cylinder Jacks",
+    ],
+    fieldTesting:
+      "Proof loading to 120-150% design load, anchor lift-off tests, and grout compressive strength analysis.",
     methods: [
       "Prestressed ground & cable anchors",
       "Passive & active rock bolting",
@@ -90,6 +108,15 @@ export const services: readonly Service[] = [
       "Surface protection systems for exposed rock cuts and weathered slopes, integrated with pattern anchoring and controlled drainage.",
     introduction:
       "Shotcrete and high-tensile wire netting can be deployed individually or as a composite reinforcement system to arrest weathering, prevent surface ravelling, and restrain loose rock fragments adjacent to active roads and utilities.",
+    targetGeology:
+      "Friable rock cuts, weathered shale, and unraveling highway benches subject to thermal erosion.",
+    typicalEquipment: [
+      "Wet/Dry Shotcrete Concrete Pumps",
+      "Wire Mesh Unrolling Winches",
+      "Sub-Horizontal Berm Drills",
+    ],
+    fieldTesting:
+      "Cored compressive strength testing, wire mesh tensile anchorage tests, and weep-hole discharge logging.",
     methods: [
       "Dry-mix and wet-mix shotcreting",
       "Steel wire netting drape & pinned systems",
@@ -130,6 +157,15 @@ export const services: readonly Service[] = [
       "Engineered barriers, wire drapery and intercepted slope systems designed for hazardous mountain corridors in Oman.",
     introduction:
       "Rockfall protection combines passive interception barriers, pinned drapery systems and active face bolting tailored to the trajectory, impact energy and geomorphology of Oman's rugged mountain terrain.",
+    targetGeology:
+      "Vertical sea-cliffs, towering rock crags, and boulder overhangs above active traffic lanes.",
+    typicalEquipment: [
+      "Heavy Mobile Cranes & Suspended Cages",
+      "Certified Industrial Rope Access Gear",
+      "High-Tensile Wire Mesh Rigging",
+    ],
+    fieldTesting:
+      "Energy dissipation brake-ring verification, foundation post proof tests, and anchor pull testing.",
     methods: [
       "Dynamic rockfall catch barriers",
       "Pinned high-tensile steel netting",
@@ -166,6 +202,15 @@ export const services: readonly Service[] = [
       "Specialist grouting and ground modification techniques for permeable, voided, weak or water-bearing sub-surface formations.",
     introduction:
       "Ground improvement techniques modify in-situ soil and rock properties to increase bearing capacity, arrest water ingress, and fill geological voids prior to foundation construction or deep excavation.",
+    targetGeology:
+      "Permeable sands, karstic limestone cavities, voided alluvial gravels, and fractured water-bearing rock.",
+    typicalEquipment: [
+      "High-Pressure Jet Grouting Pumps",
+      "Tube à Manchette (TAM) Injection Units",
+      "Electronic Flow & Pressure Monitoring Systems",
+    ],
+    fieldTesting:
+      "Lugeon water pressure tests before and after grouting, core sample recovery, and ultrasonic integrity logging.",
     methods: [
       "High-pressure jet grouting",
       "TAM (Tube à Manchette) grouting",
@@ -202,6 +247,15 @@ export const services: readonly Service[] = [
       "Specialist piling, retaining walls and deep-foundation engineering for demanding structural loads and constrained urban sites.",
     introduction:
       "Foundation and earth-retention systems are engineered to transfer structural loads through weak ground to competent bedrock, providing rigid excavation support while safeguarding adjacent buildings and infrastructure.",
+    targetGeology:
+      "Weak surface soils, urban reclaimed ground, sabkha, and deep overburden overlying sound bedrock.",
+    typicalEquipment: [
+      "Hydraulic Rotary Piling Rigs",
+      "Continuous Flight Auger (CFA) Systems",
+      "High-Capacity Micropile Drills",
+    ],
+    fieldTesting:
+      "Static axial compression and lateral pile load testing, Pile Integrity Testing (PIT), and Crosshole Sonic Logging (CSL).",
     methods: [
       "Secant and contiguous bored piling",
       "High-capacity micropiling in rock",
@@ -238,6 +292,15 @@ export const services: readonly Service[] = [
       "Specialist underground excavation, ground support, shaft sinking and microtunnelling methods for transport and utilities.",
     introduction:
       "Underground construction requires rigorous advance ground assessment, systematic rock support, and coordinated structural lining to safely advance through variable geological strata.",
+    targetGeology:
+      "Faulted rock zones, variable lithology, sub-surface utility corridors, and deep underground caverns.",
+    typicalEquipment: [
+      "Sequential Excavation Rigs & Roadheaders",
+      "Forepoling Canopy & Spiling Units",
+      "Microtunnelling & Pipe Jacking Systems",
+    ],
+    fieldTesting:
+      "3D optical convergence monitoring, extensometer settlement logging, and core compressive verification.",
     methods: [
       "Sequential excavation (NATM / SEM)",
       "Cut-and-cover underground structures",
@@ -274,6 +337,15 @@ export const services: readonly Service[] = [
       "Specialist geotechnical remediation for existing transport, dam, bridge and utility assets experiencing ground movement or structural distress.",
     introduction:
       "Infrastructure rehabilitation combines non-destructive forensic assessment, engineered ground intervention and structural strengthening to extend the operational life of civil assets without requiring full replacement.",
+    targetGeology:
+      "Settled bridge piers, leaking dam abutments, creeping road embankments, and deteriorated tunnel liners.",
+    typicalEquipment: [
+      "Low-Headroom Microdrilling Rigs",
+      "Pressure-Relief Core Drills",
+      "Chemical Resin Grout Proportioners",
+    ],
+    fieldTesting:
+      "In-situ crack displacement telemetry, piezometric seepage logging, and structural load monitoring.",
     methods: [
       "Tunnel lining remediation & void grouting",
       "Dam foundation seepage control & pressure relief",

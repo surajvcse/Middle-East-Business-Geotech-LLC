@@ -6202,3 +6202,1443 @@ nextjs-portal,
     will-change: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   About Page Systematic Design System
+   ========================================================================== */
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 54rem) {
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-pillar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  position: relative;
+}
+
+.about-pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(10, 34, 57, 0.12), 0 4px 12px rgba(10, 34, 57, 0.05);
+  border-color: rgba(18, 52, 85, 0.22);
+}
+
+.about-pillar-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.about-pillar-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--steel);
+}
+
+.about-pillar-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--navy-deep);
+  letter-spacing: -0.01em;
+}
+
+.about-pillar-card__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.about-pillar-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about-pillar-card__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.about-pillar-card__list-item svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  color: var(--steel);
+}
+
+/* Capabilities Cards with Structured "What / How / Where" */
+.about-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+@media (max-width: 60rem) {
+  .about-cap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-cap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.about-cap-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(10, 34, 57, 0.12);
+  border-color: rgba(18, 52, 85, 0.22);
+}
+
+.about-cap-card__num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--steel);
+}
+
+.about-cap-card__title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--navy-deep);
+}
+
+.about-cap-card__block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-cap-card__block-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-cap-card__block-text {
+  font-size: 0.925rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 4-Step Process Section */
+.about-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 64rem) {
+  .about-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .about-process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-process-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  position: relative;
+}
+
+.about-process-card__step {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--navy-deep);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.about-process-card__title {
+  font-size: 1.125rem;
+  color: var(--navy-deep);
+  margin: 0;
+}
+
+.about-process-card__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Trust / Why Us Grid */
+.about-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 64rem) {
+  .about-why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .about-why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-why-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-why-card__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--steel);
+}
+
+.about-why-card__title {
+  font-size: 1.1rem;
+  color: var(--navy-deep);
+  margin: 0;
+}
+
+.about-why-card__desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   PROJECTS DIRECTORY & PORTFOLIO ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Portfolio Metrics Bar */
+.projects-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.projects-metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.projects-metric-number {
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  line-height: 1.1;
+  font-feature-settings: "tnum" 1;
+}
+
+.projects-metric-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.projects-metric-sub {
+  font-size: 0.775rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* 2. Toolbar & Filters */
+.projects-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.projects-filter-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--steel-light);
+  color: var(--navy-deep);
+}
+
+.projects-filter-btn--active {
+  background: var(--navy-deep) !important;
+  color: #ffffff !important;
+  border-color: var(--navy-deep) !important;
+}
+
+.projects-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  background: var(--canvas);
+  color: var(--navy);
+}
+
+.projects-filter-btn--active .projects-filter-count {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.projects-view-toggle {
+  display: inline-flex;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.projects-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-xs);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.projects-view-btn:hover {
+  color: var(--navy-deep);
+}
+
+.projects-view-btn--active {
+  background: var(--surface);
+  color: var(--navy-deep);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* 3. Detailed Project Cards List */
+.projects-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.project-detail-card {
+  display: grid;
+  grid-template-columns: minmax(0, 23rem) minmax(0, 1fr);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.project-detail-card:hover {
+  border-color: var(--steel-light);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.project-detail-card__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--navy-deep);
+}
+
+.project-detail-card__image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-detail-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.project-detail-card:hover .project-detail-card__image-wrap img {
+  transform: scale(1.03);
+}
+
+.project-detail-card__badge-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+
+.project-detail-card__stat-callout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(6, 20, 36, 0.95) 0%, rgba(6, 20, 36, 0.75) 75%, transparent 100%);
+  padding: 1.5rem 1.25rem 1rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 2;
+}
+
+.project-detail-card__stat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.project-detail-card__stat-callout strong {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.project-detail-card__content {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-detail-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.project-detail-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.project-detail-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.project-detail-card__sector-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+.project-detail-card__title {
+  margin: 0.25rem 0 0.15rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.project-detail-card__title a {
+  color: var(--navy-deep);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.project-detail-card__title a:hover {
+  color: var(--accent);
+}
+
+.project-detail-card__client-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  padding-top: 0.35rem;
+}
+
+.project-detail-card__client-label {
+  color: var(--muted);
+}
+
+.project-detail-card__client-name {
+  color: var(--navy-deep);
+  font-weight: 700;
+}
+
+/* Explanation Grid (Challenge & Solution) */
+.project-detail-card__explanation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-explanation-block {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.project-explanation-block--challenge {
+  background: rgba(217, 107, 43, 0.06);
+  border-left: 3px solid var(--accent);
+}
+
+.project-explanation-block--solution {
+  background: rgba(30, 94, 76, 0.06);
+  border-left: 3px solid #1E5E4C;
+}
+
+.project-explanation-block__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+}
+
+.project-explanation-block--challenge .project-explanation-block__label {
+  color: var(--accent);
+}
+
+.project-explanation-block--solution .project-explanation-block__label {
+  color: #1E5E4C;
+}
+
+.project-explanation-block p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--navy-deep);
+  margin: 0;
+}
+
+/* Technique Badges */
+.project-detail-card__techniques {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-detail-card__techniques-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.project-detail-card__techniques-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.technique-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--canvas);
+  color: var(--navy-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 0.25rem 0.55rem;
+}
+
+.project-detail-card__footer {
+  margin-top: 0.25rem;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* 4. Comparison Table */
+.projects-table-container {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+}
+
+.projects-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.projects-summary-table th {
+  background: var(--canvas);
+  color: var(--navy-deep);
+  font-weight: 700;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+}
+
+.projects-summary-table td {
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.projects-summary-table tr:last-child td {
+  border-bottom: none;
+}
+
+.projects-summary-table tr:hover td {
+  background: var(--surface-hover);
+}
+
+.table-col-title strong {
+  color: var(--navy-deep);
+  font-size: 0.925rem;
+}
+
+.table-sector-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--steel);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 0.2rem 0.5rem;
+}
+
+/* 5. Integrity Footnote */
+.projects-integrity-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.projects-integrity-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(30, 94, 76, 0.1);
+  color: #1E5E4C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-integrity-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.projects-integrity-text strong {
+  color: var(--navy-deep);
+}
+
+/* 6. Context Grid & Quality Banner */
+.projects-context-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.projects-context-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projects-context-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.projects-context-card h3 {
+  font-size: 1.2rem;
+  color: var(--navy-deep);
+  margin: 0;
+}
+
+.projects-context-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.projects-context-card__tag {
+  font-size: 0.8rem;
+  color: var(--steel);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.projects-context-card__tag strong {
+  color: var(--navy-deep);
+}
+
+.projects-quality-banner {
+  background: var(--navy-deep);
+  border-radius: var(--radius-md);
+  padding: clamp(2rem, 4vw, 3rem);
+  color: #ffffff;
+}
+
+.projects-quality-banner__intro {
+  max-width: 44rem;
+  margin-bottom: 2rem;
+}
+
+.projects-quality-banner__intro h3 {
+  color: #ffffff;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.projects-quality-banner__intro p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.projects-quality-banner__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+}
+
+.quality-point {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quality-point__number {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.quality-point h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.quality-point p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 7. Responsive Breakpoints */
+@media (max-width: 64rem) {
+  .projects-metrics-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .project-detail-card {
+    grid-template-columns: 1fr;
+  }
+  .project-detail-card__media {
+    height: 16rem;
+    min-height: 16rem;
+  }
+  .projects-context-grid {
+    grid-template-columns: 1fr;
+  }
+  .projects-quality-banner__grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .project-detail-card__explanation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 36rem) {
+  .projects-metrics-bar {
+    grid-template-columns: 1fr;
+  }
+  .projects-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .projects-view-toggle {
+    align-self: flex-start;
+  }
+  .project-detail-card__content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   SERVICES DIRECTORY & CAPABILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Services Metrics Bar */
+.services-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.services-metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.services-metric-number {
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  color: var(--navy-deep);
+  line-height: 1.1;
+  font-feature-settings: "tnum" 1;
+}
+
+.services-metric-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.services-metric-sub {
+  font-size: 0.775rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* 2. Services Toolbar & Filters */
+.services-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.services-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.services-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.services-filter-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--steel-light);
+  color: var(--navy-deep);
+}
+
+.services-filter-btn--active {
+  background: var(--navy-deep) !important;
+  color: #ffffff !important;
+  border-color: var(--navy-deep) !important;
+}
+
+.services-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  background: var(--canvas);
+  color: var(--navy);
+}
+
+.services-filter-btn--active .services-filter-count {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.services-view-toggle {
+  display: inline-flex;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.services-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-xs);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.services-view-btn:hover {
+  color: var(--navy-deep);
+}
+
+.services-view-btn--active {
+  background: var(--surface);
+  color: var(--navy-deep);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* 3. Enhanced Service Cards Grid */
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.service-card-enhanced {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.service-card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--steel-light);
+}
+
+.service-card-enhanced__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service-card-enhanced__number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--steel);
+}
+
+.service-card-enhanced__title {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.service-card-enhanced__title a {
+  color: var(--navy-deep);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.service-card-enhanced__title a:hover {
+  color: var(--accent);
+}
+
+.service-card-enhanced__summary {
+  color: var(--muted);
+  font-size: 0.925rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.service-card-enhanced__geology {
+  background: rgba(217, 107, 43, 0.06);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-xs);
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.service-card-enhanced__geology-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.service-card-enhanced__geology p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--navy-deep);
+  line-height: 1.45;
+}
+
+.service-card-enhanced__methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.service-card-enhanced__methods-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.service-card-enhanced__methods-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.service-card-enhanced__deployment {
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+
+.service-deploy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+}
+
+.service-deploy-pill--verified {
+  background: rgba(30, 94, 76, 0.1);
+  color: #1E5E4C;
+  border: 1px solid rgba(30, 94, 76, 0.2);
+}
+
+.service-deploy-pill--available {
+  background: var(--canvas);
+  color: var(--navy-deep);
+  border: 1px solid var(--border);
+}
+
+.service-card-enhanced__footer {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+}
+
+/* 4. Method Selection Guide (Matrix Table) */
+.services-table-container {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3.5rem;
+}
+
+.services-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.services-matrix-table th {
+  background: var(--canvas);
+  color: var(--navy-deep);
+  font-weight: 700;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+}
+
+.services-matrix-table td {
+  padding: 1.1rem 1.15rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.services-matrix-table tr:last-child td {
+  border-bottom: none;
+}
+
+.services-matrix-table tr:hover td {
+  background: var(--surface-hover);
+}
+
+.matrix-col-title strong {
+  color: var(--navy-deep);
+  font-size: 0.95rem;
+}
+
+.matrix-cat-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--steel);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+.matrix-col-geology {
+  font-size: 0.85rem;
+  color: var(--navy-deep);
+  max-width: 16rem;
+  line-height: 1.45;
+}
+
+.matrix-col-methods {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 16rem;
+  line-height: 1.45;
+}
+
+.matrix-col-testing {
+  font-size: 0.85rem;
+  color: #1E5E4C;
+  max-width: 16rem;
+  line-height: 1.45;
+  font-weight: 550;
+}
+
+/* 5. 4-Stage Method Selection Workflow */
+.services-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.services-workflow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.services-workflow-card__step {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--navy-deep);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.services-workflow-card h3 {
+  font-size: 1.125rem;
+  color: var(--navy-deep);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.services-workflow-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.services-workflow-card__footer {
+  font-size: 0.775rem;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+}
+
+.services-workflow-card__footer span {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* 6. Plant & Fleet Grid */
+.services-plant-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.services-plant-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.services-plant-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.services-plant-card h4 {
+  font-size: 1.1rem;
+  color: var(--navy-deep);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.services-plant-card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.plant-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--steel);
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+}
+
+/* 7. Responsive Breakpoints */
+@media (max-width: 64rem) {
+  .services-metrics-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .services-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-workflow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .services-plant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 36rem) {
+  .services-metrics-bar {
+    grid-template-columns: 1fr;
+  }
+  .services-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .services-view-toggle {
+    align-self: flex-start;
+  }
+  .services-workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-plant-grid {
+    grid-template-columns: 1fr;
+  }
+}
