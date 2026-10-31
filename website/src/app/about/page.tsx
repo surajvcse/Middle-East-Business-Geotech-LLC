@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { RealLeafletMap } from "@/components/maps/real-leaflet-map";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
+import { CubertoCardSpread } from "@/components/ui/cuberto-card-spread";
 import { company } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -268,7 +269,18 @@ export default function AboutPage() {
             summary="A simple, structured snapshot answering the four most important questions about our business."
           />
 
-          <div className="about-pillars-grid">
+          <CubertoCardSpread
+            className="about-pillars-grid"
+            triggerStart={0.96}
+            triggerEnd={0.16}
+            rotations={[-7.5, 6.0, -4.5, 8.0]}
+            scatters={[
+              { x: -18, y: -12 },
+              { x: 16, y: -8 },
+              { x: -12, y: 14 },
+              { x: 18, y: 10 },
+            ]}
+          >
             {corePillars.map((pillar) => (
               <div key={pillar.title} className="about-pillar-card">
                 <div className="about-pillar-card__header">
@@ -289,7 +301,7 @@ export default function AboutPage() {
                 </ul>
               </div>
             ))}
-          </div>
+          </CubertoCardSpread>
 
           <div
             style={{
@@ -327,7 +339,18 @@ export default function AboutPage() {
             summary="What each geotechnical service means for your project, how our crews execute it on site, and where it is applied in Oman."
           />
 
-          <div className="about-cap-grid">
+          <CubertoCardSpread
+            className="about-cap-grid"
+            triggerStart={0.96}
+            triggerEnd={0.16}
+            rotations={[-7.0, 6.5, -5.0, 8.5]}
+            scatters={[
+              { x: -16, y: -14 },
+              { x: 18, y: -10 },
+              { x: -14, y: 16 },
+              { x: 20, y: 12 },
+            ]}
+          >
             {coreCapabilities.map((cap) => (
               <div key={cap.num} className="about-cap-card">
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -355,7 +378,7 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </CubertoCardSpread>
 
           <div style={{ marginTop: "2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
             <ButtonLink href="/services" variant="primary">
