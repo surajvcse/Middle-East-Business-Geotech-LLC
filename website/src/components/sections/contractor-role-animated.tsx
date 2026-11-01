@@ -423,7 +423,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                   About our engineering background
                 </ButtonLink>
                 <ButtonLink href="/projects" variant="steel">
-                  Inspect project records
+                  View project records
                 </ButtonLink>
               </div>
             </div>

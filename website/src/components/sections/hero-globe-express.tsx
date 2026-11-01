@@ -161,7 +161,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       const totalBlockHeight =
         mobileDetailsHeight + detailsGapToCard + cardHeight + cardGapToPagination + paginationHeight;
       const freeSpace = Math.max(0, height - totalBlockHeight);
-      const startY = Math.max(36, Math.round(freeSpace * 0.74));
+      const startY = Math.max(36, Math.round(freeSpace * 0.68));
 
       detailsTop = Math.round(startY);
       offsetTop = Math.round(detailsTop + mobileDetailsHeight + detailsGapToCard);
@@ -428,6 +428,17 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
   const prevSlide = useCallback(() => {
     step(false);
   }, [step]);
+
+  const handleScrollDown = useCallback(() => {
+    if (heroRef.current) {
+      const heroRect = heroRef.current.getBoundingClientRect();
+      const targetY = window.scrollY + heroRect.bottom;
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
   // Initial layout mount and resize listener
   useEffect(() => {
@@ -747,7 +758,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           </Link>
 
           <Link href={`/projects/${currentProject.slug}`} className="hero-gx__btn-pill">
-            <span>Inspect Project Record</span>
+            <span>View Project Record</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
@@ -798,7 +809,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           </Link>
 
           <Link href={`/projects/${currentProject.slug}`} className="hero-gx__btn-pill">
-            <span>Inspect Project Record</span>
+            <span>View Project Record</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
@@ -855,6 +866,27 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           CR {company.crNumber} · Muscat Yard Active
         </span>
       </div>
+      {/* 6. PROFESSIONAL SCROLL-DOWN CUE (Indicating content below) */}
+      <button
+        type="button"
+        className="hero-gx__scroll-cue"
+        onClick={handleScrollDown}
+        aria-label="Scroll to company overview"
+      >
+        <span className="hero-gx__scroll-cue-inner">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
+      </button>
     </section>
   );
 }
