@@ -2,7 +2,7 @@ import { ContractorRoleAnimated } from "@/components/sections/contractor-role-an
 import { ExecutionMethodologyAnimated } from "@/components/sections/execution-methodology-animated";
 import { FeaturedProjectsAnimated } from "@/components/sections/featured-projects-animated";
 
-import { HeroFullBleed } from "@/components/sections/hero-full-bleed";
+import { HeroGlobeExpress } from "@/components/sections/hero-globe-express";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesInteractiveAccordion } from "@/components/services/services-interactive-accordion";
@@ -70,8 +70,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. CINEMATIC FULL-BLEED HERO & CAPABILITY DOCK (AgriNova Style Authority) */}
-      <HeroFullBleed projects={projects} company={company} />
+      {/* 1. CINEMATIC EXPANDING-CARD HERO (Pinterest / Globe Express Shared-Element Design) */}
+      <HeroGlobeExpress projects={projects} company={company} />
 
       {/* 3. COMPANY INTRODUCTION (Locomotive Scroll Animation) */}
       <ContractorRoleAnimated company={company} />

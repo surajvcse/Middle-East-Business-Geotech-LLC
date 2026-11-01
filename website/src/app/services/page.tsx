@@ -5,6 +5,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ServicesDirectory } from "@/components/services/services-directory";
 import { Container } from "@/components/ui/container";
+import { ScrollStackedCardGrid } from "@/components/ui/scroll-stacked-card-grid";
 import { services } from "@/content/services";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function ServicesPage() {
       </section>
 
       {/* 2. 4-STAGE METHOD SELECTION WORKFLOW */}
-      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", overflowX: "clip" }}>
         <Container>
           <SectionHeading
             eyebrow="METHOD SELECTION & EXECUTION"
@@ -42,7 +43,7 @@ export default function ServicesPage() {
             summary="Ground engineering in Oman requires strict geological correlation and rigorous field proofing. Here is our systematic 4-stage engineering delivery workflow."
           />
 
-          <div className="services-workflow-grid">
+          <ScrollStackedCardGrid className="services-workflow-grid">
             <div className="services-workflow-card">
               <div className="services-workflow-card__step">01</div>
               <h3>Geological Mapping & Discontinuity Survey</h3>
@@ -86,12 +87,12 @@ export default function ServicesPage() {
                 <span>Output:</span> QA/QC Certified Handover Record
               </div>
             </div>
-          </div>
+          </ScrollStackedCardGrid>
         </Container>
       </section>
 
       {/* 3. SPECIALIST PLANT & EQUIPMENT FLEET */}
-      <section className="content-section">
+      <section className="content-section" style={{ overflowX: "clip" }}>
         <Container>
           <SectionHeading
             eyebrow="FIELD READINESS & PLANT FLEET"
@@ -99,7 +100,7 @@ export default function ServicesPage() {
             summary="Geotechnical engineering in Oman's mountain passes and coastal cliffs demands specialized machinery. Our Muscat operations yard maintains high-angle and deep-drilling equipment."
           />
 
-          <div className="services-plant-grid">
+          <ScrollStackedCardGrid className="services-plant-grid">
             <div className="services-plant-card">
               <div className="services-plant-card__icon" aria-hidden="true">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -154,7 +155,7 @@ export default function ServicesPage() {
               </p>
               <span className="plant-tag">Certified QA/QC Verification</span>
             </div>
-          </div>
+          </ScrollStackedCardGrid>
         </Container>
       </section>
 
