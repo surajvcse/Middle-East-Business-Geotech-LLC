@@ -109,6 +109,8 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         offsetTop: 240,
         detailsLeft: 48,
         detailsTop: 210,
+        contentHeight: 110,
+        paginationTop: 550,
         isMobile: false,
       };
     }
@@ -119,9 +121,10 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     const isCompactHeight = height < 740;
     const isNarrow = width < 1180;
 
-    const cardWidth = isMobile ? 140 : isCompactHeight || isNarrow ? 170 : 205;
-    const cardHeight = isMobile ? 195 : isCompactHeight || isNarrow ? 240 : 290;
+    const cardWidth = isMobile ? 130 : isCompactHeight || isNarrow ? 170 : 205;
+    const cardHeight = isMobile ? 180 : isCompactHeight || isNarrow ? 240 : 290;
     const gap = isMobile ? 12 : isCompactHeight || isNarrow ? 14 : 18;
+    const contentHeight = isMobile ? 84 : 110;
 
     const maxContainer = 1360;
     const padLeft = Math.max(isMobile ? 16 : 28, (width - maxContainer) / 2 + (isMobile ? 16 : 28));
@@ -133,16 +136,39 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       offsetLeft = Math.max(padLeft + 350, width - (cardWidth + gap) * 2 - 24);
     }
 
-    // Explicit vertical positions shifted up to give generous bottom headroom
-    const offsetTop = isMobile
-      ? height - cardHeight - 80
-      : Math.max(16, Math.round(height * 0.5 - cardHeight * 0.5 - (isCompactHeight ? 25 : 30)));
-
     const activeDetails = detailsEvenFlagRef.current ? detailsEvenRef.current : detailsOddRef.current;
     const detailsHeight = activeDetails?.offsetHeight || (isCompactHeight ? 260 : 320);
-    const detailsTop = isMobile
-      ? 16
-      : Math.max(16, Math.round(height * 0.5 - detailsHeight * 0.5 - (isCompactHeight ? 24 : 32)));
+
+    let detailsTop: number;
+    let offsetTop: number;
+    let paginationTop: number;
+
+    if (isMobile) {
+      const bottomPad = 20;
+      const paginationHeight = 38;
+      const cardGapToPagination = 12;
+      const detailsGapToCard = 14;
+      const mobileDetailsHeight = 168;
+
+      const totalBlockHeight =
+        mobileDetailsHeight + detailsGapToCard + cardHeight + cardGapToPagination + paginationHeight;
+      const freeSpace = Math.max(0, height - totalBlockHeight);
+      const startY = Math.max(36, Math.round(freeSpace * 0.74));
+
+      detailsTop = Math.round(startY);
+      offsetTop = Math.round(detailsTop + mobileDetailsHeight + detailsGapToCard);
+      paginationTop = Math.round(offsetTop + cardHeight + cardGapToPagination);
+    } else {
+      detailsTop = Math.max(
+        16,
+        Math.round(height * 0.5 - detailsHeight * 0.5 - (isCompactHeight ? 24 : 32))
+      );
+      offsetTop = Math.max(
+        16,
+        Math.round(height * 0.5 - cardHeight * 0.5 - (isCompactHeight ? 25 : 30))
+      );
+      paginationTop = offsetTop + cardHeight + (isCompactHeight ? 14 : 20);
+    }
 
     return {
       width,
@@ -154,6 +180,8 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       offsetTop,
       detailsLeft: padLeft,
       detailsTop,
+      contentHeight,
+      paginationTop,
       isMobile,
     };
   }, []);
@@ -168,7 +196,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         timerTweenRef.current.kill();
       }
 
-      const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, isMobile } =
+      const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, contentHeight, paginationTop, isMobile } =
         getLayoutMetrics();
       const order = orderRef.current;
 
@@ -303,9 +331,9 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
               if (prvContent) {
                 gsap.set(prvContent, {
                   x: xNew,
-                  y: offsetTop + cardHeight - 110,
+                  y: offsetTop + cardHeight - contentHeight,
                   width: cardWidth,
-                  height: 110,
+                  height: contentHeight,
                   opacity: 1,
                   zIndex: 35,
                   pointerEvents: "auto",
@@ -352,7 +380,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           if (contentEl) {
             gsap.to(contentEl, {
               x: xNew,
-              y: offsetTop + cardHeight - 110,
+              y: offsetTop + cardHeight - contentHeight,
               opacity: 1,
               zIndex: 35,
               duration: 0.9,
@@ -395,7 +423,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
 
   // Initial layout mount and resize listener
   useEffect(() => {
-    const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, isMobile } =
+    const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, contentHeight, paginationTop, isMobile } =
       getLayoutMetrics();
     const order = orderRef.current;
     const [active, ...rest] = order;
@@ -440,9 +468,9 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       if (contentEl) {
         gsap.set(contentEl, {
           x: xPos,
-          y: offsetTop + cardHeight - 110,
+          y: offsetTop + cardHeight - contentHeight,
           width: cardWidth,
-          height: 110,
+          height: contentHeight,
           zIndex: 35,
           opacity: 1,
           pointerEvents: "auto",
@@ -478,7 +506,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     if (paginationEl) {
       gsap.set(paginationEl, {
         left: offsetLeft,
-        top: offsetTop + cardHeight + (isMobile ? 14 : 20),
+        top: paginationTop,
         opacity: 1,
         zIndex: 60,
       });
@@ -536,9 +564,9 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         if (ctEl) {
           gsap.set(ctEl, {
             x: xPos,
-            y: m.offsetTop + m.cardHeight - 110,
+            y: m.offsetTop + m.cardHeight - m.contentHeight,
             width: m.cardWidth,
-            height: 110,
+            height: m.contentHeight,
           });
         }
       });
@@ -548,7 +576,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       if (paginationRef.current) {
         gsap.set(paginationRef.current, {
           left: m.offsetLeft,
-          top: m.offsetTop + m.cardHeight + (m.isMobile ? 14 : 20),
+          top: m.paginationTop,
         });
       }
     };
