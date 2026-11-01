@@ -7746,7 +7746,7 @@ nextjs-portal,
   flex-direction: column;
   justify-content: flex-end;
   gap: 0.35rem;
-  padding: 1.1rem 1rem;
+  padding: 0.85rem 0.9rem;
   color: #ffffff;
   pointer-events: auto;
   cursor: pointer;
@@ -7763,7 +7763,9 @@ nextjs-portal,
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.55rem;
+  flex-shrink: 0;
+  min-height: 22px;
+  padding: 0.22rem 0.6rem;
   border-radius: 4px;
   background: rgba(6, 18, 32, 0.88);
   border: 1px solid rgba(229, 168, 64, 0.45);
@@ -7781,6 +7783,7 @@ nextjs-portal,
 }
 
 .hero-gx__card-title {
+  flex-shrink: 0;
   font-size: 0.95rem;
   font-weight: 800;
   color: #ffffff;
@@ -7791,6 +7794,7 @@ nextjs-portal,
 }
 
 .hero-gx__card-tag {
+  flex-shrink: 0;
   font-family: var(--font-mono);
   font-size: 0.62rem;
   color: #e5a840;
@@ -7817,8 +7821,8 @@ nextjs-portal,
   position: absolute;
   top: 0;
   left: 0;
-  width: min(410px, 42vw);
-  max-width: 410px;
+  width: min(520px, 46vw);
+  max-width: 520px;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -7848,9 +7852,9 @@ nextjs-portal,
 .hero-gx__title-wrapper {
   overflow: hidden;
   padding: 0.1rem 0;
-  min-height: 4.8rem;
+  min-height: clamp(5rem, 7vw, 6.4rem);
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .hero-gx__title {
@@ -7914,12 +7918,12 @@ nextjs-portal,
 }
 
 .hero-gx__btn-circle {
+  display: none;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background: #e5a840;
   color: #061220;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease, background 0.2s ease;
@@ -7955,16 +7959,38 @@ nextjs-portal,
 }
 
 .hero-gx__btn-ghost {
-  font-size: 0.825rem;
-  color: #94a3b8;
-  font-weight: 650;
-  padding: 0.4rem 0.6rem;
-  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e65a15 0%, #d96b2b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.885rem;
+  box-shadow: 0 4px 18px rgba(217, 107, 43, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .hero-gx__btn-ghost:hover {
+  background: linear-gradient(135deg, #f0641e 0%, #e65a15 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(217, 107, 43, 0.6);
   color: #ffffff;
+}
+
+.hero-gx__btn-ghost svg {
+  transition: transform 0.2s ease;
+}
+
+.hero-gx__btn-ghost:hover svg {
+  transform: translateX(3px);
 }
 
 /* PAGINATION & DECK CONTROLS (UNDER PREVIEW CARDS, z-index: 60) */
@@ -8063,10 +8089,12 @@ nextjs-portal,
     line-height: 1.08;
   }
   .hero-gx__title-wrapper {
-    min-height: auto;
+    min-height: 4.8rem;
+    display: flex;
+    align-items: flex-start;
   }
   .hero-gx__desc-wrapper {
-    min-height: auto;
+    min-height: 3.8rem;
   }
   .hero-gx__description {
     font-size: 0.85rem;
@@ -8084,6 +8112,10 @@ nextjs-portal,
     height: 38px;
   }
   .hero-gx__btn-pill {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.825rem;
+  }
+  .hero-gx__btn-ghost {
     padding: 0.5rem 1.15rem;
     font-size: 0.825rem;
   }
@@ -8150,15 +8182,15 @@ nextjs-portal,
     gap: 0.5rem;
   }
   .hero-gx__btn-circle {
-    width: 36px;
-    height: 36px;
+    display: none;
   }
   .hero-gx__btn-pill {
-    padding: 0.45rem 1rem;
-    font-size: 0.775rem;
+    display: none;
   }
   .hero-gx__btn-ghost {
-    display: none;
+    display: inline-flex;
+    padding: 0.48rem 1.15rem;
+    font-size: 0.8rem;
   }
   .hero-gx__pagination {
     gap: 0.75rem;
@@ -8207,17 +8239,18 @@ nextjs-portal,
 
 
 /* ELEGANT PROFESSIONAL SCROLL DOWN INDICATOR */
+/* ELEGANT PROFESSIONAL SCROLL DOWN INDICATOR (PURE ARROW CUE) */
 .hero-gx__scroll-cue {
   position: absolute;
-  bottom: 46px;
+  bottom: 42px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -8228,45 +8261,41 @@ nextjs-portal,
 }
 
 .hero-gx__scroll-cue-inner {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(6, 18, 32, 0.78);
-  border: 1px solid rgba(229, 168, 64, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   color: #e5a840;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-  animation: heroScrollCuePulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: transform 0.25s ease, color 0.25s ease, filter 0.25s ease;
+  animation: heroScrollCuePulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .hero-gx__scroll-cue:hover .hero-gx__scroll-cue-inner {
-  border-color: #e5a840;
-  background: rgba(229, 168, 64, 0.18);
-  transform: scale(1.08);
+  color: #f7ca68;
+  transform: translateY(3px) scale(1.12);
+  filter: drop-shadow(0 4px 12px rgba(229, 168, 64, 0.6));
 }
 
 .hero-gx__scroll-cue svg {
-  width: 22px;
-  height: 22px;
-  stroke: #e5a840;
-  stroke-width: 2.3;
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
 }
 
 @keyframes heroScrollCuePulse {
   0%, 100% {
     transform: translateY(0);
-    opacity: 0.65;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(229, 168, 64, 0);
+    opacity: 0.75;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
   }
   50% {
-    transform: translateY(6px);
+    transform: translateY(8px);
     opacity: 1;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 10px rgba(229, 168, 64, 0.3);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 10px rgba(229, 168, 64, 0.45));
   }
 }
 
@@ -8279,14 +8308,12 @@ nextjs-portal,
 
 @media (max-width: 48rem) {
   .hero-gx__scroll-cue {
-    bottom: 46px;
-  }
-  .hero-gx__scroll-cue-inner {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
   .hero-gx__scroll-cue svg {
-    width: 15px;
-    height: 15px;
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.4;
   }
 }
