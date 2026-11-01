@@ -118,7 +118,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         offsetTop: 240,
         detailsLeft: 48,
         detailsTop: 210,
-        contentHeight: 110,
+        contentHeight: 144,
         paginationTop: 550,
         isMobile: false,
       };
@@ -133,7 +133,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     const cardWidth = isMobile ? 140 : isCompactHeight || isNarrow ? 170 : 205;
     const cardHeight = isMobile ? 190 : isCompactHeight || isNarrow ? 240 : 290;
     const gap = isMobile ? 12 : isCompactHeight || isNarrow ? 14 : 18;
-    const contentHeight = isMobile ? 86 : 110;
+    const contentHeight = isMobile ? 86 : isCompactHeight || isNarrow ? 128 : 144;
 
     const maxContainer = 1360;
     const padLeft = Math.max(isMobile ? 16 : 28, (width - maxContainer) / 2 + (isMobile ? 16 : 28));
@@ -144,9 +144,6 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     if (!isMobile && offsetLeft + cardWidth * 2 + gap > width - 16) {
       offsetLeft = Math.max(padLeft + 350, width - (cardWidth + gap) * 2 - 24);
     }
-
-    const activeDetails = detailsEvenFlagRef.current ? detailsEvenRef.current : detailsOddRef.current;
-    const detailsHeight = activeDetails?.offsetHeight || (isCompactHeight ? 260 : 320);
 
     let detailsTop: number;
     let offsetTop: number;
@@ -175,9 +172,11 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       offsetTop = Math.round(detailsTop + mobileDetailsHeight + detailsGapToCard);
       paginationTop = Math.round(offsetTop + cardHeight + cardGapToPagination);
     } else {
+      // Fixed reference height for editorial block ensures detailsTop never shifts or jumps between slides:
+      const desktopDetailsRefHeight = isCompactHeight ? 280 : 320;
       detailsTop = Math.max(
-        16,
-        Math.round(height * 0.5 - detailsHeight * 0.5 - (isCompactHeight ? 24 : 32))
+        20,
+        Math.round(height * 0.5 - desktopDetailsRefHeight * 0.5 - (isCompactHeight ? 24 : 30))
       );
       offsetTop = Math.max(
         16,
@@ -550,7 +549,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         gsap.set(scrollCueRef.current, {
           left: "50%",
           xPercent: -50,
-          top: paginationTop + 48,
+          top: paginationTop + 44,
           bottom: "auto",
         });
       } else {
@@ -558,7 +557,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           left: "50%",
           xPercent: -50,
           top: "auto",
-          bottom: 46,
+          bottom: 42,
         });
       }
     }
@@ -630,7 +629,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           gsap.set(scrollCueRef.current, {
             left: "50%",
             xPercent: -50,
-            top: m.paginationTop + 48,
+            top: m.paginationTop + 44,
             bottom: "auto",
           });
         } else {
@@ -638,7 +637,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
             left: "50%",
             xPercent: -50,
             top: "auto",
-            bottom: 46,
+            bottom: 42,
           });
         }
       }
@@ -790,6 +789,23 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         </div>
 
         <div className="hero-gx__actions">
+          <Link href="/contact" className="hero-gx__btn-ghost">
+            <span>Request Consultation</span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3.333 8h9.334M8.667 4l4 4-4 4" />
+            </svg>
+          </Link>
+
           <Link
             href={`/projects/${currentProject.slug}`}
             className="hero-gx__btn-circle"
@@ -806,10 +822,6 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
-          </Link>
-
-          <Link href="/contact" className="hero-gx__btn-ghost">
-            Request Consultation
           </Link>
         </div>
       </div>
@@ -841,6 +853,23 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         </div>
 
         <div className="hero-gx__actions">
+          <Link href="/contact" className="hero-gx__btn-ghost">
+            <span>Request Consultation</span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3.333 8h9.334M8.667 4l4 4-4 4" />
+            </svg>
+          </Link>
+
           <Link
             href={`/projects/${currentProject.slug}`}
             className="hero-gx__btn-circle"
@@ -857,10 +886,6 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
-          </Link>
-
-          <Link href="/contact" className="hero-gx__btn-ghost">
-            Request Consultation
           </Link>
         </div>
       </div>
