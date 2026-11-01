@@ -7674,88 +7674,133 @@ nextjs-portal,
 .hero-gx {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 86px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  height: calc(100vh - 86px);
+  min-height: 460px;
+  max-height: 960px;
   overflow: hidden;
   background: #061220;
   color: #ffffff;
-  padding: 2rem 0 clamp(7rem, 12vh, 10rem);
 }
 
-.hero-gx__bg-stack {
+/* CARDS LAYER */
+.hero-gx__cards-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   pointer-events: none;
 }
 
-.hero-gx__bg-layer {
+.hero-gx__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #061220;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.14);
+  will-change: transform, left, top, width, height, border-radius;
+  pointer-events: auto;
+}
+
+.hero-gx__card-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.hero-gx__card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 18, 32, 0.12) 0%, rgba(6, 18, 32, 0.38) 45%, rgba(6, 18, 32, 0.94) 100%);
+  pointer-events: none;
+}
+
+/* FLOATING CARD CONTENT (OVERLAY ON PREVIEW CARDS) */
+.hero-gx__card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.1rem 1rem;
+  color: #ffffff;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 35;
+  box-sizing: border-box;
   will-change: transform, opacity;
 }
 
-.hero-gx__bg-layer--active {
-  opacity: 1;
-  transform: scale(1.0);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 5s ease-out;
+.hero-gx__card:hover {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
-.hero-gx__scrim {
+.hero-gx__card-badge {
+  align-self: flex-start;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(6, 18, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 750;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-gx__card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-gx__card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #e5a840;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
+}
+
+/* CINEMATIC FULL-BLEED VIGNETTE SCRIM (z-index: 21) */
+.hero-gx__vignette {
   position: absolute;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-gx__scrim--left {
   inset: 0;
-  background: linear-gradient(90deg, rgba(6, 18, 32, 0.94) 0%, rgba(6, 18, 32, 0.82) 42%, rgba(6, 18, 32, 0.35) 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 21;
+  background: 
+    linear-gradient(90deg, rgba(6, 18, 32, 0.96) 0%, rgba(6, 18, 32, 0.84) 40%, rgba(6, 18, 32, 0.32) 72%, transparent 100%),
+    linear-gradient(0deg, rgba(6, 18, 32, 0.92) 0%, transparent 35%),
+    linear-gradient(180deg, rgba(6, 18, 32, 0.75) 0%, transparent 22%);
 }
 
-.hero-gx__scrim--bottom {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 35%;
-  background: linear-gradient(0deg, rgba(6, 18, 32, 0.92) 0%, transparent 100%);
-}
-
-.hero-gx__scrim--top {
+/* TWO ALTERNATING LEFT DETAILS CONTAINERS (z-index: 25) */
+.hero-gx__details {
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 25%;
-  background: linear-gradient(180deg, rgba(6, 18, 32, 0.75) 0%, transparent 100%);
-}
-
-.hero-gx__stage {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 3rem;
-}
-
-.hero-gx__content {
-  max-width: 32rem;
+  width: min(410px, 42vw);
+  max-width: 410px;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  z-index: 5;
+  gap: 0.7rem;
+  pointer-events: none;
+  z-index: 25;
+  will-change: transform, opacity;
 }
 
 .hero-gx__eyebrow-row {
@@ -7768,7 +7813,7 @@ nextjs-portal,
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #e5a840;
-  animation: heroGxEyebrowReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
 }
 
 .hero-gx__eyebrow-dash {
@@ -7779,13 +7824,13 @@ nextjs-portal,
 .hero-gx__title-wrapper {
   overflow: hidden;
   padding: 0.1rem 0;
-  min-height: 5.6rem;
+  min-height: 4.8rem;
   display: flex;
   align-items: flex-end;
 }
 
 .hero-gx__title {
-  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 850;
   letter-spacing: -0.01em;
   line-height: 1.05;
@@ -7793,39 +7838,36 @@ nextjs-portal,
   color: #ffffff;
   margin: 0;
   will-change: transform, opacity;
-  animation: heroGxTitlePopup 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.04s;
 }
 
 .hero-gx__desc-wrapper {
   overflow: hidden;
+  min-height: 4.4rem;
+  display: flex;
+  align-items: flex-start;
 }
 
 .hero-gx__description {
-  font-size: 0.925rem;
-  line-height: 1.52;
+  font-size: 0.935rem;
+  line-height: 1.54;
   color: #cbd5e1;
   margin: 0;
-  max-width: 34ch;
-  min-height: 4.8rem;
-  display: flex;
-  align-items: flex-start;
+  max-width: 36ch;
   will-change: transform, opacity;
-  animation: heroGxDescPopup 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.12s;
 }
 
 .hero-gx__techniques {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
   min-height: 1.85rem;
   align-items: center;
+  will-change: transform, opacity;
 }
 
 .hero-gx__tech-pill {
-  padding: 0.2rem 0.6rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -7835,7 +7877,6 @@ nextjs-portal,
   color: #f1f5f9;
   letter-spacing: 0.02em;
   will-change: transform, opacity;
-  animation: heroGxPillPop 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-gx__actions {
@@ -7843,12 +7884,14 @@ nextjs-portal,
   align-items: center;
   gap: 0.75rem;
   flex-wrap: nowrap;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
+  pointer-events: auto;
+  will-change: transform, opacity;
 }
 
 .hero-gx__btn-circle {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #e5a840;
   color: #061220;
@@ -7900,113 +7943,15 @@ nextjs-portal,
   color: #ffffff;
 }
 
-.hero-gx__deck-container {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.15rem;
-  overflow: visible;
-  z-index: 5;
-}
-
-.hero-gx__deck-track {
-  display: flex;
-  gap: 1.15rem;
+/* PAGINATION & DECK CONTROLS (UNDER PREVIEW CARDS, z-index: 60) */
+.hero-gx__pagination {
+  position: absolute;
+  display: inline-flex;
   align-items: center;
-  perspective: 1000px;
-}
-
-.hero-gx__card {
-  width: 195px;
-  height: 280px;
-  border-radius: 18px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(10, 25, 45, 0.6);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  flex-shrink: 0;
-  will-change: transform;
-  animation: heroCardSlideIn 0.35s ease-out both;
-}
-
-.hero-gx__card:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.65);
-}
-
-.hero-gx__card--next {
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.15);
-}
-
-.hero-gx__card-image-wrap {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-gx__card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(6, 18, 32, 0.15) 0%, rgba(6, 18, 32, 0.35) 45%, rgba(6, 18, 32, 0.92) 100%);
-}
-
-.hero-gx__card-content {
-  position: absolute;
-  inset: 0;
-  padding: 1rem 0.9rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 2;
-}
-
-.hero-gx__card-badge {
-  align-self: flex-start;
-  padding: 0.18rem 0.48rem;
-  border-radius: 999px;
-  background: rgba(6, 18, 32, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 750;
-  color: #cbd5e1;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.hero-gx__card-title {
-  font-size: 0.985rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
-  line-height: 1.2;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.hero-gx__card-tag {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: #e5a840;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-top: 0.2rem;
-  display: block;
-}
-
-.hero-gx__deck-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding-left: 0.25rem;
+  gap: 1.15rem;
+  pointer-events: auto;
+  z-index: 60;
+  will-change: left, top;
 }
 
 .hero-gx__nav-buttons {
@@ -8016,11 +7961,11 @@ nextjs-portal,
 }
 
 .hero-gx__nav-btn {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -8048,6 +7993,7 @@ nextjs-portal,
 .hero-gx__progress-bar {
   height: 100%;
   background: #e5a840;
+  width: 0%;
 }
 
 .hero-gx__counter {
@@ -8062,7 +8008,7 @@ nextjs-portal,
 
 .hero-gx__counter-active {
   color: #e5a840;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .hero-gx__counter-divider {
@@ -8082,111 +8028,49 @@ nextjs-portal,
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
   white-space: nowrap;
 }
 
-@keyframes heroGxEyebrowReveal {
-  0% {
-    opacity: 0;
-    transform: translateX(-16px);
+/* COMPACT LAPTOP VIEWPORT SCALING */
+@media (max-height: 740px) {
+  .hero-gx__title {
+    font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+    line-height: 1.08;
   }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  .hero-gx__title-wrapper {
+    min-height: auto;
   }
-}
-
-@keyframes heroGxTitlePopup {
-  0% {
-    opacity: 0;
-    transform: translateY(100%);
+  .hero-gx__desc-wrapper {
+    min-height: auto;
   }
-  60% {
-    opacity: 1;
+  .hero-gx__description {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    max-width: 38ch;
   }
-
-@keyframes heroGxDescPopup {
-  0% {
-    opacity: 0;
-    transform: translateY(22px);
+  .hero-gx__details {
+    gap: 0.55rem;
   }
-
-@keyframes heroGxPillPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.85) translateY(10px);
+  .hero-gx__actions {
+    margin-top: 0.35rem;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1.0) translateY(0);
+  .hero-gx__btn-circle {
+    width: 38px;
+    height: 38px;
+  }
+  .hero-gx__btn-pill {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.825rem;
   }
 }
 
-@keyframes heroCardSlideIn {
-  0% {
-    opacity: 0.6;
-    transform: translateX(12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* RESPONSIVE STYLES */
 @media (max-width: 64rem) {
   .hero-gx {
-    min-height: calc(100dvh - 80px);
-    padding: 1.5rem 0;
-  }
-
-  .hero-gx__stage {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.75rem;
-    padding: 0 1.25rem;
-  }
-
-  .hero-gx__content {
-    max-width: 100%;
-  }
-
-  .hero-gx__title {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  .hero-gx__actions {
-    flex-wrap: wrap;
-  }
-
-  .hero-gx__deck-container {
-    width: 100%;
-  }
-
-  .hero-gx__deck-track {
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-right: 1.25rem;
-    gap: 0.85rem;
-    width: 100%;
-  }
-
-  .hero-gx__deck-track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hero-gx__card {
-    width: 160px;
-    height: 230px;
-    border-radius: 14px;
+    min-height: calc(100dvh - 70px);
+    height: auto;
+    overflow: visible;
+    padding-bottom: 3rem;
   }
 }
-
-
