@@ -8201,3 +8201,88 @@ nextjs-portal,
   }
 }
 
+
+/* ELEGANT PROFESSIONAL SCROLL DOWN INDICATOR */
+.hero-gx__scroll-cue {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 60;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-gx__scroll-cue-inner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(6, 18, 32, 0.75);
+  border: 1px solid rgba(229, 168, 64, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5a840;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  animation: heroScrollCuePulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.hero-gx__scroll-cue:hover .hero-gx__scroll-cue-inner {
+  border-color: #e5a840;
+  background: rgba(229, 168, 64, 0.18);
+  transform: scale(1.08);
+}
+
+.hero-gx__scroll-cue svg {
+  width: 16px;
+  height: 16px;
+  stroke: #e5a840;
+  stroke-width: 2.2;
+}
+
+@keyframes heroScrollCuePulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.65;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(229, 168, 64, 0);
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 10px rgba(229, 168, 64, 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gx__scroll-cue-inner {
+    animation: none;
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero-gx__scroll-cue {
+    bottom: 12px;
+  }
+  .hero-gx__scroll-cue-inner {
+    width: 30px;
+    height: 30px;
+  }
+  .hero-gx__scroll-cue svg {
+    width: 15px;
+    height: 15px;
+  }
+}
