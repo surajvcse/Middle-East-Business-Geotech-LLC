@@ -8078,12 +8078,107 @@ nextjs-portal,
   }
 }
 
-/* RESPONSIVE STYLES */
+/* RESPONSIVE STYLES FOR GLOBE EXPRESS HERO */
 @media (max-width: 64rem) {
   .hero-gx {
-    min-height: calc(100dvh - 70px);
-    height: auto;
-    overflow: visible;
-    padding-bottom: 3rem;
+    min-height: 540px;
+    height: calc(100svh - 60px);
+    max-height: 760px;
+    overflow: hidden;
   }
 }
+
+@media (max-width: 48rem) {
+  .hero-gx {
+    min-height: 560px;
+    height: calc(100svh - 58px);
+    max-height: 840px;
+    overflow: hidden;
+  }
+  .hero-gx__vignette {
+    background: 
+      linear-gradient(180deg, rgba(6, 18, 32, 0.25) 0%, rgba(6, 18, 32, 0.1) 20%, rgba(6, 18, 32, 0.72) 48%, rgba(6, 18, 32, 0.98) 78%, #061220 100%),
+      linear-gradient(0deg, rgba(6, 18, 32, 0.98) 0%, transparent 45%);
+  }
+  .hero-gx__details {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    gap: 0.35rem;
+  }
+  .hero-gx__eyebrow-row {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-gx__title-wrapper {
+    min-height: auto;
+    padding: 0;
+  }
+  .hero-gx__title {
+    font-size: clamp(1.35rem, 5.5vw, 1.85rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .hero-gx__desc-wrapper {
+    min-height: auto;
+  }
+  .hero-gx__description {
+    font-size: 0.8125rem;
+    line-height: 1.38;
+    max-width: 36ch;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hero-gx__techniques {
+    display: none;
+  }
+  .hero-gx__actions {
+    margin-top: 0.35rem;
+    gap: 0.5rem;
+  }
+  .hero-gx__btn-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-gx__btn-pill {
+    padding: 0.45rem 1rem;
+    font-size: 0.775rem;
+  }
+  .hero-gx__btn-ghost {
+    display: none;
+  }
+  .hero-gx__pagination {
+    gap: 0.75rem;
+  }
+  .hero-gx__nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .hero-gx__progress-rail {
+    width: 60px;
+  }
+  .hero-gx__counter {
+    font-size: 0.85rem;
+  }
+  .hero-gx__cr-note {
+    display: none;
+  }
+  .hero-gx__card-content {
+    padding: 0.75rem 0.65rem;
+    gap: 0.2rem;
+  }
+  .hero-gx__card-badge {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.55rem;
+  }
+  .hero-gx__card-title {
+    font-size: 0.8rem;
+    line-height: 1.12;
+  }
+  .hero-gx__card-tag {
+    font-size: 0.55rem;
+  }
+}
+
