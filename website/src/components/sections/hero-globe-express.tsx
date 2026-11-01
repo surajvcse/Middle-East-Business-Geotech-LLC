@@ -8,6 +8,14 @@ import gsap from "gsap";
 import type { company } from "@/content/company";
 import type { Project } from "@/types/content";
 
+const CARD_LOCATION_LABEL: Record<string, string> = {
+  "al-ubaidah-fayyad-road": "Buraimi",
+  "khasab-lima-road": "Musandam",
+  "wilayat-manah": "Nizwa",
+  "al-kamil-sur-road": "Al Sharqiyah",
+  "al-sharqiyah-region": "Sharqiyah North",
+};
+
 const PROJECT_BG_POSITION: Record<string, string> = {
   "al-ubaidah-fayyad-road": "center 68%",
   "khasab-lima-road": "40% 55%",
@@ -121,10 +129,10 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     const isCompactHeight = height < 740;
     const isNarrow = width < 1180;
 
-    const cardWidth = isMobile ? 130 : isCompactHeight || isNarrow ? 170 : 205;
-    const cardHeight = isMobile ? 180 : isCompactHeight || isNarrow ? 240 : 290;
+    const cardWidth = isMobile ? 140 : isCompactHeight || isNarrow ? 170 : 205;
+    const cardHeight = isMobile ? 190 : isCompactHeight || isNarrow ? 240 : 290;
     const gap = isMobile ? 12 : isCompactHeight || isNarrow ? 14 : 18;
-    const contentHeight = isMobile ? 84 : 110;
+    const contentHeight = isMobile ? 86 : 110;
 
     const maxContainer = 1360;
     const padLeft = Math.max(isMobile ? 16 : 28, (width - maxContainer) / 2 + (isMobile ? 16 : 28));
@@ -690,7 +698,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           tabIndex={-1}
           aria-hidden="true"
         >
-          <span className="hero-gx__card-badge">{proj.governorate || "Oman"}</span>
+          <span className="hero-gx__card-badge">{CARD_LOCATION_LABEL[proj.slug] || proj.governorate || "Oman"}</span>
           <h2 className="hero-gx__card-title">{proj.shortTitle || proj.title}</h2>
           <span className="hero-gx__card-tag">{proj.quickStat || proj.scope}</span>
         </div>
