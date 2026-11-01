@@ -8,7 +8,7 @@ export function SiteFooter() {
   const currentYear = 2026;
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" role="contentinfo" aria-label="Site Footer">
       <Container className="site-footer__grid">
         {/* Column 1: Company Profile & Credentials */}
         <section className="site-footer__about" aria-labelledby="footer-company">

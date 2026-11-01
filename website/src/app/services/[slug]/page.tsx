@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { KineticProjectGrid } from "@/components/projects/kinetic-project-grid";
 import { ProjectCard } from "@/components/projects/project-card";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Container } from "@/components/ui/container";
+import { ScrollStackedCardGrid } from "@/components/ui/scroll-stacked-card-grid";
 import { projects } from "@/content/projects";
 import { getService, services } from "@/content/services";
 import { getBreadcrumbJsonLd } from "@/lib/structured-data";
@@ -145,32 +147,32 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       {/* 2. RELATED PROJECTS EVIDENCE */}
       {relatedProjects.length > 0 ? (
-        <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)" }}>
+        <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", overflowX: "clip" }}>
           <Container>
             <SectionHeading
               eyebrow="// PROJECT EVIDENCE"
               title={`Verified ${service.shortTitle} site records in Oman`}
               summary="Authentic project experience where this capability was deployed on road and infrastructure corridors."
             />
-            <div className="project-grid">
+            <KineticProjectGrid>
               {relatedProjects.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
-            </div>
+            </KineticProjectGrid>
           </Container>
         </section>
       ) : null}
 
       {/* 3. RELATED SERVICES */}
       {relatedServices.length > 0 ? (
-        <section className="content-section content-section--soft">
+        <section className="content-section content-section--soft" style={{ overflowX: "clip" }}>
           <Container>
             <SectionHeading
               eyebrow="// COMPLEMENTARY DISCIPLINES"
               title="Related geotechnical capabilities"
               summary="Integrated techniques frequently deployed in combination with this service."
             />
-            <div className="related-grid">
+            <ScrollStackedCardGrid className="related-grid">
               {relatedServices.map((relService) => (
                 <Link
                   key={relService.slug}
@@ -187,7 +189,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </span>
                 </Link>
               ))}
-            </div>
+            </ScrollStackedCardGrid>
           </Container>
         </section>
       ) : null}

@@ -5,6 +5,7 @@ import { ContactCta } from "@/components/sections/contact-cta";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Container } from "@/components/ui/container";
+import { ScrollStackedCardGrid } from "@/components/ui/scroll-stacked-card-grid";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* 2. BETTER EXPLANATION: HOW WE SOLVE OMAN'S TERRAIN CHALLENGES */}
-      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", overflowX: "clip" }}>
         <Container>
           <SectionHeading
             eyebrow="ENGINEERING CAPABILITY IN CONTEXT"
@@ -42,7 +43,7 @@ export default function ProjectsPage() {
             summary="Geotechnical slope stabilization is not one-size-fits-all. Here is how our specialized disciplines protect different types of civil and utility assets across the Sultanate."
           />
 
-          <div className="projects-context-grid">
+          <ScrollStackedCardGrid className="projects-context-grid">
             <div className="projects-context-card">
               <div className="projects-context-card__icon" aria-hidden="true">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -99,7 +100,7 @@ export default function ProjectsPage() {
                 Deployed at: <strong>Wilayat Manah (Nizwa) & Al Sharqiyah Regional Water Lines</strong>
               </div>
             </div>
-          </div>
+          </ScrollStackedCardGrid>
 
           {/* 3-Point Quality & Testing Guarantee */}
           <div className="projects-quality-banner">

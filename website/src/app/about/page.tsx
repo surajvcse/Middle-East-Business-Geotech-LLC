@@ -7,6 +7,7 @@ import { RealLeafletMap } from "@/components/maps/real-leaflet-map";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { CubertoCardSpread } from "@/components/ui/cuberto-card-spread";
+import { ScrollStackedCardGrid } from "@/components/ui/scroll-stacked-card-grid";
 import { company } from "@/content/company";
 
 export const metadata: Metadata = {
@@ -411,7 +412,7 @@ export default function AboutPage() {
       </section>
 
       {/* 5. SYSTEMATIC 4-STAGE DELIVERY WORKFLOW */}
-      <section className="content-section">
+      <section className="content-section" style={{ overflowX: "clip" }}>
         <Container>
           <SectionHeading
             eyebrow="SYSTEMATIC WORKFLOW"
@@ -419,7 +420,7 @@ export default function AboutPage() {
             summary="A disciplined, transparent 4-stage engineering model that ensures safety, precision, and zero delays on site."
           />
 
-          <div className="about-process-grid">
+          <ScrollStackedCardGrid className="about-process-grid">
             {deliveryProcess.map((proc) => (
               <div key={proc.step} className="about-process-card">
                 <span className="about-process-card__step">{proc.step}</span>
@@ -427,12 +428,12 @@ export default function AboutPage() {
                 <p className="about-process-card__desc">{proc.desc}</p>
               </div>
             ))}
-          </div>
+          </ScrollStackedCardGrid>
         </Container>
       </section>
 
       {/* 6. WHY LEADING CLIENTS TRUST US */}
-      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)" }}>
+      <section className="content-section content-section--canvas" style={{ borderTop: "1px solid var(--border)", overflowX: "clip" }}>
         <Container>
           <SectionHeading
             eyebrow="THE MEB GEOTECH ADVANTAGE"
@@ -440,7 +441,7 @@ export default function AboutPage() {
             summary="Four concrete operational strengths that set our specialized ground execution apart."
           />
 
-          <div className="about-why-grid">
+          <ScrollStackedCardGrid className="about-why-grid">
             {whyChooseUs.map((item) => (
               <div key={item.title} className="about-why-card">
                 <div className="about-why-card__icon">{item.icon}</div>
@@ -448,7 +449,7 @@ export default function AboutPage() {
                 <p className="about-why-card__desc">{item.desc}</p>
               </div>
             ))}
-          </div>
+          </ScrollStackedCardGrid>
         </Container>
       </section>
 

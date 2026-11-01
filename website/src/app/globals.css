@@ -2987,6 +2987,19 @@ p {
   }
 }
 
+/* Reusable Scroll Stacked Card Grid */
+.scroll-stacked-grid {
+  position: relative;
+  perspective: 1200px;
+}
+
+.scroll-stacked-grid > * {
+  position: relative;
+  will-change: transform, box-shadow;
+  transform-origin: center center;
+  background: var(--surface);
+}
+
 /* Engineering Approach Section (Execution Methodology Animated) */
 .methodology-animated-section {
   position: relative;
