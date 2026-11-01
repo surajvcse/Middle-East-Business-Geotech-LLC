@@ -1111,6 +1111,10 @@ p {
 }
 
 @media (max-width: 48rem) {
+  .hero-gx__status-tag {
+    display: none !important;
+  }
+
   .content-section--elevated-deck {
     margin-top: 0;
   }
@@ -8205,15 +8209,15 @@ nextjs-portal,
 /* ELEGANT PROFESSIONAL SCROLL DOWN INDICATOR */
 .hero-gx__scroll-cue {
   position: absolute;
-  bottom: 14px;
+  bottom: 46px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -8224,11 +8228,11 @@ nextjs-portal,
 }
 
 .hero-gx__scroll-cue-inner {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(6, 18, 32, 0.75);
-  border: 1px solid rgba(229, 168, 64, 0.4);
+  background: rgba(6, 18, 32, 0.78);
+  border: 1px solid rgba(229, 168, 64, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -8247,10 +8251,10 @@ nextjs-portal,
 }
 
 .hero-gx__scroll-cue svg {
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   stroke: #e5a840;
-  stroke-width: 2.2;
+  stroke-width: 2.3;
 }
 
 @keyframes heroScrollCuePulse {
@@ -8275,7 +8279,7 @@ nextjs-portal,
 
 @media (max-width: 48rem) {
   .hero-gx__scroll-cue {
-    bottom: 12px;
+    bottom: 46px;
   }
   .hero-gx__scroll-cue-inner {
     width: 30px;

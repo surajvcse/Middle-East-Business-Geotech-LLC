@@ -52,6 +52,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
   const paginationRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const counterActiveRef = useRef<HTMLSpanElement>(null);
+  const scrollCueRef = useRef<HTMLButtonElement>(null);
 
   const orderRef = useRef<number[]>(Array.from({ length: projects.length }, (_, i) => i));
   const stepRef = useRef<(forward?: boolean) => void>(() => {});
@@ -152,16 +153,23 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
     let paginationTop: number;
 
     if (isMobile) {
-      const bottomPad = 20;
+      const scrollCueHeight = 32;
+      const gapScrollToPagination = 12;
       const paginationHeight = 38;
       const cardGapToPagination = 12;
       const detailsGapToCard = 14;
       const mobileDetailsHeight = 168;
 
       const totalBlockHeight =
-        mobileDetailsHeight + detailsGapToCard + cardHeight + cardGapToPagination + paginationHeight;
+        mobileDetailsHeight +
+        detailsGapToCard +
+        cardHeight +
+        cardGapToPagination +
+        paginationHeight +
+        gapScrollToPagination +
+        scrollCueHeight;
       const freeSpace = Math.max(0, height - totalBlockHeight);
-      const startY = Math.max(36, Math.round(freeSpace * 0.68));
+      const startY = Math.max(32, Math.round(freeSpace * 0.52));
 
       detailsTop = Math.round(startY);
       offsetTop = Math.round(detailsTop + mobileDetailsHeight + detailsGapToCard);
@@ -204,7 +212,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
         timerTweenRef.current.kill();
       }
 
-      const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, contentHeight, paginationTop, isMobile } =
+      const { width, height, cardWidth, cardHeight, gap, offsetLeft, offsetTop, detailsLeft, detailsTop, contentHeight, isMobile } =
         getLayoutMetrics();
       const order = orderRef.current;
 
@@ -536,6 +544,25 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       counterActiveRef.current.textContent = String(active + 1).padStart(2, "0");
     }
 
+    // Position scroll cue
+    if (scrollCueRef.current) {
+      if (isMobile) {
+        gsap.set(scrollCueRef.current, {
+          left: "50%",
+          xPercent: -50,
+          top: paginationTop + 48,
+          bottom: "auto",
+        });
+      } else {
+        gsap.set(scrollCueRef.current, {
+          left: "50%",
+          xPercent: -50,
+          top: "auto",
+          bottom: 46,
+        });
+      }
+    }
+
     stepRef.current = step;
 
     // Start auto-play timer
@@ -597,6 +624,23 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
           left: m.offsetLeft,
           top: m.paginationTop,
         });
+      }
+      if (scrollCueRef.current) {
+        if (m.isMobile) {
+          gsap.set(scrollCueRef.current, {
+            left: "50%",
+            xPercent: -50,
+            top: m.paginationTop + 48,
+            bottom: "auto",
+          });
+        } else {
+          gsap.set(scrollCueRef.current, {
+            left: "50%",
+            xPercent: -50,
+            top: "auto",
+            bottom: 46,
+          });
+        }
       }
     };
 
@@ -868,6 +912,7 @@ export function HeroGlobeExpress({ projects, company }: HeroGlobeExpressProps) {
       </div>
       {/* 6. PROFESSIONAL SCROLL-DOWN CUE (Indicating content below) */}
       <button
+        ref={scrollCueRef}
         type="button"
         className="hero-gx__scroll-cue"
         onClick={handleScrollDown}
