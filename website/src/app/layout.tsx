@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp";
 import { company } from "@/content/company";
 import { withBasePath } from "@/lib/site-path";
 import { getOrganizationJsonLd } from "@/lib/structured-data";
@@ -82,6 +83,7 @@ export default function RootLayout({
             {children}
           </main>
           <SiteFooter />
+          <FloatingWhatsApp />
         </div>
       </body>
     </html>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker, TileLayer as LeafletTileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { GoogleMapsNetwork } from "./google-maps-network";
 
 export type MapLocation = {
   id: string;
@@ -109,12 +108,6 @@ export function RealLeafletMap({
   showSidebar = true,
 }: RealLeafletMapProps) {
   const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
-  const googleApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-  const hasGoogleKey = Boolean(googleApiKey && googleApiKey.trim() !== "");
-
-  const [engine, setEngine] = useState<"google" | "leaflet">(
-    hasGoogleKey && mode === "network" ? "google" : "leaflet"
-  );
 
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<LeafletMap | null>(null);
@@ -132,7 +125,7 @@ export function RealLeafletMap({
     OMAN_OPERATIONAL_LOCATIONS[0];
 
   useEffect(() => {
-    if (!isClient || engine !== "leaflet" || !mapContainerRef.current) return;
+    if (!isClient || !mapContainerRef.current) return;
 
     let isMounted = true;
 
@@ -305,17 +298,6 @@ export function RealLeafletMap({
     map.flyTo([24.2, 57.5], 7, { duration: 1.2 });
   };
 
-  if (engine === "google" && hasGoogleKey && googleApiKey && mode === "network") {
-    return (
-      <GoogleMapsNetwork
-        apiKey={googleApiKey}
-        height={height}
-        showSidebar={showSidebar}
-        onFallbackNeeded={() => setEngine("leaflet")}
-      />
-    );
-  }
-
   return (
     <div className="real-map-wrapper">
       {/* Map Control Toolbar */}
@@ -371,7 +353,7 @@ export function RealLeafletMap({
             className="real-map-toolbar__btn real-map-toolbar__btn--accent"
             title="Open in Google Maps application"
           >
-            <span>Google Maps</span>
+            <span>Get Directions</span>
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M3.333 8h9.334M8.667 4l4 4-4 4" />
             </svg>

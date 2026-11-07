@@ -287,16 +287,6 @@ export function DesktopNav() {
             {/* <span className="desktop-nav__badge"></span> */}
           </Link>
         </li>
-
-        <li>
-          <Link
-            href="/contact"
-            className={`desktop-nav__link ${isItemActive("/contact") ? "desktop-nav__link--active" : ""}`}
-            aria-current={isItemActive("/contact") ? "page" : undefined}
-          >
-            Contact
-          </Link>
-        </li>
       </ul>
 
       <div className="desktop-nav__actions">

@@ -6,9 +6,11 @@ export const company = {
     "Specialist geotechnical engineering and construction solutions for slopes, ground improvement, foundations and underground works in the Sultanate of Oman.",
   shortDescription:
     "Specialist geotechnical design and execution solutions for demanding infrastructure projects in Oman.",
-  phone: "+968 7721 8808",
-  phoneHref: "+96877218808",
-  email: "sudhan@mebgeo.com",
+  phone: "+968 9094 0953",
+  phoneHref: "+96890940953",
+  whatsapp: "+968 9094 0953",
+  whatsappHref: "https://wa.me/96890940953?text=Hello%20MEB%20Geotech%20Team%2C%20I%20would%20like%20to%20discuss%20a%20geotechnical%20requirement%20in%20Oman.",
+  email: "info@mebgeo.com",
   crNumber: "1583382",
   address: {
     line1: "Flat 12/6, Building 1040, Way 3513",
