@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { withBasePath } from "@/lib/site-path";
@@ -30,8 +30,66 @@ type ServicesInteractiveAccordionProps = {
 
 export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAccordionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isInteractingRef = useRef(false);
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        ticking = false;
+        // Only run on mobile/tablet viewport (< 56rem / 896px)
+        if (window.innerWidth > 896 || isInteractingRef.current) return;
+
+        const panels = panelRefs.current;
+        if (!panels || panels.length === 0) return;
+
+        const triggerY = window.innerHeight * 0.38;
+        let closestIdx = 0;
+        let minDistance = Infinity;
+
+        panels.forEach((panel, idx) => {
+          if (!panel) return;
+          const rect = panel.getBoundingClientRect();
+          // Distance from panel top/center to trigger threshold
+          const panelCenter = rect.top + Math.min(rect.height, 100) / 2;
+          const dist = Math.abs(panelCenter - triggerY);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIdx = idx;
+          }
+        });
+
+        setActiveIndex((prev) => {
+          if (prev === closestIdx) return prev;
+          const currentPanel = panels[prev];
+          if (currentPanel) {
+            const currentRect = currentPanel.getBoundingClientRect();
+            const currentCenter = currentRect.top + Math.min(currentRect.height, 100) / 2;
+            const currentDist = Math.abs(currentCenter - triggerY);
+            // 35px buffer prevents flutter around transition boundary
+            if (currentDist - minDistance < 35) {
+              return prev;
+            }
+          }
+          return closestIdx;
+        });
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [services.length]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") {
       e.preventDefault();
       setActiveIndex((prev) => (prev + 1) % services.length);
@@ -57,6 +115,7 @@ export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAc
         return (
           <div
             key={service.slug}
+            ref={(el) => { panelRefs.current[index] = el; }}
             className={`services-accordion__panel ${
               isActive ? "services-accordion__panel--active" : "services-accordion__panel--compact"
             }`}
@@ -64,7 +123,7 @@ export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAc
             onMouseEnter={() => setActiveIndex(index)}
             onClick={() => setActiveIndex(index)}
             onFocus={() => setActiveIndex(index)}
-            onKeyDown={(e) => handleKeyDown(e, index)}
+            onKeyDown={(e) => handleKeyDown(e)}
             tabIndex={0}
             role="tab"
             aria-selected={isActive}
@@ -88,11 +147,9 @@ export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAc
               <span className="services-accordion__num">
                 {numFormatted}
               </span>
-              {isActive && (
-                <span className="services-accordion__category">
+              <span className="services-accordion__category">
                   {service.category}
                 </span>
-              )}
             </div>
 
             {/* COMPACT STATE: Vertical Rotated Title Ribbon (Smooth Cross-Fade) */}
@@ -104,6 +161,9 @@ export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAc
               }`}
               aria-hidden={isActive}
             >
+              <span className="services-accordion__vertical-num">
+                {numFormatted}
+              </span>
               <span className="services-accordion__vertical-text">
                 {shortTitle}
               </span>
@@ -153,7 +213,7 @@ export function ServicesInteractiveAccordion({ services }: ServicesInteractiveAc
                 <Link
                   href={`/services/${service.slug}`}
                   className="services-accordion__cta-btn group"
-                  tabIndex={isActive ? 0 : -1}
+                  tabIndex={0}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span>Explore capability details</span>
