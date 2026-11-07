@@ -2356,7 +2356,8 @@ p {
   width: 100%;
   height: 116%;
   object-fit: cover;
-  will-change: transform;
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 /* Whole-Column Dual-Block Opposing 3D Kinetic Motion Stage */
@@ -3390,7 +3391,8 @@ p {
 .values-band {
   background: var(--navy-deep);
   color: rgba(255, 255, 255, 0.82);
-  padding-block: clamp(4.5rem, 7vw, 6.5rem);
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+  overflow-x: clip;
 }
 
 .values-band h2 {
