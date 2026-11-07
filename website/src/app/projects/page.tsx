@@ -24,7 +24,7 @@ export default function ProjectsPage() {
         ]}
         eyebrow="VERIFIED FIELD EXECUTION · SULTANATE OF OMAN"
         title="Geotechnical slope protection and ground engineering across Oman."
-        summary="Explore our verified infrastructure packages across mountain highway cuttings, coastal sea-cliffs, and regional water networks—delivered for government authorities and leading Tier-1 EPC contractors."
+        summary="Explore our verified infrastructure packages across mountain highway cuttings, coastal sea-cliffs, and regional water networks—delivered for government authorities and leading EPC contractors."
       />
 
       {/* 1. INTERACTIVE PROJECTS DIRECTORY */}
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
           <SectionHeading
             eyebrow="ENGINEERING CAPABILITY IN CONTEXT"
             title="How our packages protect Oman's critical infrastructure"
-            summary="Geotechnical slope stabilization is not one-size-fits-all. Here is how our specialized disciplines protect different types of civil and utility assets across the Sultanate."
+            summary="Slope stabilization is not one-size-fits-all. Here is how our specialized disciplines protect different types of civil and utility assets across Oman."
           />
 
           <ScrollStackedCardGrid className="projects-context-grid">
@@ -56,7 +56,7 @@ export default function ProjectsPage() {
               </span>
               <h3>Mountain Pass & Road Cuttings</h3>
               <p>
-                Blasted mountain highway cuts expose fractured sedimentary and ophiolite rock formations. MEB Geotech constructs stepped shotcrete benches with drainage berms, rock bolts, and concrete ditch lining to permanently arrest slope degradation and prevent rockfalls onto traffic lanes.
+                Blasted mountain highway cuts expose cracked and unstable rock formations. MEB Geotech builds stepped shotcrete benches with drainage ditches, pattern rock bolts, and wire netting to stop slope erosion and prevent rocks from falling onto traffic lanes.
               </p>
               <div className="projects-context-card__tag">
                 Deployed at: <strong>Al Ubaidah to Fayyad Road & Al Kamil to Sur Expressway</strong>
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
               </span>
               <h3>Vertical Coastal Sea-Cliffs</h3>
               <p>
-                In coastal corridors like Musandam, towering limestone cliffs drop directly into the sea or road corridors, offering zero ground access. MEB Geotech mobilizes heavy cranes with suspended work platforms and certified rope-access drilling teams to anchor rock faces and install dynamic rockfall barriers.
+                In coastal areas like Musandam, vertical limestone cliffs rise directly above roads and sea corridors with no ground access. MEB Geotech mobilizes heavy cranes with suspended work baskets and certified rope-access drillers to install pattern rock bolts and dynamic rockfall barriers.
               </p>
               <div className="projects-context-card__tag">
                 Deployed at: <strong>Khasab to Lima Coastal Road Corridor (Musandam)</strong>
@@ -94,7 +94,7 @@ export default function ProjectsPage() {
               </span>
               <h3>Strategic Potable Water Corridors</h3>
               <p>
-                Regional water networks run through rugged terrain where excavated pipeline trenches run alongside unstable rocky slopes. We install high-tensile wire mesh drapery pinned with rock bolts and poured bench concrete to protect critical transmission mains against impact and earth movement.
+                Water pipelines often run through rugged mountain terrain where open pipeline trenches sit next to unstable rock slopes. We drape high-strength wire mesh pinned with rock bolts and pour concrete benches to protect water transmission mains from falling rocks and earth movement.
               </p>
               <div className="projects-context-card__tag">
                 Deployed at: <strong>Wilayat Manah (Nizwa) & Al Sharqiyah Regional Water Lines</strong>
@@ -110,7 +110,7 @@ export default function ProjectsPage() {
               </span>
               <h3>Every project is backed by verified geotechnical QA/QC testing.</h3>
               <p>
-                We do not just install steel and concrete; our Muscat engineering team subjects every package to rigorous testing before final client sign-off.
+                We do not just install steel and concrete; our Muscat engineering team tests every element to ensure safety and quality before client sign-off.
               </p>
             </div>
 
@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                 <div className="quality-point__number">01</div>
                 <h4>Calibrated Pull-Out Proof Testing</h4>
                 <p>
-                  Installed rock bolts and ground anchors are verified with calibrated hydraulic hollow-cylinder jacks to confirm holding capacity exceeds design requirements.
+                  Installed rock bolts and ground anchors are tested with calibrated hydraulic jacks to confirm holding capacity exceeds design requirements.
                 </p>
               </div>
 
@@ -127,7 +127,7 @@ export default function ProjectsPage() {
                 <div className="quality-point__number">02</div>
                 <h4>Grout Pressure & Core Testing</h4>
                 <p>
-                  High-pressure grout logging and continuous core compressive strength tests ensure full encapsulation and zero void spaces in fractured rock.
+                  Continuous grout pressure monitoring and concrete core tests ensure full encapsulation and zero voids in cracked rock.
                 </p>
               </div>
 
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
                 <div className="quality-point__number">03</div>
                 <h4>Oman Authority Standards</h4>
                 <p>
-                  Full adherence to Sultanate of Oman Ministry of Transport, Communications & IT (MTCIT) Highway Specifications and NAMA Water Services engineering standards.
+                  Full compliance with Oman Ministry of Transport (MTCIT) Highway Specifications and NAMA Water Services engineering standards.
                 </p>
               </div>
             </div>
@@ -145,8 +145,8 @@ export default function ProjectsPage() {
 
       <ContactCta
         eyebrow="Tender & Project Enquiries"
-        title="Have a comparable infrastructure site in Oman?"
-        summary="Discuss your slope protection, grouting or foundation requirements with our Muscat team. We provide preliminary constructability reviews and detailed method statements."
+        title="Have a similar infrastructure project in Oman?"
+        summary="Discuss your slope protection, grouting, or foundation requirements with our Muscat team. We provide preliminary site reviews and clear method statements."
       />
     </>
   );

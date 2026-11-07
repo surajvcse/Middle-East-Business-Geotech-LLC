@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ContactCta } from "@/components/sections/contact-cta";
 import { PageHero } from "@/components/sections/page-hero";
+import { OperationalStandardsAnimated } from "@/components/sections/operational-standards-animated";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RealLeafletMap } from "@/components/maps/real-leaflet-map";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -28,11 +29,11 @@ const corePillars = [
     badge: "Muscat Headquartered · CR 1583382",
     title: "Who We Are",
     description:
-      "Middle East Business Geotech LLC is a licensed specialist geotechnical engineering contractor based in Muscat, Sultanate of Oman. We are not general builders — our entire organization is dedicated 100% to ground risk, rock mechanics, and specialized sub-surface construction.",
+      "Middle East Business Geotech LLC is a licensed geotechnical contractor based in Muscat, Oman. We focus 100% on ground engineering, rock mechanics, and specialized sub-surface construction.",
     bulletPoints: [
       "Commercial Registration: CR 1583382 (Muscat, Oman)",
-      "Head office & fleet mobilization yard based in South Al Khuwair, Muscat",
-      "Full compliance with Oman Ministry & international engineering standards",
+      "Head office and equipment yard based in South Al Khuwair, Muscat",
+      "Full compliance with Oman ministry and international engineering standards",
     ],
   },
   {
@@ -46,11 +47,11 @@ const corePillars = [
     badge: "Specialist Field Scope",
     title: "What We Do on Site",
     description:
-      "We execute critical ground and rock packages that keep Oman's infrastructure safe: stabilizing steep mountain highways, installing high-capacity ground anchors and rock bolts, spraying structural shotcrete, erecting rockfall mesh, and drilling foundation piles.",
+      "We protect mountain roads, install rock bolts and ground anchors, spray structural shotcrete, install rockfall mesh, drill foundation piles, and strengthen weak ground across Oman.",
     bulletPoints: [
-      "Mountain slope stabilization, high-tensile wire mesh & rockfall barriers",
-      "Prestressed ground anchors & high-torque self-drilling rock bolts",
-      "Structural wet/dry shotcrete, deep bored piling & pressure grouting",
+      "Slope stabilization, high-strength wire mesh & rockfall catch barriers",
+      "Prestressed ground anchors & self-drilling rock bolts",
+      "Structural wet and dry shotcrete, bored piling & pressure grouting",
     ],
   },
   {
@@ -65,11 +66,11 @@ const corePillars = [
     badge: "Trusted Engineering Partners",
     title: "Who We Work With",
     description:
-      "We bridge the gap between engineering design concepts and tough ground reality. We work as dedicated specialist subcontractors and package contractors for government authorities, engineering consultants, and tier-1 EPC main contractors.",
+      "We work as dedicated specialist subcontractors for government authorities, engineering consultants, and leading EPC main contractors across Oman.",
     bulletPoints: [
-      "Civil Authorities: Ministry of Transport (MTCIT) & NAMA Water Services",
-      "Tier-1 EPC Main Contractors: Al Tasnim, Sarooj Construction, Towell Infrastructure",
-      "Direct technical collaboration with geotechnical and structural consultants",
+      "Government Authorities: Ministry of Transport (MTCIT) & NAMA Water Services",
+      "Leading Main Contractors: Al Tasnim, Sarooj Construction, Towell Infrastructure",
+      "Direct technical coordination with geotechnical and structural consultants",
     ],
   },
   {
@@ -83,11 +84,11 @@ const corePillars = [
     badge: "Sultanate-Wide Reach",
     title: "Where We Operate",
     description:
-      "From the steep coastal rock fjords of Musandam to the fractured mountain passes of Al Hajar and deep wadi excavations in Nizwa and Buraimi, our drilling rigs, grouting plants, and certified rope-access slope crews deploy anywhere across Oman.",
+      "From the coastal sea-cliffs of Musandam to the mountain passes of Al Hajar and wadi excavations in Nizwa and Buraimi, our drilling rigs and slope crews deploy anywhere across Oman.",
     bulletPoints: [
-      "Active and completed packages across Musandam, Buraimi, Nizwa & Muscat",
-      "Fast nationwide mobilization of specialized crawler drill rigs & slope teams",
-      "Proven execution experience in extreme heat, high angles, and remote terrains",
+      "Completed and active packages in Musandam, Buraimi, Nizwa, Al Sharqiyah, and Muscat",
+      "Fast nationwide mobilization of crawler drill rigs and specialized slope teams",
+      "Proven experience working in high desert heat, remote terrain, and vertical cliffs",
     ],
   },
 ];
@@ -96,43 +97,43 @@ const corePillars = [
 const coreCapabilities = [
   {
     num: "01",
-    title: "Mountain Slope Protection & Rockfall Mitigation",
+    title: "Mountain Slope Protection & Rockfall Safety",
     plainMeaning:
-      "Protecting highways, roads, and buildings from falling boulders, crumbling mountain cuttings, and rockslides.",
+      "Stopping rockfalls, landslides, and crumbling slopes to protect roads, pipelines, and buildings.",
     howWeDoIt:
-      "We drill pattern rock bolts deep into solid rock formations, drape high-tensile steel wire netting across fractured cliff faces, and spray fiber-reinforced structural shotcrete to seal open joints and prevent weather erosion.",
+      "We drill strong steel rock bolts deep into solid rock, drape high-strength steel wire mesh across steep faces, and spray shotcrete to prevent erosion.",
     typicalSites:
-      "Highway mountain passes (e.g. Khasab to Lima Road, Al Ubaidah Road), steep wadi cuts, and civil infrastructure platforms.",
+      "Mountain road cuts (e.g. Khasab to Lima Road, Al Ubaidah Road), steep wadi banks, and building platforms.",
   },
   {
     num: "02",
     title: "Ground Anchors & High-Capacity Rock Bolting",
     plainMeaning:
-      "Tying back and firmly anchoring unstable rock masses, hillsides, or retaining walls deep into solid bedrock.",
+      "Holding back unstable rock walls, hillsides, and deep excavation pits by anchoring them deep into solid bedrock.",
     howWeDoIt:
-      "Hydraulic rotary crawler rigs drill deep boreholes into stable rock strata. High-grade multi-strand steel tendon cables or solid steel bars are inserted, pressure-grouted with calibrated cement, and tensioned tight using calibrated hydraulic jacks.",
+      "Hydraulic crawler rigs drill deep holes into stable rock. Steel tendon cables or solid steel bars are inserted, pressure-grouted with cement, and pulled tight with calibrated hydraulic jacks.",
     typicalSites:
-      "Deep highway rock cuts, bridge abutment reinforcements, water reservoir embankments, and deep construction pit retention walls.",
+      "Deep highway cuttings, bridge abutments, water reservoir embankments, and deep building basement walls.",
   },
   {
     num: "03",
-    title: "Deep Piling & Excavation Earth Retention",
+    title: "Deep Piling & Excavation Shoring",
     plainMeaning:
-      "Building underground concrete columns and wall barriers to hold back earth and support heavy civil structures.",
+      "Building underground concrete walls and foundation columns to support heavy structures and keep deep excavation pits safe.",
     howWeDoIt:
-      "We install continuous secant pile walls to block groundwater and soil collapse, construct bored cast-in-place foundation piles, and install rock micropiles where standard large machinery cannot access.",
+      "We drill contiguous and secant pile walls to block soil and groundwater, construct cast-in-place foundation piles, and install rock micropiles in tight spaces.",
     typicalSites:
-      "Deep pumping stations, water treatment facility shafts, bridge foundations, and building basement excavations.",
+      "Deep pump stations, water treatment shafts, highway bridges, and multi-level basement excavations.",
   },
   {
     num: "04",
-    title: "Soil Improvement & Water Infiltration Grouting",
+    title: "Soil Improvement & Pressure Grouting",
     plainMeaning:
-      "Injecting specialized cement grout into weak, loose soil or cracked rock to make the ground strong, solid, and watertight.",
+      "Injecting cement grout into loose soil or cracked rock to make the ground strong, solid, and watertight.",
     howWeDoIt:
-      "We inject cementitious or chemical grouts under high pressure through drilled sleeves (TAM / Tube à Manchette) or fissure pipes, consolidating loose ground into a solid, impermeable barrier.",
+      "We pump cement or chemical grout under controlled pressure through drilled injection pipes (TAM), filling cracks and voids to create a solid, water-tight barrier.",
     typicalSites:
-      "Dam foundation cut-offs, water transmission pipeline trenches, wadi riverbed stabilization, and underground seepage control.",
+      "Dam foundations, water pipeline trenches, riverbed wadi stabilization, and underground water leak sealing.",
   },
 ];
 
@@ -141,22 +142,22 @@ const deliveryProcess = [
   {
     step: "01",
     title: "Ground Risk & Borehole Review",
-    desc: "We analyze site borehole logs, geological discontinuity mapping, and terrain access with project consultants to identify rockfall and ground failure risks before mobilization.",
+    desc: "We study soil reports, borehole logs, and site access with project consultants to identify risks before mobilization.",
   },
   {
     step: "02",
     title: "Method Engineering & Plant Selection",
-    desc: "We select the exact drilling rigs, anchor tendon capacities, shotcrete mix specifications, and high-angle safety rigging tailored specifically to your site geology.",
+    desc: "We choose the exact drilling rigs, calculate anchor capacities, and prepare method statements tailored to your site geology.",
   },
   {
     step: "03",
     title: "Controlled On-Site Execution",
-    desc: "Our crawler drill rigs, calibrated grouting plants, and certified rope-access technicians install all ground elements under strict daily QA/QC supervision and safety protocols.",
+    desc: "Our crawler drill rigs, grouting plants, and rope-access technicians install all ground elements under daily quality control and strict safety rules.",
   },
   {
     step: "04",
     title: "Proof Testing & Certified Sign-Off",
-    desc: "Every anchor undergoes calibrated pull-out load testing. Shotcrete cores are tested for compressive strength, and complete certified QA/QC handover dossiers are provided for consultant approval.",
+    desc: "Every anchor is pull-tested with calibrated hydraulic jacks. Shotcrete is tested for strength, and certified quality dossiers are submitted for consultant sign-off.",
   },
 ];
 
@@ -166,13 +167,13 @@ const whyChooseUs = [
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="1" y="3" width="15" height="13" />
-        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+        <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
         <circle cx="5.5" cy="18.5" r="2.5" />
         <circle cx="18.5" cy="18.5" r="2.5" />
       </svg>
     ),
     title: "Specialist Heavy Fleet",
-    desc: "Tracked hydraulic drilling rigs, crane-suspended work platforms, and calibrated grouting plants purpose-built for Oman's tough rock formations.",
+    desc: "Tracked hydraulic drill rigs, crane-suspended work platforms, and grouting plants purpose-built for Oman's tough rock formations.",
   },
   {
     icon: (
@@ -181,7 +182,7 @@ const whyChooseUs = [
       </svg>
     ),
     title: "Certified Rope-Access Crews",
-    desc: "Trained rope-access technicians certified for high-angle drilling, scaling, and netting on near-vertical mountain cliffs where cranes cannot reach.",
+    desc: "Trained technicians certified for high-angle drilling, rock scaling, and netting on vertical cliffs where cranes cannot reach.",
   },
   {
     icon: (
@@ -190,8 +191,8 @@ const whyChooseUs = [
         <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
     ),
-    title: "100% In-House QA/QC Verification",
-    desc: "Calibrated hydraulic jacks for anchor pull-out proof testing and core compressive test records that pass consultant audits on first review.",
+    title: "100% In-House Quality Testing",
+    desc: "Calibrated hydraulic jacks for anchor pull testing and concrete core tests that pass consultant audits on first review.",
   },
   {
     icon: (
@@ -200,8 +201,8 @@ const whyChooseUs = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    title: "Direct Muscat Engineering Response",
-    desc: "Direct communication with our Muscat technical management. We provide prompt tender reviews, constructability advice, and realistic proposals within 24h.",
+    title: "Direct Muscat Engineering Support",
+    desc: "Speak directly with our Muscat engineering management for fast tender reviews, constructability advice, and clear proposals.",
   },
 ];
 
@@ -210,27 +211,27 @@ const standards = [
   {
     num: "01",
     title: "Engineering Integrity",
-    desc: "Honest technical decisions strictly grounded in sound geotechnical principles. We recommend constructible methods designed for longevity rather than shortcuts.",
+    desc: "Honest technical recommendations based on sound geotechnical principles and long-term durability rather than shortcuts.",
   },
   {
     num: "02",
     title: "Safety on Vertical Faces",
-    desc: "Certified rope-access gear, dual-line safety setups, daily harness inspections, and strict stop-work authority on steep rock cuttings.",
+    desc: "Certified rope-access gear, dual-rope safety systems, daily harness checks, and strict safety rules on steep mountain slopes.",
   },
   {
     num: "03",
     title: "Environmental Care",
-    desc: "Rigorous containment of cement grout runoff to protect Oman’s sensitive wadis, natural water tables, and fragile desert terrain.",
+    desc: "Clean containment of cement grout to protect Oman’s natural wadis, groundwater, and desert environment.",
   },
   {
     num: "04",
     title: "Technical Precision",
-    desc: "Calibrated pressure gauges, digital grouting logs, and exact alignment checks on irregular mountain rock faces to meet ministry specs.",
+    desc: "Calibrated pressure gauges, digital grouting logs, and exact alignment checks to meet Oman ministry standards.",
   },
   {
     num: "05",
     title: "Accountable Delivery",
-    desc: "Transparent daily site reporting, reliable milestone tracking, and collaborative problem-solving with main EPC contractors and consultants.",
+    desc: "Clear daily site reports, reliable schedule tracking, and close teamwork with main contractors and consultants.",
   },
 ];
 
@@ -403,7 +404,7 @@ export default function AboutPage() {
               Strategic Geotechnical Operations Across Oman
             </h2>
             <p style={{ color: "var(--muted)", maxWidth: "68ch", margin: 0, fontSize: "0.975rem", lineHeight: 1.6 }}>
-              Interactive real map network of our deployed infrastructure packages and central Muscat headquarters. Toggle between cartographic road map and satellite geological views to inspect project terrains.
+              Interactive map showing our project locations and central Muscat headquarters. Switch between road and satellite views to explore project sites.
             </p>
           </div>
 
@@ -416,8 +417,8 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="SYSTEMATIC WORKFLOW"
-            title="How we execute every project from first review to certified sign-off."
-            summary="A disciplined, transparent 4-stage engineering model that ensures safety, precision, and zero delays on site."
+            title="How we deliver every project from first review to certified sign-off."
+            summary="A disciplined, transparent 4-stage engineering process that ensures safety, precision, and zero delays on site."
           />
 
           <ScrollStackedCardGrid className="about-process-grid">
@@ -437,8 +438,8 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="THE MEB GEOTECH ADVANTAGE"
-            title="Why leading consultants and EPC contractors choose us."
-            summary="Four concrete operational strengths that set our specialized ground execution apart."
+            title="Why leading consultants and main contractors choose us."
+            summary="Four practical operational strengths that set our specialized ground execution apart."
           />
 
           <ScrollStackedCardGrid className="about-why-grid">
@@ -454,37 +455,19 @@ export default function AboutPage() {
       </section>
 
       {/* 7. OPERATIONAL STANDARDS & COMMITMENTS */}
-      <section className="values-band">
-        <Container>
-          <p className="eyebrow" style={{ color: "var(--steel-light)" }}>OPERATIONAL STANDARDS</p>
-          <h2>Engineering integrity, technical precision and safe site execution.</h2>
-          <p className="values-band__lead">
-            Slope protection and underground construction involve inherent operational hazards. We mandate
-            systematic risk assessments, task-specific method statements, calibrated safety equipment, and continuous
-            ground monitoring on every project in Oman.
-          </p>
-
-          <ul className="values-band__grid">
-            {standards.map((val) => (
-              <li key={val.num} className="values-band__item">
-                <span className="values-band__item-num">{val.num} · STANDARD</span>
-                <h3>{val.title}</h3>
-                <p>{val.desc}</p>
-              </li>
-            ))}
-          </ul>
-
-          <div className="values-band__note">
-            All methods are planned and executed to relevant Oman ministry specifications (MTCIT / NAMA) and international geotechnical engineering standards (BS / ASTM / Eurocode).
-          </div>
-        </Container>
-      </section>
+      <OperationalStandardsAnimated
+        eyebrow="OPERATIONAL STANDARDS"
+        heading={<h2>Engineering integrity, technical precision and safe site execution.</h2>}
+        lead="Slope protection and underground works require careful safety planning. We follow detailed safety method statements, use calibrated equipment, and maintain active ground monitoring on every project in Oman."
+        standards={standards.map((s) => ({ ...s, badgeSuffix: "· STANDARD" }))}
+        note="All methods follow Oman ministry specifications and international geotechnical engineering standards."
+      />
 
       {/* 8. FINAL CONSULTATION CTA */}
       <ContactCta
         eyebrow="PROJECT CONSULTATION"
-        title="Discuss your ground conditions and infrastructure requirements."
-        summary="Share your project drawings, borehole data or tender scope with our Muscat technical team for a constructability review and qualified proposal."
+        title="Discuss your ground conditions and project requirements."
+        summary="Share your project drawings, borehole data, or tender documents with our Muscat engineering team for a constructability review and clear proposal."
       />
     </>
   );

@@ -33,7 +33,7 @@ export default function ContactPage() {
         ]}
         eyebrow="MUSCAT HEADQUARTERS"
         title="Discuss site conditions, geotechnical scope and tender constraints."
-        summary="Connect directly with our engineering and estimation team in Muscat. We review geological reports, borehole logs and tender drawings to develop qualified geotechnical proposals."
+        summary="Connect directly with our engineering team in Muscat. We review soil and rock reports, borehole logs, and tender drawings to provide clear, practical geotechnical proposals."
       />
 
       <section className="content-section">
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 </span>
                 <h2>Direct Engineering Channels</h2>
                 <p style={{ color: "var(--muted)", margin: "0 0 1.25rem", fontSize: "0.95rem" }}>
-                  For immediate tender enquiries, site visits, or technical consultations, contact our project engineers directly:
+                  For tender enquiries, site visits, or technical questions, contact our engineers directly:
                 </p>
 
                 <div className="contact-channels">
@@ -61,7 +61,7 @@ export default function ContactPage() {
                     <div>
                       <h3>Telephone</h3>
                       <a href={`tel:${company.phoneHref}`}>{company.phone}</a>
-                      <p style={{ color: "var(--muted)", fontSize: "0.825rem", margin: "0.2rem 0 0" }}>Direct line for technical consultations and tender enquiries</p>
+                      <p style={{ color: "var(--muted)", fontSize: "0.825rem", margin: "0.2rem 0 0" }}>Direct line for project questions and tender enquiries</p>
                     </div>
                   </div>
 
@@ -79,7 +79,7 @@ export default function ContactPage() {
                         {company.whatsapp}
                       </a>
                       <p style={{ color: "var(--muted)", fontSize: "0.825rem", margin: "0.2rem 0 0" }}>
-                        Instant messaging for drawings, site photos, and urgent geotechnical coordination
+                        Send site photos, drawings, and location pins for quick review
                       </p>
                     </div>
                   </div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                         {company.email}
                       </a>
                       <p style={{ color: "var(--muted)", fontSize: "0.825rem", margin: "0.2rem 0 0" }}>
-                        Send drawings, tender documents, or borehole records
+                        Send drawings, tender documents, or borehole logs
                       </p>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function ContactPage() {
                   Preparing Your Geotechnical Enquiry
                 </h2>
                 <p style={{ color: "var(--muted)", fontSize: "0.925rem", lineHeight: 1.6 }}>
-                  To ensure our engineering team can provide an accurate constructability assessment and commercial quotation, we recommend supplying the following technical inputs when submitting your project enquiry:
+                  To help our engineering team provide an accurate review and quotation, please share the following details with your project enquiry:
                 </p>
 
                 <ol className="intake-steps">
@@ -161,34 +161,34 @@ export default function ContactPage() {
                     <div>
                       <h3>Project Location & Site Access</h3>
                       <p>
-                        Specify the governorate, road corridor or utility coordinates, along with any access constraints for heavy drilling rigs or suspended slope platforms.
+                        Tell us the governorate, road, or GPS coordinates, along with any access limits for heavy drilling rigs or high-angle slope equipment.
                       </p>
                     </div>
                   </li>
                   <li className="intake-step">
                     <span className="intake-step__num">2</span>
                     <div>
-                      <h3>Geological & Borehole Information</h3>
+                      <h3>Soil & Rock Information</h3>
                       <p>
-                        Provide available geotechnical investigation reports, borehole logs, rock mass discontinuity surveys, or groundwater level observations.
+                        Share available soil investigation reports, borehole logs, rock photos, or groundwater observations.
                       </p>
                     </div>
                   </li>
                   <li className="intake-step">
                     <span className="intake-step__num">3</span>
                     <div>
-                      <h3>Scope & Drawings</h3>
+                      <h3>Scope of Work & Drawings</h3>
                       <p>
-                        Include tender drawings, cross-sections, required anchor loads, shotcrete thickness, piling layout, or bill of quantities (BOQ) where available.
+                        Include tender drawings, cross-sections, required anchor loads, shotcrete thickness, or bill of quantities (BOQ) if available.
                       </p>
                     </div>
                   </li>
                   <li className="intake-step">
                     <span className="intake-step__num">4</span>
                     <div>
-                      <h3>Schedule & Phasing Constraints</h3>
+                      <h3>Target Schedule & Milestones</h3>
                       <p>
-                        State target mobilisation dates, intermediate milestone constraints, and coordination requirements with ongoing earthworks or civil contractors.
+                        Let us know your target start date, project milestones, and any coordination needed with main civil contractors.
                       </p>
                     </div>
                   </li>
@@ -196,7 +196,7 @@ export default function ContactPage() {
 
                 <div style={{ marginTop: "2rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border-subtle)" }}>
                   <p style={{ color: "var(--muted-light)", fontSize: "0.825rem", margin: 0 }}>
-                    <strong>Confidentiality Notice:</strong> All technical drawings, tender data and project details submitted to Middle East Business Geotech LLC are handled with strict commercial confidentiality.
+                    <strong>Confidentiality Notice:</strong> All drawings, borehole logs, and tender details submitted to Middle East Business Geotech LLC are kept strictly confidential.
                   </p>
                 </div>
               </div>

@@ -12,10 +12,10 @@ const serviceList = [
   { label: "Ground Anchors & Bolting", href: "/services/ground-anchors-and-rock-bolting" },
   { label: "Shotcrete & Wire Netting", href: "/services/shotcrete-and-wire-netting" },
   { label: "Rockfall Protection", href: "/services/rockfall-protection" },
-  { label: "Ground Improvement & Grouting", href: "/services/ground-improvement-grouting" },
-  { label: "Piling & Deep Foundations", href: "/services/piling-and-foundations" },
-  { label: "Shoring & Excavation Support", href: "/services/shoring-and-excavation-support" },
-  { label: "Microtunneling & Shafts", href: "/services/microtunneling-underground-works" },
+  { label: "Ground Improvement & Grouting", href: "/services/ground-improvement-and-grouting" },
+  { label: "Piling & Deep Foundations", href: "/services/piling-and-foundation-engineering" },
+  { label: "Tunnelling & Underground Works", href: "/services/tunnelling-and-underground-works" },
+  { label: "Infrastructure Rehabilitation", href: "/services/infrastructure-rehabilitation" },
 ] as const;
 
 export function MobileMenu() {

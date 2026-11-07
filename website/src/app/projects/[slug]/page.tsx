@@ -145,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <line x1="12" y1="8" x2="12.01" y2="8"/>
               </svg>
               <span>
-                <strong>Verification Note:</strong> Project status is reproduced from company documentation and is maintained with this qualification until verified for public launch.
+                <strong>Verification Note:</strong> Project status is based on company engineering records and contract submittals.
               </span>
             </p>
           </div>
@@ -157,8 +157,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Container>
           <SectionHeading
             eyebrow="// SITE PHOTOGRAPHY"
-            title="Authentic project execution records"
-            summary="Real site photographs documenting completed benches, drilling access, rock bolt installations, and high-tensile wire netting on location."
+            title="Site photographs from project execution"
+            summary="Real site photographs showing completed benches, drilling access, rock bolts, and wire netting on location."
           />
 
           <ProjectGallery images={project.images} />
@@ -171,7 +171,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <SectionHeading
             eyebrow="// DEPLOYED DISCIPLINES"
             title="Geotechnical capabilities deployed on this site"
-            summary="Specialist engineering methods integrated to address slope stability and asset protection on this project."
+            summary="Specialist engineering methods integrated to protect slopes and infrastructure on this project."
           />
 
           <div className="related-grid">
@@ -187,7 +187,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <h3>{service.title}</h3>
                 <p>{service.summary}</p>
                 <span className="text-link" style={{ marginTop: "auto" }}>
-                  Inspect capability specification <span aria-hidden="true">→</span>
+                  View technical details <span aria-hidden="true">→</span>
                 </span>
               </Link>
             ))}
@@ -197,8 +197,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <ContactCta
         eyebrow="Similar Infrastructure Scope?"
-        title="Consult our team on comparable site conditions in Oman."
-        summary="From steep mountain cuttings to pipeline slope protection, our Muscat engineers evaluate site geology, borehole data and logistical requirements."
+        title="Consult our team on similar site conditions in Oman."
+        summary="From steep mountain cuttings to pipeline slope protection, our Muscat engineers evaluate site geology, borehole data, and logistical needs."
       />
     </>
   );

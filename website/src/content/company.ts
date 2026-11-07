@@ -1,11 +1,11 @@
 export const company = {
   name: "Middle East Business Geotech LLC",
   shortName: "MEB Geotech",
-  tagline: "Specialist Geotechnical Engineering & Construction",
+  tagline: "Specialist Geotechnical Engineering & Contracting",
   description:
-    "Specialist geotechnical engineering and construction solutions for slopes, ground improvement, foundations and underground works in the Sultanate of Oman.",
+    "Specialist geotechnical contractor in Oman. We protect steep slopes, strengthen weak ground, install deep foundations, and build underground structures safely and on time.",
   shortDescription:
-    "Specialist geotechnical design and execution solutions for demanding infrastructure projects in Oman.",
+    "Specialist geotechnical engineering and ground construction across the Sultanate of Oman.",
   phone: "+968 9094 0953",
   phoneHref: "+96890940953",
   whatsapp: "+968 9094 0953",

@@ -9,6 +9,7 @@ import { ServicesInteractiveAccordion } from "@/components/services/services-int
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { MaskedTextReveal } from "@/components/ui/masked-text-reveal";
+import { OperationalStandardsAnimated } from "@/components/sections/operational-standards-animated";
 import { company } from "@/content/company";
 import { projects } from "@/content/projects";
 import { services } from "@/content/services";
@@ -17,22 +18,22 @@ const engineeringApproachSteps = [
   {
     num: "01",
     title: "Geological Assessment",
-    desc: "Borehole log review, rock mass analysis and constructability checks with project consultants.",
+    desc: "We study soil and rock tests, borehole logs, and site risks with your project consultants before starting work.",
   },
   {
     num: "02",
     title: "Method Engineering",
-    desc: "Rig selection, anchor load design and execution methodology tailored to site ground risks.",
+    desc: "We choose the right drilling rigs, calculate anchor loads, and prepare clear execution plans for your site conditions.",
   },
   {
     num: "03",
-    title: "Controlled Execution",
-    desc: "Specialist drilling rigs, rope-access slope crews and calibrated grouting plants under strict QA/QC.",
+    title: "Controlled Site Work",
+    desc: "Our crawler drill rigs, rope-access technicians, and grouting teams execute the work safely under daily quality control.",
   },
   {
     num: "04",
     title: "Testing & Sign-Off",
-    desc: "Proof pull-out tests, shotcrete coring, anchor load logs and certified handover dossiers.",
+    desc: "We test every ground anchor, verify shotcrete strength, and provide certified quality reports for consultant approval.",
   },
 ];
 
@@ -40,27 +41,27 @@ const valuesList = [
   {
     num: "01",
     title: "Engineering Integrity",
-    desc: "Decisions grounded in geological evidence and transparent ground risk evaluation.",
+    desc: "Practical decisions based on real ground facts, clear testing, and proven engineering standards.",
   },
   {
     num: "02",
     title: "Technical Precision",
-    desc: "Calibrated drilling and grouting equipment aligned to exact design specifications.",
+    desc: "Modern drilling and grouting equipment calibrated to meet exact project specifications.",
   },
   {
     num: "03",
     title: "Safety & Well-Being",
-    desc: "Certified rope-access gear and zero-compromise protocols on steep rock slopes.",
+    desc: "Certified rope-access gear and zero-compromise safety rules on steep mountain slopes.",
   },
   {
     num: "04",
     title: "Environmental Care",
-    desc: "Grout containment, runoff control and minimal footprint on Oman’s natural terrain.",
+    desc: "Clean grout control and runoff management to protect Oman’s natural valleys and desert terrain.",
   },
   {
     num: "05",
     title: "Accountable Delivery",
-    desc: "Transparent reporting and reliable execution for consultants and EPC contractors.",
+    desc: "Clear daily site reporting and dependable execution for consultants and main contractors.",
   },
 ];
 
@@ -70,19 +71,19 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. CINEMATIC EXPANDING-CARD HERO (Pinterest / Globe Express Shared-Element Design) */}
+      {/* 1. CINEMATIC EXPANDING-CARD HERO */}
       <HeroGlobeExpress projects={projects} company={company} />
 
-      {/* 3. COMPANY INTRODUCTION (Locomotive Scroll Animation) */}
+      {/* 2. COMPANY INTRODUCTION */}
       <ContractorRoleAnimated company={company} />
 
-      {/* 4. CORE SERVICES */}
+      {/* 3. CORE SERVICES */}
       <section className="content-section content-section--soft">
         <Container>
           <SectionHeading
             eyebrow="CORE GEOTECHNICAL DISCIPLINES"
-            title="Specialist methods selected around site ground conditions."
-            summary="Core engineering disciplines for road, water, and civil infrastructure across Oman."
+            title="Specialist geotechnical methods built for Oman's ground conditions."
+            summary="Core engineering disciplines for road, water, and civil infrastructure across the Sultanate."
           />
 
           <ServicesInteractiveAccordion services={featuredServices} />
@@ -92,46 +93,32 @@ export default function HomePage() {
               View all 8 specialist services
             </ButtonLink>
             <span style={{ fontSize: "0.875rem", color: "var(--muted)" }}>
-              Includes ground improvement, deep piling and infrastructure rehabilitation
+              Includes ground improvement, deep piling, and underground works
             </span>
           </div>
         </Container>
       </section>
 
-      {/* 5. ENGINEERING APPROACH / EXECUTION METHODOLOGY */}
+      {/* 4. ENGINEERING APPROACH / EXECUTION METHODOLOGY */}
       <ExecutionMethodologyAnimated steps={engineeringApproachSteps} />
 
-      {/* 6. FEATURED PROJECTS */}
+      {/* 5. FEATURED PROJECTS */}
       <FeaturedProjectsAnimated projects={featuredProjects} />
 
-      {/* 7. VALUES AND STANDARDS */}
-      <section className="values-band">
-        <Container>
-          <p className="eyebrow" style={{ color: "var(--steel-light)" }}>OPERATIONAL STANDARDS</p>
+      {/* 6. VALUES AND STANDARDS */}
+      <OperationalStandardsAnimated
+        eyebrow="OPERATIONAL STANDARDS"
+        heading={
           <MaskedTextReveal as="h2" type="lines" stagger={0.09} trigger="scroll" scrollStart="top 85%">
             Engineering integrity, technical precision and safe site execution.
           </MaskedTextReveal>
-          <p className="values-band__lead">
-            Disciplined execution and uncompromising safety on steep rock faces and deep excavations.
-          </p>
+        }
+        lead="Disciplined site work and uncompromising safety on steep rock faces and deep excavations."
+        standards={valuesList}
+        note="All methods follow Oman ministry specifications and international geotechnical engineering standards."
+      />
 
-          <ul className="values-band__grid">
-            {valuesList.map((val) => (
-              <li key={val.num} className="values-band__item">
-                <span className="values-band__item-num">{val.num}</span>
-                <h3>{val.title}</h3>
-                <p>{val.desc}</p>
-              </li>
-            ))}
-          </ul>
-
-          <div className="values-band__note">
-            All methods are planned and executed to relevant Oman ministry specifications and international geotechnical engineering standards.
-          </div>
-        </Container>
-      </section>
-
-      {/* 8. FINAL CONSULTATION CTA */}
+      {/* 7. FINAL CONSULTATION CTA */}
       <ContactCta />
     </>
   );

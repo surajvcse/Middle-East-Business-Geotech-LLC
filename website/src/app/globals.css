@@ -3415,11 +3415,24 @@ p {
 }
 
 .values-band__item {
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  padding-top: 1.25rem;
+  background: rgba(14, 25, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 2px solid var(--steel-light);
+  border-radius: var(--radius-sm, 8px);
+  padding: 1.6rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  transition: border-color 200ms ease, background 200ms ease;
+  will-change: transform;
+}
+
+.values-band__item:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  border-top-color: var(--accent);
+  background: rgba(18, 34, 56, 0.98);
 }
 
 .values-band__item-num {
