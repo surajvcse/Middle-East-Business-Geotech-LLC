@@ -10,7 +10,7 @@ import { getOrganizationJsonLd } from "@/lib/structured-data";
 
 import "./globals.css"; // v2.1
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeotech.com";
 
 export const viewport: Viewport = {
   width: "device-width",

@@ -6,7 +6,7 @@ import { services } from "@/content/services";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeotech.com";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

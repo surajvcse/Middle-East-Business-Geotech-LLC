@@ -1,7 +1,7 @@
 import { company } from "@/content/company";
 
 export function getOrganizationJsonLd() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeotech.com";
 
   return {
     "@context": "https://schema.org",
@@ -40,7 +40,7 @@ export function getOrganizationJsonLd() {
 }
 
 export function getBreadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeo.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mebgeotech.com";
 
   return {
     "@context": "https://schema.org",
