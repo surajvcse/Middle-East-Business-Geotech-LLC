@@ -30,16 +30,16 @@ export default function PrivacyPolicyPage() {
                 Operational Status Note
               </span>
               <p style={{ margin: "0.25rem 0 0", fontSize: "0.9rem", color: "var(--muted)", lineHeight: 1.55 }}>
-                This privacy policy provides our interim technical data handling standard. A final comprehensive legal privacy statement will be published following formal operational confirmation of enquiry storage, web hosting and analytics configurations prior to public commercial launch.
+                This privacy notice explains how Middle East Business Geotech LLC collects, uses, and protects your project information, tender documents, and contact details.
               </p>
             </div>
 
             <div>
               <h2 style={{ fontSize: "1.45rem", marginBottom: "0.85rem", color: "var(--navy-deep)" }}>
-                1. Information We Receive
+                1. Information We Collect
               </h2>
               <p style={{ color: "var(--muted)", lineHeight: 1.65 }}>
-                When you contact Middle East Business Geotech LLC via telephone, email, or formal correspondence, we collect professional information necessary to evaluate and respond to your geotechnical engineering enquiry. This may include:
+                When you contact us by phone, WhatsApp, email, or tender letter, we collect the details needed to evaluate your site and prepare a qualified engineering quotation. This may include:
               </p>
               <ul style={{ color: "var(--muted)", paddingLeft: "1.25rem", lineHeight: 1.65 }}>
                 <li>Your name, job title, and organization name.</li>
@@ -50,16 +50,16 @@ export default function PrivacyPolicyPage() {
 
             <div>
               <h2 style={{ fontSize: "1.45rem", marginBottom: "0.85rem", color: "var(--navy-deep)" }}>
-                2. Use of Information
+                2. How We Use Your Information
               </h2>
               <p style={{ color: "var(--muted)", lineHeight: 1.65 }}>
-                We use the information you provide solely to:
+                We use your information only to:
               </p>
               <ul style={{ color: "var(--muted)", paddingLeft: "1.25rem", lineHeight: 1.65 }}>
-                <li>Evaluate constructability, geotechnical parameters, and scope requirements.</li>
-                <li>Prepare and submit commercial proposals, engineering method statements, and tenders.</li>
-                <li>Communicate with your project team regarding technical coordination and site visits.</li>
-                <li>Fulfil statutory, contractual, and commercial registration obligations in the Sultanate of Oman.</li>
+                <li>Review site conditions, soil reports, and engineering scope.</li>
+                <li>Prepare quotations, method statements, and project proposals.</li>
+                <li>Coordinate site visits and technical reviews with your team.</li>
+                <li>Meet contractual and legal requirements in the Sultanate of Oman.</li>
               </ul>
             </div>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
                 3. Technical Drawing & Tender Confidentiality
               </h2>
               <p style={{ color: "var(--muted)", lineHeight: 1.65 }}>
-                We treat all client and consultant project documentation—including borehole logs, structural drawings, geotechnical investigation reports, and tender pricing—with strict commercial confidentiality. Documents are reviewed exclusively by authorized technical and estimating personnel.
+                We treat all client and consultant documents—including borehole logs, structural drawings, soil reports, and pricing—with strict commercial confidentiality. Only authorized engineering and estimating staff can access your files.
               </p>
             </div>
 
@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
                 4. Third-Party Disclosures
               </h2>
               <p style={{ color: "var(--muted)", lineHeight: 1.65 }}>
-                We do not sell, rent, or trade your contact or project details. Information is shared externally only when required to execute agreed project scopes (e.g., submitting required subcontractor packages to project owners or consultants) or where mandated by applicable laws of the Sultanate of Oman.
+                We do not sell, rent, or share your contact or project details with third parties for marketing. We only share project data with clients, main contractors, or consultants when required to carry out approved site work, or where required by Oman law.
               </p>
             </div>
 

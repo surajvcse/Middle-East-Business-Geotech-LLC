@@ -201,8 +201,8 @@ export function DesktopNav() {
                 <ul className="nav-dropdown__list">
                   <li>
                     <Link
-                      href="/services/ground-improvement-grouting"
-                      className={pathname === "/services/ground-improvement-grouting" ? "active" : ""}
+                      href="/services/ground-improvement-and-grouting"
+                      className={pathname === "/services/ground-improvement-and-grouting" ? "active" : ""}
                       onClick={() => setIsServicesOpen(false)}
                     >
                       Ground Improvement & Grouting
@@ -210,8 +210,8 @@ export function DesktopNav() {
                   </li>
                   <li>
                     <Link
-                      href="/services/piling-and-foundations"
-                      className={pathname === "/services/piling-and-foundations" ? "active" : ""}
+                      href="/services/piling-and-foundation-engineering"
+                      className={pathname === "/services/piling-and-foundation-engineering" ? "active" : ""}
                       onClick={() => setIsServicesOpen(false)}
                     >
                       Piling & Deep Foundations
@@ -241,20 +241,20 @@ export function DesktopNav() {
                 <ul className="nav-dropdown__list">
                   <li>
                     <Link
-                      href="/services/shoring-and-excavation-support"
-                      className={pathname === "/services/shoring-and-excavation-support" ? "active" : ""}
-                      onClick={() => setIsServicesOpen(false)}
-                    >
-                      Shoring & Excavation Support
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       href="/services/tunnelling-and-underground-works"
                       className={pathname === "/services/tunnelling-and-underground-works" ? "active" : ""}
                       onClick={() => setIsServicesOpen(false)}
                     >
-                      Microtunneling & Shafts
+                      Tunnelling & Underground Works
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/infrastructure-rehabilitation"
+                      className={pathname === "/services/infrastructure-rehabilitation" ? "active" : ""}
+                      onClick={() => setIsServicesOpen(false)}
+                    >
+                      Infrastructure Rehabilitation
                     </Link>
                   </li>
                 </ul>
@@ -263,7 +263,7 @@ export function DesktopNav() {
 
             <div className="nav-dropdown__footer">
               <span className="nav-dropdown__footer-note">
-                Engineered design calculations, anchor verification & field execution across Oman.
+                Engineered design, field testing & safe site execution across Oman.
               </span>
               <Link
                 href="/contact"

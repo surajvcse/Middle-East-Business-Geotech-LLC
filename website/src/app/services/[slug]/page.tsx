@@ -10,7 +10,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { Container } from "@/components/ui/container";
 import { ScrollStackedCardGrid } from "@/components/ui/scroll-stacked-card-grid";
 import { projects } from "@/content/projects";
-import { getService, services } from "@/content/services";
+import { getAllServiceSlugs, getService, services } from "@/content/services";
 import { getBreadcrumbJsonLd } from "@/lib/structured-data";
 
 type ServicePageProps = {
@@ -18,7 +18,7 @@ type ServicePageProps = {
 };
 
 export function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
+  return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <div>
               <p className="eyebrow">{"// ENGINEERING OVERVIEW"}</p>
               <h2 style={{ marginBottom: "1.25rem", color: "var(--navy-deep)" }}>
-                Application & Technical Methodology
+                How This Method Works On Site
               </h2>
               <div style={{ color: "var(--muted)", fontSize: "1.0625rem", lineHeight: 1.65 }}>
                 <p>{service.introduction}</p>
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {service.fieldTesting ? (
                 <div style={{ marginTop: "1rem", background: "rgba(30, 94, 76, 0.06)", borderLeft: "3px solid #1E5E4C", padding: "1rem 1.25rem", borderRadius: "var(--radius-sm)" }}>
                   <span style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", color: "#1E5E4C", fontFamily: "var(--font-mono)", marginBottom: "0.25rem" }}>
-                    QA/QC & Field Verification Protocol
+                    Quality Control & Field Testing
                   </span>
                   <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--navy-deep)", lineHeight: 1.5 }}>
                     {service.fieldTesting}
@@ -124,7 +124,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
               <section className="detail-spec-card">
-                <h2>Scope & Capabilities</h2>
+                <h2>What We Deliver</h2>
                 <ul className="spec-list">
                   {service.capabilities.map((item) => (
                     <li key={item}>{item}</li>
@@ -133,7 +133,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </section>
 
               <section className="detail-spec-card">
-                <h2>Typical Applications</h2>
+                <h2>Where This Method Is Used</h2>
                 <ul className="spec-list">
                   {service.applications.map((item) => (
                     <li key={item}>{item}</li>
@@ -152,7 +152,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <SectionHeading
               eyebrow="// PROJECT EVIDENCE"
               title={`Verified ${service.shortTitle} site records in Oman`}
-              summary="Authentic project experience where this capability was deployed on road and infrastructure corridors."
+              summary="Real project experience where our team deployed this capability across Oman."
             />
             <KineticProjectGrid>
               {relatedProjects.map((project) => (
@@ -170,7 +170,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <SectionHeading
               eyebrow="// COMPLEMENTARY DISCIPLINES"
               title="Related geotechnical capabilities"
-              summary="Integrated techniques frequently deployed in combination with this service."
+              summary="Complementary methods often deployed alongside this service."
             />
             <ScrollStackedCardGrid className="related-grid">
               {relatedServices.map((relService) => (
@@ -198,7 +198,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <ContactCta
         eyebrow="Technical Enquiry"
         title={`Discuss ${service.title} for your site`}
-        summary="Supply your project location, borehole logs or tender drawings. Our engineering team in Muscat will evaluate geotechnical parameters and respond with method recommendations."
+        summary="Share your project location, borehole data, or tender drawings. Our engineering team in Muscat will review the ground parameters and provide method recommendations."
       />
     </>
   );

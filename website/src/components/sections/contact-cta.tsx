@@ -11,8 +11,8 @@ type ContactCtaProps = {
 
 export function ContactCta({
   eyebrow = "Project Consultation",
-  title = "Discuss your ground conditions and infrastructure requirements.",
-  summary = "Share your project location, site geology or tender scope with our engineering team in Muscat. We review drawings, borehole data and site constraints to develop practical geotechnical solutions.",
+  title = "Discuss your ground conditions and project requirements.",
+  summary = "Share your project location, site conditions, or tender drawings with our engineering team in Muscat. We review borehole data and access constraints to recommend practical, cost-effective solutions.",
 }: ContactCtaProps) {
   return (
     <section className="contact-cta" aria-labelledby="contact-cta-title">

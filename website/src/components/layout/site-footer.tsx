@@ -17,7 +17,7 @@ export function SiteFooter() {
           </span>
           <h2 id="footer-company">{company.name}</h2>
           <p style={{ maxWidth: "26rem", fontSize: "0.9rem", color: "rgba(255, 255, 255, 0.72)", lineHeight: 1.6 }}>
-            Specialist geotechnical engineering and construction solutions for slopes, ground improvement, foundations and underground works in the Sultanate of Oman.
+            Specialist geotechnical contractor in Oman. We protect slopes, strengthen weak ground, install deep foundations, and build underground structures safely and on time.
           </p>
 
           <div className="site-footer__meta-box">

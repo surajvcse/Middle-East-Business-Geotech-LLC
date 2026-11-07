@@ -24,7 +24,7 @@ export default function ServicesPage() {
         ]}
         eyebrow="SPECIALIST GEOTECHNICAL DISCIPLINES · SULTANATE OF OMAN"
         title="Engineered geotechnical methods tailored to Oman's ground conditions."
-        summary="From active rock bolting and high-pressure shotcrete to jet grouting, deep bored piling, and underground works—our specialist design and execution capabilities protect critical infrastructure across the Sultanate of Oman."
+        summary="From rock bolting and high-pressure shotcrete to jet grouting, deep bored piling, and underground works—our specialist engineering and site execution keep critical infrastructure safe across Oman."
       />
 
       {/* 1. INTERACTIVE SERVICES DIRECTORY */}
@@ -40,51 +40,51 @@ export default function ServicesPage() {
           <SectionHeading
             eyebrow="METHOD SELECTION & EXECUTION"
             title="How we determine and deliver the right geotechnical solution"
-            summary="Ground engineering in Oman requires strict geological correlation and rigorous field proofing. Here is our systematic 4-stage engineering delivery workflow."
+            summary="Ground engineering in Oman requires careful geological analysis and proven site testing. Here is our systematic 4-stage engineering delivery process."
           />
 
           <ScrollStackedCardGrid className="services-workflow-grid">
             <div className="services-workflow-card">
               <div className="services-workflow-card__step">01</div>
-              <h3>Geological Mapping & Discontinuity Survey</h3>
+              <h3>Geological Review & Rock Mapping</h3>
               <p>
-                Our engineering geologists examine rock mass ratings (RMR/Q-system), bedding planes, joint orientations, and borehole stratigraphy to identify true failure mechanisms before equipment mobilization.
+                Our engineering geologists study rock formations, bedding planes, cracks, and borehole data to understand how the ground behaves before bringing equipment to the site.
               </p>
               <div className="services-workflow-card__footer">
-                <span>Output:</span> Kinematic Stability Assessment
+                <span>Output:</span> Rock Stability Assessment
               </div>
             </div>
 
             <div className="services-workflow-card">
               <div className="services-workflow-card__step">02</div>
-              <h3>Engineered Design & Method Statement</h3>
+              <h3>Method Engineering & Calculation</h3>
               <p>
-                We develop constructible engineering packages—calculating required anchor bond lengths, tension capacities, shotcrete mix designs, and weep-hole spacing in full alignment with client consultants.
+                We calculate required anchor lengths, pull capacities, shotcrete mixes, and drainage spacing, preparing clear shop drawings aligned with consultant requirements.
               </p>
               <div className="services-workflow-card__footer">
-                <span>Output:</span> Approved Method Statement & Shop Drawings
+                <span>Output:</span> Approved Method Statement & Drawings
               </div>
             </div>
 
             <div className="services-workflow-card">
               <div className="services-workflow-card__step">03</div>
-              <h3>Specialist Rig Mobilization & Rigging</h3>
+              <h3>Equipment Mobilization & Setup</h3>
               <p>
-                Deploying tracked crawler drill rigs, crane-suspended work platforms, or high-pressure grout plants with certified rope-access drillers and equipment operators experienced in extreme Oman topography.
+                We mobilize tracked crawler drill rigs, suspended work platforms, or grouting plants with certified rope-access drillers experienced in Oman&apos;s mountain terrain.
               </p>
               <div className="services-workflow-card__footer">
-                <span>Output:</span> Safe Controlled Field Execution
+                <span>Output:</span> Safe & Controlled Site Execution
               </div>
             </div>
 
             <div className="services-workflow-card">
               <div className="services-workflow-card__step">04</div>
-              <h3>Field Proof Testing & Certified Sign-off</h3>
+              <h3>Field Proof Testing & Certified Handover</h3>
               <p>
-                Every installed ground anchor is tested with calibrated hydraulic hollow-cylinder jacks to exceed design tensile load. Continuous grout pressure logs and core compressive tests verify structural integrity.
+                Every installed ground anchor is tested with calibrated hydraulic jacks to exceed design loads. Grout pressure logs and core tests verify long-term quality.
               </p>
               <div className="services-workflow-card__footer">
-                <span>Output:</span> QA/QC Certified Handover Record
+                <span>Output:</span> Certified QA/QC Handover Records
               </div>
             </div>
           </ScrollStackedCardGrid>
@@ -97,7 +97,7 @@ export default function ServicesPage() {
           <SectionHeading
             eyebrow="FIELD READINESS & PLANT FLEET"
             title="Specialist equipment deployed on Oman infrastructure"
-            summary="Geotechnical engineering in Oman's mountain passes and coastal cliffs demands specialized machinery. Our Muscat operations yard maintains high-angle and deep-drilling equipment."
+            summary="Geotechnical engineering in Oman's mountain passes and coastal cliffs requires purpose-built machinery. Our Muscat equipment yard maintains high-angle and deep-drilling equipment ready for nationwide mobilization."
           />
 
           <ScrollStackedCardGrid className="services-plant-grid">
@@ -110,7 +110,7 @@ export default function ServicesPage() {
               </div>
               <h4>Tracked Hydraulic Crawler Rigs</h4>
               <p>
-                High-torque rotary percussive and DTH drill rigs capable of traversing steep berms and uneven rock benches for pattern anchor installations.
+                High-torque rotary percussive drill rigs that can move across steep mountain benches and rough terrain to install pattern rock bolts.
               </p>
               <span className="plant-tag">Drilling & Rock Bolting</span>
             </div>
@@ -125,7 +125,7 @@ export default function ServicesPage() {
               </div>
               <h4>Crane-Suspended Work Platforms</h4>
               <p>
-                Heavy crane-suspended man-baskets engineered for vertical sea-cliffs and rockfall barrier installations where ground machinery cannot stand.
+                Heavy crane-supported work baskets built for vertical sea-cliffs and high rock cuttings where ground machines cannot reach.
               </p>
               <span className="plant-tag">Musandam Sea-Cliffs & High Cuts</span>
             </div>
@@ -138,7 +138,7 @@ export default function ServicesPage() {
               </div>
               <h4>Automated Grout Mixing & Injection Plants</h4>
               <p>
-                High-pressure colloidal grout mixers and progressive cavity pumps with electronic flowmeter and pressure recording for karst permeation and anchor encapsulation.
+                High-pressure colloidal grout mixers and pumps with electronic pressure gauges to fill voids, seal cracks, and secure ground anchors.
               </p>
               <span className="plant-tag">Pressure Grouting & Anchors</span>
             </div>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
               </div>
               <h4>Calibrated Hydraulic Proof Jacks</h4>
               <p>
-                Hollow-cylinder hydraulic jacks with certified pressure gauges to conduct in-situ pull-out proof testing up to 150% of design load on every anchor batch.
+                Hydraulic jacks with certified pressure gauges to test every batch of ground anchors up to 150% of design load on site.
               </p>
               <span className="plant-tag">Certified QA/QC Verification</span>
             </div>
@@ -161,8 +161,8 @@ export default function ServicesPage() {
 
       <ContactCta
         eyebrow="Technical Consultation"
-        title="Need guidance on method selection for your site in Oman?"
-        summary="Speak with our geotechnical engineers in Muscat. We evaluate site borehole data, rock mass ratings, and logistical constraints to recommend the most cost-effective and safe geotechnical methodology."
+        title="Need guidance on choosing the right method for your site in Oman?"
+        summary="Speak with our geotechnical engineers in Muscat. We evaluate your borehole reports, rock conditions, and site access to recommend the most cost-effective and safe geotechnical solution."
       />
     </>
   );

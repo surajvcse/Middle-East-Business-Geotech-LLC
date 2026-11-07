@@ -206,7 +206,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
           <div data-loco data-loco-delay="1">
             <SectionHeading
               eyebrow="SPECIALIST CONTRACTOR ROLE · SULTANATE OF OMAN"
-              title="Design and execution capability built around Oman’s demanding geology."
+              title="Geotechnical design and site execution built for Oman’s tough terrain."
             />
           </div>
 
@@ -242,15 +242,15 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                   <div className="editorial-capability-item__body">
                     <div className="editorial-item-title-row">
                       <h4>Design & Build Integration</h4>
-                      <span className="editorial-item-pill">Turnkey Package</span>
+                      <span className="editorial-item-pill">Turnkey Scope</span>
                     </div>
                     <p>
-                      Translating geological data, borehole stratigraphy, and rock mass discontinuity surveys into constructible site packages.
+                      We turn borehole data, soil tests, and geological surveys into safe, practical engineering solutions for your project.
                     </p>
                     <div className="editorial-item-tags">
-                      <span>Borehole Correlation</span>
-                      <span>Discontinuity Mapping</span>
-                      <span>Prestressed Anchor Design</span>
+                      <span>Soil & Rock Testing</span>
+                      <span>Slope Analysis</span>
+                      <span>Anchor Load Design</span>
                     </div>
                   </div>
                 </li>
@@ -265,16 +265,16 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                   </div>
                   <div className="editorial-capability-item__body">
                     <div className="editorial-item-title-row">
-                      <h4>Specialist Plant & High-Angle Rigging</h4>
-                      <span className="editorial-item-pill">Rigging Plant</span>
+                      <h4>Specialist Fleet & High-Angle Access</h4>
+                      <span className="editorial-item-pill">Specialist Fleet</span>
                     </div>
                     <p>
-                      Tracked hydraulic drilling rigs, crane-suspended work platforms, and certified rope-access crews on steep mountain cuttings.
+                      Tracked hydraulic drill rigs, crane-suspended work platforms, and certified rope-access crews for steep mountain slopes.
                     </p>
                     <div className="editorial-item-tags">
-                      <span>Tracked Crawler Rigs</span>
+                      <span>Crawler Drill Rigs</span>
                       <span>Suspended Platforms</span>
-                      <span>Certified Rope-Access</span>
+                      <span>Certified Rope Access</span>
                     </div>
                   </div>
                 </li>
@@ -289,16 +289,16 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                   </div>
                   <div className="editorial-capability-item__body">
                     <div className="editorial-item-title-row">
-                      <h4>Rigorous QA/QC Verification</h4>
-                      <span className="editorial-item-pill">Certified Sign-Off</span>
+                      <h4>Rigorous Quality Control & Testing</h4>
+                      <span className="editorial-item-pill">Certified Testing</span>
                     </div>
                     <p>
-                      Prestressed anchor pull-out proof testing, high-pressure grout pressure logging, and shotcrete core compressive analysis.
+                      Calibrated pull-out tests on every anchor, continuous grout pressure logs, and shotcrete core tests that satisfy consultant audits.
                     </p>
                     <div className="editorial-item-tags">
-                      <span>Proof Testing Loads</span>
-                      <span>Continuous Grout Logs</span>
-                      <span>Core Analysis</span>
+                      <span>Anchor Pull Tests</span>
+                      <span>Grout Pressure Logs</span>
+                      <span>Core Compression Tests</span>
                     </div>
                   </div>
                 </li>
@@ -346,10 +346,10 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
         >
           <div className="editorial-lead-quote" data-loco data-loco-delay="1">
             <p className="editorial-lead-text">
-              Headquartered in Muscat, Middle East Business Geotech LLC bridges the critical gap between geotechnical design and safe site execution across Oman’s rugged geological conditions.
+              Headquartered in Muscat, Middle East Business Geotech LLC combines practical geotechnical engineering with safe, dependable site execution across Oman’s demanding ground conditions.
             </p>
             <p className="editorial-sub-text">
-              We partner with civil authorities, engineering consultants, and leading EPC main contractors to safely execute slope stabilisation, deep foundation, and underground packages on schedule.
+              We partner with government authorities, engineering consultants, and leading EPC main contractors to deliver slope stabilization, deep foundation, and underground works safely and on schedule.
             </p>
           </div>
 
@@ -377,10 +377,10 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                 </div>
                 <div className="editorial-visual-card__content">
                   <p className="editorial-visual-card__caption">
-                    High-angle crane-suspended work platforms & rope-access drilling securing vertical limestone formations.
+                    Crane-suspended work platforms and rope-access teams securing steep limestone cliffs in Musandam.
                   </p>
                   <span className="editorial-visual-card__authority">
-                    Aligned with MTCIT & Nama Water Engineering Specifications
+                    Built to MTCIT and Nama Water Services engineering standards
                   </span>
                 </div>
               </div>
@@ -410,7 +410,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
                     </svg>
                   </div>
                   <div className="stat-card__info">
-                    <span className="stat-card__label">Operational Focus</span>
+                    <span className="stat-card__label">Core Focus</span>
                     <strong className="stat-card__value">Road, Water & Civil Infrastructure</strong>
                     <span className="stat-card__hint">Slopes · Grouting · Deep Piling · Underground</span>
                   </div>
@@ -420,7 +420,7 @@ export function ContractorRoleAnimated({ company }: ContractorRoleAnimatedProps)
               {/* Action Group */}
               <div className="editorial-actions">
                 <ButtonLink href="/about" variant="primary">
-                  About our engineering background
+                  About our engineering team
                 </ButtonLink>
                 <ButtonLink href="/projects" variant="steel">
                   View project records
